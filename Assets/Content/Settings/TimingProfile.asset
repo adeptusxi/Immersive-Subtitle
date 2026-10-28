@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56df0b9d15e534809b452acb22063ec4, type: 3}
+  m_Name: TimingProfile
+  m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.TimingProfile
+  baseSeconds: 0.3
+  secondsPerWord: 0.25
+  secondsPerChar: 0.02
+  minSegmentSeconds: 0.8
+  maxSegmentSeconds: 6
+  defaultGap: 0.1
+  punctuationGaps:
+  - characters: ',;:'
+    seconds: 0.15
+  - characters: .!?
+    seconds: 0.35
+  - characters: "\u2014\u2026-"
+    seconds: 0.3
