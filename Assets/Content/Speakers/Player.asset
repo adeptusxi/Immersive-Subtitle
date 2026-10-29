@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ed7ee92c1ef46adb7c96e247bc2d63, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
+  id: player
+  displayName: Me
+  color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  speechRate: 1
+  voice: {fileID: 0}
+  overrideTextStyle: 0
+  textStyle:
+    font: {fileID: 0}
+    sizeDegrees: 1.2
+    textColor: {r: 1, g: 1, b: 1, a: 1}
+    outlineEnabled: 0
+    outlineWidth: 0.2
+    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    backgroundOpacity: 0.6
+    alignment: 1
+    showSpeakerName: 1
+    colorNameBySpeaker: 1
