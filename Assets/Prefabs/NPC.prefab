@@ -436,6 +436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BobAnimation
   target: 1
-  amplitude: 0.1
-  period: 3
+  amplitude: 0.02
+  period: 5
   randomizeOffset: 1

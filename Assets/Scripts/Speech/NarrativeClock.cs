@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ImmersiveSubtitles.Core;
 using UnityEngine;
 
 namespace ImmersiveSubtitles.Speech
@@ -38,6 +39,11 @@ namespace ImmersiveSubtitles.Speech
         {
             if (!IsPaused)
                 Now += Time.unscaledDeltaTime;
+        }
+
+        private void LateUpdate()
+        {
+            SubtitleRuntime.ActiveSubtitles.Tick(Now);
         }
     }
 }

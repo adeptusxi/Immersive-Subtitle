@@ -17,13 +17,5 @@ namespace ImmersiveSubtitles.Core
 
         public static void RaiseNarrativeEnded() => NarrativeEnded?.Invoke();
 
-        // should only be called by subtitle runtime initialization 
-        public static void ClearSubscribers()
-        {
-            SegmentStarted = null;
-            SegmentEnded = null;
-            ChoiceMade = null;
-            NarrativeEnded = null;
-        }
     }
 }

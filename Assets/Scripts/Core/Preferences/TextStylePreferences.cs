@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace ImmersiveSubtitles.Core
@@ -7,7 +8,7 @@ namespace ImmersiveSubtitles.Core
     public sealed class TextStylePreferences
     {
         // text style 
-        public string fontId = "default";
+        public TMP_FontAsset font; // null -> tmp default font
         public float sizeDegrees = 1.2f; // angular em height
         public Color textColor = Color.white;
         public bool outlineEnabled = false;
@@ -22,5 +23,7 @@ namespace ImmersiveSubtitles.Core
         // other 
         public bool showSpeakerName = true;
         public bool colorNameBySpeaker = true; 
+
+        public TextStylePreferences Clone() => (TextStylePreferences)MemberwiseClone();
     }
 }

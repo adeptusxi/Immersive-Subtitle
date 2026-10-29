@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8347dc13fa549419ea18f811e9c63545, type: 3}
+  m_Name: TEMP_animalese
+  m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.Voice
+  sourceClips:
+  - {fileID: 8300000, guid: 6efb4c9696e844e069d1fa4018d8cd39, type: 3}
+  fadeInSeconds: 0.03
+  fadeOutSeconds: 0.08
+  pitchRange: {x: 1, y: 1}
+  volume: 2
