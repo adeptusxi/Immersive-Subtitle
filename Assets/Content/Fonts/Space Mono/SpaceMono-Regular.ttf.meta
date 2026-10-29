@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: af0baa3b1838946b7a66cb58c1ca4263
+guid: aeb38a11127d5488e98a3c5d7bb7d5d7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Atkinson Hyperlegible
+  - Space Mono
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
