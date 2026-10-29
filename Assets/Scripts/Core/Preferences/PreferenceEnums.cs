@@ -1,13 +1,17 @@
-using System;
-
 namespace ImmersiveSubtitles.Core
 {
-    [Flags]
-    public enum PresenterMode
+    public enum PresentationMode
     {
-        None = 0,
-        SpeakerAttached = 1,
-        Collector = 2
+        SpeakerAboveHead,
+        SpeakerBesideHead,
+        SpeakerHalo,
+        Group
+    }
+
+    public enum SubtitleSizeMode
+    {
+        Angular,
+        Fixed
     }
 
     public enum EntranceStyle

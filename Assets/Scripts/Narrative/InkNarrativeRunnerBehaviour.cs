@@ -27,7 +27,7 @@ namespace ImmersiveSubtitles.Narrative
             Runner.ChoicesPresented += HandleChoicesPresented;
         }
 
-        private void Destroy()
+        private void OnDestroy()
         {
             Runner.ChoicesPresented -= HandleChoicesPresented;
         }

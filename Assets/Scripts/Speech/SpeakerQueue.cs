@@ -30,15 +30,13 @@ namespace ImmersiveSubtitles.Speech
         private bool hasTicked;
         private bool processing;
 
-        public SpeakerQueue(SpeakerProfile profile, Transform anchor, TimingProfile timing)
+        public SpeakerQueue(SpeakerProfile profile, TimingProfile timing)
         {
             Profile = profile;
-            Anchor = anchor;
             this.timing = timing;
         }
 
         public SpeakerProfile Profile { get; }
-        public Transform Anchor { get; set; }
         public bool IsIdle => current == null && pending.Count == 0;
         public event Action<SegmentInstance> SegmentStarted;
         public event Action<SegmentInstance, SegmentEndReason> SegmentEnded;
@@ -147,7 +145,6 @@ namespace ImmersiveSubtitles.Speech
                         indexInTurn = entry.request.indexInTurn,
                         text = entry.request.displayText,
                         speaker = Profile,
-                        anchor = Anchor,
                         plannedDuration = entry.timing.duration,
                         plannedGap = entry.timing.gap,
                         startedAt = entry.startAt,

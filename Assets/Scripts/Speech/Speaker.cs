@@ -8,13 +8,12 @@ namespace ImmersiveSubtitles.Speech
         [SerializeField] private SpeakerProfile profile;
         [SerializeField] private NarrativeClock clock;
         [SerializeField] private TimingProfile timing;
-        [Tooltip("this transform if null ")] [SerializeField] private Transform subtitleAnchor;
         
         public SpeakerQueue Queue { get; private set; }
 
         private void Awake()
         {
-            Queue = new SpeakerQueue(profile, subtitleAnchor != null ? subtitleAnchor : transform, timing);
+            Queue = new SpeakerQueue(profile, timing);
         }
 
         private void OnEnable()

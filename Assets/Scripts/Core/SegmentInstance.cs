@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace ImmersiveSubtitles.Core
 {
@@ -10,7 +9,6 @@ namespace ImmersiveSubtitles.Core
         public int indexInTurn;
         public string text; // can be rich text (<i><b><u>)
         public SpeakerProfile speaker;
-        public Transform anchor; 
         public double plannedDuration;
         public double plannedGap;
         public double startedAt; // in narrative time

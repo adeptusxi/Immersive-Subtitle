@@ -5,9 +5,11 @@ namespace ImmersiveSubtitles.Core
     [Serializable]
     public sealed class SubtitlePreferences
     {
-        public PresenterMode presenters = PresenterMode.SpeakerAttached;
+        public PresentationMode mode = PresentationMode.SpeakerAboveHead;
         public EntranceStyle entranceStyle = EntranceStyle.Instant;
         public bool keepTextDuringGaps = false;
+        public bool facePlayer = true;
+        public SubtitleSizeMode sizeMode = SubtitleSizeMode.Angular;
 
         public TextStylePreferences text = new();
 
