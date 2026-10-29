@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,7 +44,7 @@ namespace ImmersiveSubtitles.Speech
         {
             foreach (SpeakerQueue candidate in queues)
             {
-                if (candidate.Profile.id == speakerId)
+                if (string.Equals(candidate.Profile.id, speakerId, StringComparison.OrdinalIgnoreCase))
                 {
                     queue = candidate;
                     return true;
