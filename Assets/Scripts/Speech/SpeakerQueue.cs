@@ -148,6 +148,8 @@ namespace ImmersiveSubtitles.Speech
                         plannedDuration = entry.timing.duration,
                         plannedGap = entry.timing.gap,
                         startedAt = entry.startAt,
+                        volume = entry.request.volume,
+                        textSize = entry.request.textSize,
                     };
                     SegmentStarted?.Invoke(entry.playback.Instance);
                     SubtitleBus.RaiseSegmentStarted(entry.playback.Instance);

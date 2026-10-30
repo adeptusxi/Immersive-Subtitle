@@ -8,5 +8,7 @@ namespace ImmersiveSubtitles.Speech
         public int indexInTurn;
         public double rate;
         public double delaySeconds;
+        public double volume = 1;
+        public double textSize = 1;
     }
 }

@@ -14,6 +14,7 @@ namespace ImmersiveSubtitles.Speech
 
         private State state;
         private Voice voice;
+        private float segmentVolume;
         private string currentTurn;
         private double segmentStart;
         private double segmentEnd;
@@ -52,11 +53,11 @@ namespace ImmersiveSubtitles.Speech
                 double now = clock.Now;
                 double fadeIn = voice.fadeInSeconds > 0f ? (now - segmentStart) / voice.fadeInSeconds : 1.0;
                 double fadeOut = voice.fadeOutSeconds > 0f ? (segmentEnd - now) / voice.fadeOutSeconds : 1.0;
-                source.volume = voice.volume * Mathf.Clamp01((float)System.Math.Min(fadeIn, fadeOut));
+                source.volume = segmentVolume * Mathf.Clamp01((float)System.Math.Min(fadeIn, fadeOut));
             }
             else if (state == State.Stopping)
             {
-                float step = voice.fadeOutSeconds > 0f ? voice.volume * Time.unscaledDeltaTime / voice.fadeOutSeconds : 1f;
+                float step = voice.fadeOutSeconds > 0f ? segmentVolume * Time.unscaledDeltaTime / voice.fadeOutSeconds : 1f;
                 source.volume = Mathf.Max(0f, source.volume - step);
                 if (source.volume <= 0f)
                     StopNow();
@@ -88,6 +89,7 @@ namespace ImmersiveSubtitles.Speech
             }
 
             voice = segmentVoice;
+            segmentVolume = Mathf.Clamp01(segmentVoice.volume * (float)segment.volume);
             segmentStart = segment.startedAt;
             segmentEnd = segment.startedAt + segment.plannedDuration;
             state = State.Speaking;

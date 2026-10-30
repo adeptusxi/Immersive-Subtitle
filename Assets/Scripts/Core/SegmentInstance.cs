@@ -12,5 +12,7 @@ namespace ImmersiveSubtitles.Core
         public double plannedDuration;
         public double plannedGap;
         public double startedAt; // in narrative time
+        public double volume = 1; // multiplier on Voice volume
+        public double textSize = 1; // multiplier on subtitle font size
     }
 }

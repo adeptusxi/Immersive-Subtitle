@@ -160,6 +160,8 @@ namespace ImmersiveSubtitles.Narrative
                 indexInTurn = turn.indexInTurn,
                 rate = queue.Profile.speechRate,
                 delaySeconds = line.delaySeconds ?? 0,
+                volume = line.volume,
+                textSize = line.textSize,
             };
             
             SegmentPlayback playback = null;

@@ -10,6 +10,8 @@ namespace ImmersiveSubtitles.Core
         public bool isAsync;
         public double? delaySeconds;
         public bool newTurn;
+        public double volume = 1; // multiplier on Voice volume 
+        public double textSize = 1; // multiplier on subtitle font size
         public List<string> warnings = new(); // unknown/malformed tags
     }
 }

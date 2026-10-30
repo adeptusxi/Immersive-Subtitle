@@ -17,4 +17,4 @@ MonoBehaviour:
   fadeInSeconds: 0.03
   fadeOutSeconds: 0.08
   pitchRange: {x: 1, y: 1}
-  volume: 2
+  volume: 0.5

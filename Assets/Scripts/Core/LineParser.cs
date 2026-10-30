@@ -71,6 +71,24 @@ namespace ImmersiveSubtitles.Core
                         line.warnings.Add($"tag '#{tag}' needs a non-negative number of seconds");
                     break;
 
+                case "volume":
+                    if (value != null
+                        && double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double volume)
+                        && volume >= 0 && !double.IsInfinity(volume))
+                        line.volume = volume;
+                    else
+                        line.warnings.Add($"tag '#{tag}' needs a non-negative number");
+                    break;
+
+                case "size":
+                    if (value != null
+                        && double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double size)
+                        && size > 0 && !double.IsInfinity(size))
+                        line.textSize = size;
+                    else
+                        line.warnings.Add($"tag '#{tag}' needs a positive number");
+                    break;
+
                 default:
                     line.warnings.Add($"unknown tag '#{tag}'");
                     break;
