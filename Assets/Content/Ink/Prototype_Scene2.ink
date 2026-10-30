@@ -2,49 +2,65 @@ EXTERNAL wait_for(eventId)
 EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
+EXTERNAL set_presentation_mode(mode) // demo only, bound by DemoPresentationModeBinding
 
--> intro
+-> menu
+
+=== menu ===
++ [Above Speaker]
+    ~ set_presentation_mode("SpeakerAboveHead")
+    -> intro
++ [Beside Speaker]
+    ~ set_presentation_mode("SpeakerBesideHead")
+    -> intro
++ [Halo]
+    ~ set_presentation_mode("SpeakerHalo")
+    -> intro
 
 === intro ===
 
-Hey! #speaker:Player
-You there!
-Can you talk?
+~ wait_seconds(2)
 
-Hello, #speaker:Alien1
-you are not one of us.
-You look very strange.
+Hey, do you see that? #speaker:Alien1
 
-Haha, #speaker:Player
-yes, I am not from around here.
-I need help.
-My home planet is very far away.
+See what? #speaker:Alien2
 
-Wow, I’ve never left my planet. #speaker:Alien1
+The weird spiky thing, #speaker:Alien1
+in the distance. 
+I’ve never seen anything 
+like it before.
 
-Yes, and now I have to try to find my ship. #speaker:Player
+Hmmm, #speaker:Alien2
+I'm not sure either.
+Do you think it can talk?
 
-Your ship? #speaker:Alien1
-What is that?
+Yea, maybe. #speaker:Alien1
+Should we go try it out?
 
-Yes! #speaker:Player
-It is long and white
-with a pointed red top.
-Have you seen it?
+Let’s yell from here. #speaker:Alien1
 
-Oh! #speaker:Alien1
-I’m not too sure.
+Hi! #speaker:Alien2 #volume:2 #size:2.5 
 
-Aw, that’s alright. #speaker:Player
-Thanks for the help anyways.
+Hello! #speaker:Alien1 #volume:2 #size:2.5 #async
 
-Actually, I have some friends. #speaker:Alien1
-They might be able to help us.
+Hiiiiiiiiii! #speaker:Alien2 #volume:2 #size:2.5 #async 
 
-That would be amazing! #speaker:Player
+Can you hear us? #speaker:Alien1 #volume:2 #size:2.5 #async
 
-I’ll call them right now! #speaker:Alien1
+~ wait_seconds(3)
 
+I don’t think it can hear us. #speaker:Alien2
+
+Technically, #speaker:Alien1 
+sound can’t travel in space
+because there is no atmosphere.
+
+Then… how are we talking #speaker:Alien2
+to each other?
+
+~ wait_seconds(2)
+
+-> menu
 
 -> END
 
@@ -58,5 +74,8 @@ I’ll call them right now! #speaker:Alien1
 ~ return
 
 === function event(eventId) ===
+~ return
+
+=== function set_presentation_mode(mode) ===
 ~ return
 

@@ -13,20 +13,7 @@ MonoBehaviour:
   m_Name: Alien2
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien2
-  displayName: Alien2
+  displayName: Bar
   color: {r: 0.481202, g: 0.28627458, b: 0.90588236, a: 1}
-  speechRate: 0.75
+  speechRate: 0.5
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
-  overrideTextStyle: 0
-  textStyle:
-    fontId: default
-    sizeDegrees: 1.2
-    textColor: {r: 1, g: 1, b: 1, a: 1}
-    outlineEnabled: 0
-    outlineWidth: 0.2
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundOpacity: 0.6
-    alignment: 1
-    showSpeakerName: 1
-    colorNameBySpeaker: 1
