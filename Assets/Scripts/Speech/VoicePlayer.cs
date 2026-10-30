@@ -14,7 +14,7 @@ namespace ImmersiveSubtitles.Speech
 
         private State state;
         private Voice voice;
-        private float segmentVolume;
+        private volatile float gain = 1f; // voice.volume * segment.volume 
         private string currentTurn;
         private double segmentStart;
         private double segmentEnd;
@@ -26,6 +26,7 @@ namespace ImmersiveSubtitles.Speech
             source.spatialize = true;
             source.spatialBlend = 1f;
             source.volume = 0f;
+            source.spatializePostEffects = true;
         }
 
         private void Start()
@@ -53,11 +54,11 @@ namespace ImmersiveSubtitles.Speech
                 double now = clock.Now;
                 double fadeIn = voice.fadeInSeconds > 0f ? (now - segmentStart) / voice.fadeInSeconds : 1.0;
                 double fadeOut = voice.fadeOutSeconds > 0f ? (segmentEnd - now) / voice.fadeOutSeconds : 1.0;
-                source.volume = segmentVolume * Mathf.Clamp01((float)System.Math.Min(fadeIn, fadeOut));
+                source.volume = Mathf.Clamp01((float)System.Math.Min(fadeIn, fadeOut));
             }
             else if (state == State.Stopping)
             {
-                float step = voice.fadeOutSeconds > 0f ? segmentVolume * Time.unscaledDeltaTime / voice.fadeOutSeconds : 1f;
+                float step = voice.fadeOutSeconds > 0f ? Time.unscaledDeltaTime / voice.fadeOutSeconds : 1f;
                 source.volume = Mathf.Max(0f, source.volume - step);
                 if (source.volume <= 0f)
                     StopNow();
@@ -89,7 +90,7 @@ namespace ImmersiveSubtitles.Speech
             }
 
             voice = segmentVoice;
-            segmentVolume = Mathf.Clamp01(segmentVoice.volume * (float)segment.volume);
+            gain = segmentVoice.volume * (float)segment.volume;
             segmentStart = segment.startedAt;
             segmentEnd = segment.startedAt + segment.plannedDuration;
             state = State.Speaking;
@@ -130,6 +131,21 @@ namespace ImmersiveSubtitles.Speech
             else if (state == State.Speaking)
             {
                 source.UnPause();
+            }
+        }
+
+        // runs on audio thread
+        private void OnAudioFilterRead(float[] data, int channels)
+        {
+            float g = gain;
+            if (g == 1f)
+            {
+                return;
+            }
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] *= g;
             }
         }
 
