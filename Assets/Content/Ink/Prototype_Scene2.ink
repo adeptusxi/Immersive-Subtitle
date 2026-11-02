@@ -16,6 +16,9 @@ EXTERNAL set_presentation_mode(mode) // demo only, bound by DemoPresentationMode
 + [Halo]
     ~ set_presentation_mode("SpeakerHalo")
     -> intro
++ [Group]
+    ~ set_presentation_mode("Group")
+    -> intro
 
 === intro ===
 

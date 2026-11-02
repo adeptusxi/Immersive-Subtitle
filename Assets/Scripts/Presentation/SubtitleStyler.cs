@@ -7,7 +7,7 @@ namespace ImmersiveSubtitles.Presentation
 {
     public static class SubtitleStyler
     {
-        // name and speaker may be null, e.g. for grouped presentation 
+        // name and speaker can be null 
         public static void Apply(TextStylePreferences style, TMP_Text body, TMP_Text name, Image background, SpeakerProfile speaker)
         {
             TMP_FontAsset font = style.font != null ? style.font : TMP_Settings.defaultFontAsset;
