@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56df0b9d15e534809b452acb22063ec4, type: 3}
   m_Name: TimingProfile
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.TimingProfile
-  baseSeconds: 0.2
-  secondsPerWord: 0.16
-  secondsPerChar: 0.01
-  minSegmentSeconds: 0.8
-  maxSegmentSeconds: 6
-  defaultGap: 0.06
+  baseSeconds: 0.375
+  secondsPerWord: 0.3
+  secondsPerChar: 0.02
+  minSegmentSeconds: 1
+  maxSegmentSeconds: 7.5
+  defaultGap: 0.1
   punctuationGaps:
   - characters: ',;:'
     seconds: 0.15
