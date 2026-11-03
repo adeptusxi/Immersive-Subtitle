@@ -13,6 +13,11 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private PresentationMode mode;
         [SerializeField] private GameObject root; // should not be the gameobject this script is on
         [SerializeField] private Image background;
+        
+        [SerializeField] private bool overrideTextStyle;
+        [SerializeField] private TextStylePreferences textStyle = new();
+        [SerializeField] private bool overrideFacePlayer;
+        [SerializeField] private bool facePlayer = true;
 
         private static readonly List<SubtitlePresenter> enabledPresenters = new();
 
@@ -31,7 +36,11 @@ namespace ImmersiveSubtitles.Presentation
         protected abstract void ApplyStyle(SubtitlePreferences preferences);
         protected abstract void UpdateReveal(double now);
         
-        protected virtual TextStylePreferences TextStyle(SubtitlePreferences preferences) => preferences.text; // panel size comes from sizeDegrees
+        // panel size comes from sizeDegrees
+        protected TextStylePreferences TextStyle(SubtitlePreferences preferences) =>
+            overrideTextStyle ? textStyle : preferences.text;
+
+        private bool FacePlayer(SubtitlePreferences preferences) => overrideFacePlayer ? facePlayer : preferences.facePlayer;
 
         #region Unity
 
@@ -72,7 +81,7 @@ namespace ImmersiveSubtitles.Presentation
             Transform panel = root.transform;
             Vector3 head = Player.Instance.Head.position;
 
-            if (preferences.facePlayer)
+            if (FacePlayer(preferences))
             {
                 panel.rotation = Quaternion.LookRotation(panel.position - head, Vector3.up);
             }
@@ -97,7 +106,7 @@ namespace ImmersiveSubtitles.Presentation
             SubtitlePreferences preferences = SubtitleRuntime.Preferences.Current;
             ApplyStyle(preferences);
 
-            if (!preferences.facePlayer)
+            if (!FacePlayer(preferences))
             {
                 root.transform.localRotation = authoredRotation;
             }

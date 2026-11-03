@@ -66,7 +66,7 @@ namespace ImmersiveSubtitles.Presentation
 
         protected override void ApplyStyle(SubtitlePreferences preferences)
         {
-            SubtitleStyler.Apply(preferences.text, text, null, Background, null);
+            SubtitleStyler.Apply(TextStyle(preferences), text, null, Background, null);
             RebuildText(); 
         }
 
@@ -85,7 +85,7 @@ namespace ImmersiveSubtitles.Presentation
         
         private void RebuildText()
         {
-            TextStylePreferences style = SubtitleRuntime.Preferences.Current.text;
+            TextStylePreferences style = TextStyle(SubtitleRuntime.Preferences.Current);
             builder.Clear();
             bodyStartIdx = 0;
 

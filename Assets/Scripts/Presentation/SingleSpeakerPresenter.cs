@@ -11,8 +11,6 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private SpeakerProfile speaker;
         [SerializeField] private TMP_Text body;
         [SerializeField] private TMP_Text nameText;
-        [SerializeField] private bool overrideTextStyle;
-        [SerializeField] private TextStylePreferences textStyle = new();
 
         private readonly List<int> wordEnds = new();
         private SegmentInstance current;
@@ -29,9 +27,6 @@ namespace ImmersiveSubtitles.Presentation
             base.Awake();
             authoredFontSize = body.fontSize;
         }
-
-        protected override TextStylePreferences TextStyle(SubtitlePreferences preferences) =>
-            overrideTextStyle ? textStyle : preferences.text;
 
         protected override void Sync(IReadOnlyList<SegmentInstance> visible)
         {
