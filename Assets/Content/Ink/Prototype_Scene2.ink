@@ -10,12 +10,12 @@ EXTERNAL set_presentation_mode(mode) // demo only, bound by DemoPresentationMode
 + [Above Speaker]
     ~ set_presentation_mode("SpeakerAboveHead")
     -> intro
-+ [Beside Speaker]
-    ~ set_presentation_mode("SpeakerBesideHead")
-    -> intro
-+ [Halo]
-    ~ set_presentation_mode("SpeakerHalo")
-    -> intro
+// + [Beside Speaker]
+//     ~ set_presentation_mode("SpeakerBesideHead")
+//     -> intro
+// + [Halo]
+//     ~ set_presentation_mode("SpeakerHalo")
+//     -> intro
 + [Group]
     ~ set_presentation_mode("Group")
     -> intro
