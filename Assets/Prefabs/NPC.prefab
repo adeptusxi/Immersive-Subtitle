@@ -53,6 +53,9 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   clock: {fileID: 0}
   timing: {fileID: 11400000, guid: 0ac627f3455a74456b3e452de1f187e3, type: 2}
+  speakerRoot: {fileID: 6541450896631690015}
+  speakerColor: {r: 1, g: 1, b: 1, a: 1}
+  pulseVFX: {fileID: 1602854598958431523, guid: 05e23b84758ed4326b8e8ed1b3f28301, type: 3}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0

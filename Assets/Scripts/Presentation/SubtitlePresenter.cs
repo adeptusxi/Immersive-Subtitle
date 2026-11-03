@@ -13,7 +13,9 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private PresentationMode mode;
         [SerializeField] private GameObject root; // should not be the gameobject this script is on
         [SerializeField] private Image background;
+        [SerializeField] private GameObject[] additionalObjects;
         
+        [Header("Presentation")]
         [SerializeField] private bool overrideTextStyle;
         [SerializeField] private TextStylePreferences textStyle = new();
         [SerializeField] private bool overrideFacePlayer;
@@ -66,6 +68,10 @@ namespace ImmersiveSubtitles.Presentation
             SubtitleRuntime.Preferences.Changed -= HandlePreferencesChanged;
 
             root.SetActive(false);
+            foreach (var o in additionalObjects)
+            {
+                o.SetActive(false);
+            }
         }
 
         private void LateUpdate()
@@ -121,7 +127,13 @@ namespace ImmersiveSubtitles.Presentation
 
         private void RefreshRoot()
         {
-            root.SetActive(IsActive && HasContent);
+            bool active = IsActive && HasContent;
+            
+            root.SetActive(active);
+            foreach (var o in additionalObjects)
+            {
+                o.SetActive(active);
+            }
         }
     }
 }
