@@ -2,23 +2,11 @@ EXTERNAL wait_for(eventId)
 EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
-EXTERNAL set_presentation_mode(mode) // demo only, bound by DemoPresentationModeBinding
 
 -> menu
 
 === menu ===
-+ [Above Speaker]
-    ~ set_presentation_mode("SpeakerAboveHead")
-    -> intro
-// + [Beside Speaker]
-//     ~ set_presentation_mode("SpeakerBesideHead")
-//     -> intro
-// + [Halo]
-//     ~ set_presentation_mode("SpeakerHalo")
-//     -> intro
-+ [Group]
-    ~ set_presentation_mode("Group")
-    -> intro
++ [Start] -> intro
 
 === intro ===
 
@@ -77,8 +65,5 @@ to each other?
 ~ return
 
 === function event(eventId) ===
-~ return
-
-=== function set_presentation_mode(mode) ===
 ~ return
 

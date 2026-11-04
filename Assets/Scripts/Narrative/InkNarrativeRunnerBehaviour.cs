@@ -39,7 +39,10 @@ namespace ImmersiveSubtitles.Narrative
 
         private void Update()
         {
-            Runner.Tick(clock.Now);
+            if (!clock.IsPaused)
+            {
+                Runner.Tick(clock.Now);
+            }
         }
 
         private void HandleChoicesPresented(IReadOnlyList<ChoiceOption> options)

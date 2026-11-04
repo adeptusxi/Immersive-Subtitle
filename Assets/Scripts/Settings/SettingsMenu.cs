@@ -1,0 +1,92 @@
+using ImmersiveSubtitles.Core;
+using ImmersiveSubtitles.Presentation;
+using ImmersiveSubtitles.Speech;
+using UnityEngine;
+
+namespace ImmersiveSubtitles.Settings
+{
+    [DefaultExecutionOrder(200)]
+    public sealed class SettingsMenu : MonoBehaviour
+    {
+        [SerializeField] private GameObject canvasRoot;
+        [SerializeField] private NarrativeClock clock;
+        [SerializeField] private SubtitlePreferences defaults = new SubtitlePreferences();
+        [SerializeField] private ButtonUI resetButton;
+
+        [Header("Tabs")]
+        [SerializeField] private ButtonUI presentationTabButton;
+        [SerializeField] private ButtonUI textTabButton;
+        [SerializeField] private GameObject presentationTab;
+        [SerializeField] private GameObject textTab;
+
+        [Header("Presentation Tab")]
+        [SerializeField] private MultipleChoiceUI presentationSet;
+        [SerializeField] private ToggleUI keepTextDuringGaps;
+        [SerializeField] private MultipleChoiceUI entranceStyle;
+        [SerializeField] private ToggleUI facePlayer;
+        [SerializeField] private MultipleChoiceUI sizeMode;
+
+        public bool IsOpen => canvasRoot.activeSelf;
+
+        private void Awake()
+        {
+            SubtitleRuntime.Preferences.SetDefaults(defaults);
+
+            presentationSet.Bind(p => (int)p.mode, (p, v) => p.mode = (PresentationMode)v);
+            keepTextDuringGaps.Bind(p => p.keepTextDuringGaps, (p, v) => p.keepTextDuringGaps = v);
+            entranceStyle.Bind(p => (int)p.entranceStyle, (p, v) => p.entranceStyle = (EntranceStyle)v);
+            facePlayer.Bind(p => p.facePlayer, (p, v) => p.facePlayer = v);
+            sizeMode.Bind(p => (int)p.sizeMode, (p, v) => p.sizeMode = (SubtitleSizeMode)v);
+
+            presentationTabButton.Clicked += () => SelectTab(true);
+            textTabButton.Clicked += () => SelectTab(false);
+            resetButton.Clicked += SubtitleRuntime.Preferences.Reset;
+        }
+        
+        private void Start()
+        {
+            SelectTab(true);
+            canvasRoot.SetActive(false);
+        }
+
+        private void LateUpdate()
+        {
+            if (OVRInput.GetDown(OVRInput.Button.Start))
+            {
+                Toggle();
+            }
+        }
+
+        public void Open()
+        {
+            canvasRoot.SetActive(true);
+            clock.Pause(this);
+        }
+
+        public void Close()
+        {
+            canvasRoot.SetActive(false);
+            clock.Resume(this);
+        }
+
+        public void Toggle()
+        {
+            if (IsOpen)
+            {
+                Close();
+            }
+            else
+            {
+                Open();
+            }
+        }
+
+        private void SelectTab(bool presentation)
+        {
+            presentationTab.SetActive(presentation);
+            textTab.SetActive(!presentation);
+            presentationTabButton.SetSelected(presentation);
+            textTabButton.SetSelected(!presentation);
+        }
+    }
+}

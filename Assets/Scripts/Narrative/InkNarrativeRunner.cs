@@ -65,12 +65,6 @@ namespace ImmersiveSubtitles.Narrative
             story.variablesState[name] = value;
         }
         
-        // for other scripts to bind EXTERNAL funcs 
-        public void BindExternalFunction(string name, Action<string> fn)
-        {
-            story.BindExternalFunction(name, fn, false);
-        }
-
         public void Tick(double now)
         {
             if (State == RunnerState.NotStarted)

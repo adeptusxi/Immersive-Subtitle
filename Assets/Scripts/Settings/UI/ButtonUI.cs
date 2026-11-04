@@ -10,6 +10,8 @@ namespace ImmersiveSubtitles.Presentation
     public sealed class ButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
         [SerializeField] private TMP_Text label;
+        [SerializeField, Tooltip("shown while selected. only needed on buttons that call SetSelected (settings menu)")]
+        private GameObject selectedMark;
 
         [Header("Scale")]
         [SerializeField] private bool scaleEnabled = true;
@@ -59,6 +61,11 @@ namespace ImmersiveSubtitles.Presentation
         {
             label.text = text;
             label.font = font;
+        }
+
+        public void SetSelected(bool selected)
+        {
+            selectedMark.SetActive(selected);
         }
 
         #region Pointer events

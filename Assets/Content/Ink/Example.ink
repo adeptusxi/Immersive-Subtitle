@@ -2,7 +2,6 @@ EXTERNAL wait_for(eventId)
 EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
-EXTERNAL set_presentation_mode(mode) // demo only, bound by DemoPresentationModeBinding
 
 // ---------------------------------------------------
 // --------------- ↓ actual dialogue ↓ ---------------
@@ -89,8 +88,5 @@ ok, now you can go #speaker:alien1
 ~ return
 
 === function event(eventId) ===
-~ return
-
-=== function set_presentation_mode(mode) ===
 ~ return
 
