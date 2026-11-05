@@ -17,3 +17,4 @@ MonoBehaviour:
   color: {r: 0.45987618, g: 0.745283, b: 0.33397114, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
+  icon: {fileID: 21300000, guid: da44f466a0e9c4a3a89aaf2f063eec47, type: 3}

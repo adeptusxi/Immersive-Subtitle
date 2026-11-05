@@ -3,7 +3,17 @@ EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
 
--> main
+-> intro
+
+=== intro ===
++ [START] 
+    -> main
+
+-> replay
+
+=== replay ===
++ [REPLAY] 
+    -> main
 
 === main ===
 Hi! #speaker:Alien2
@@ -18,16 +28,13 @@ Yeah, what’s happening? #speaker:Alien5
 I met a strange creature today. #speaker:Alien1
 Come over and meet them!
 
-* Hi!
-    Hi everyone! #speaker:player
++ [Hi everyone!] 
     Hi! #speaker:Alien5
     -> p1
-* 'Sup?
-    What’s up guys! #speaker:player 
++ [What’s up guys!] 
     The sky! #speaker:Alien5
     -> p1
-* Help!
-    Please help me! #speaker:player
++ [Please help me!] 
     We'll try out best! #speaker:Alien5
     -> p1
     
@@ -50,15 +57,11 @@ We’ll help you find it.
 How does it look like? 
 What should we look for?
 
-* A white machine
-    It’s a long white machine. #speaker:player
++ [A long white machine.] 
     -> p2
-* You’ll just know
-    You’ll know it when you see it. #speaker:player
++ [You’ll know it when you see it.] 
     -> p2
-* A tall machine
-    It’s very tall so it#speaker:player
-    shouldn’t be hard to find. 
++ [It’s very tall.] 
     -> p2
 
 === p2 ===
@@ -71,19 +74,25 @@ Let’s see if we can see #speaker:Alien2
 it in the distance first.
 
 //walk away
+~ event("aliens_walk_away")
+//~ wait_for("aliens_walk_away_complete") 
 
 I don't see anything here. #speaker:Alien2 #volume:2 #size:2.5
 
-Come back!. #speaker:Alien5 #volume:2 #size:2.5
+Come back! #speaker:Alien5 #volume:2 #size:2.5
 That's not going to work. #volume:2 #size:2.5
 
 //alien 2 walks back
+~ event("aliens_walk_back")
+//~ wait_for("aliens_walk_back_complete") 
 
 I think we can try jumping. #speaker:Alien3
 The rocks should give us
 a higher view.
 
 //everyone starts jumping
+~ event("aliens_jump")
+~ wait_seconds(2)
    
 I can’t see anything! #speaker:Alien2
 
@@ -95,11 +104,12 @@ I see something tall and long #speaker:Alien4
 
 Wait, wait, I want to see too! #speaker:Alien2
 
-//jumps over
-
 No, that can’t be right. #speaker:Alien2
 I think that’s just a large rock.
 Does anyone else see anything?
+
+//everyone stops jumping 
+~ event("aliens_stop_jump")
 
 There’s something over here! #speaker:Alien3
 Over there, within the clouds.
@@ -110,7 +120,7 @@ are you sure?
 Why are you always questioning me? #speaker:Alien3
 Do you not trust me?
 
-Well... I just think that sometimes #Alien5
+Well... I just think that sometimes #speaker:Alien5
 you see things that don’t exist...
 
 You little... #speaker:Alien3 #size:0.75
@@ -128,6 +138,8 @@ and see if anything bounces off them.
 Yes, let’s try it! #speaker:Alien2
 
 //use the soundwave effect
+~ event("play_soundwave_vfx")
+~ wait_seconds(2)
 
 I think I’m hearing something. #speaker:Alien5
 
@@ -137,15 +149,11 @@ A bit towards the North.
 Yes, I feel it too. #speaker:Alien1
 Maybe a 30 minute walk?
 
-* Perfect!
-    Perfect, thank you #speaker:player
-    so much for your help! 
++ [Perfect, thank you!] 
     -> p3
-* Finally...
-    Took you guys long enough! #speaker:player
++ [Took you guys long enough!] 
     -> p3
-* Finally!
-    Finally! I can go home now! #speaker:player
++ [Finally! I can go home now!] 
     -> p3
 
 === p3 ===
@@ -156,16 +164,12 @@ It was nice meeting you! #speaker:Alien4
 
 Don’t be a stranger, come visit us! #speaker:Alien5
 
-* Bye!
-    Bye everyone! See you next time. #speaker:player
++ [Bye everyone!] 
     -> outro
-* Smell ya later!
-    Smell ya later! #speaker:player
++ [Smell ya later!] 
     -> outro
-* Get out of here!
-    Can’t wait to get out of here! #speaker:player
++ [Can’t wait to get out of here!] 
     -> outro
-    
     
 === outro ===
 
@@ -173,7 +177,9 @@ See you around! #speaker:Alien1
 
 We'll miss you! #speaker:Alien3
 
--> END
+~ wait_seconds(3)
+
+-> replay
 
 === function wait_for(eventId) ===
 ~ return

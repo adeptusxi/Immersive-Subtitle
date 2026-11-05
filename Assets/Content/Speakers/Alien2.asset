@@ -15,5 +15,6 @@ MonoBehaviour:
   id: alien2
   displayName: Bar
   color: {r: 0.481202, g: 0.28627458, b: 0.90588236, a: 1}
-  speechRate: 0.4
+  speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
+  icon: {fileID: 21300000, guid: e3d2571669c354e1aa37fcc40dcdb353, type: 3}

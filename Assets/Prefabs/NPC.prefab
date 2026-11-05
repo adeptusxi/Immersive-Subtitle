@@ -51,11 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Speech.Speaker
   profile: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
-  clock: {fileID: 0}
   timing: {fileID: 11400000, guid: 0ac627f3455a74456b3e452de1f187e3, type: 2}
   speakerRoot: {fileID: 6541450896631690015}
-  speakerColor: {r: 1, g: 1, b: 1, a: 1}
-  pulseVFX: {fileID: 1602854598958431523, guid: 05e23b84758ed4326b8e8ed1b3f28301, type: 3}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Speech.VoicePlayer
   speaker: {fileID: 8581854236256452335}
-  clock: {fileID: 0}
   source: {fileID: 3214820711162998941}
 --- !u!82 &3214820711162998941
 AudioSource:
@@ -356,7 +352,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.53800005}
-  m_SizeDelta: {x: 1600, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!223 &4143428625319031554
 Canvas:
@@ -457,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 2
 --- !u!1 &3354157772226886647
 GameObject:
@@ -758,6 +754,7 @@ MonoBehaviour:
   mode: 1
   root: {fileID: 4972619120870131225}
   background: {fileID: 3768172129890655160}
+  additionalObjects: []
   overrideTextStyle: 0
   textStyle:
     font: {fileID: 0}
@@ -824,6 +821,7 @@ MonoBehaviour:
   mode: 0
   root: {fileID: 2013317681141065827}
   background: {fileID: 7527009168934300371}
+  additionalObjects: []
   overrideTextStyle: 0
   textStyle:
     font: {fileID: 0}
@@ -996,6 +994,7 @@ GameObject:
   - component: {fileID: 1154613724246294650}
   - component: {fileID: 6632168645871814547}
   - component: {fileID: 221466335666020477}
+  - component: {fileID: 942405919417947784}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -1017,10 +1016,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 530828937354335735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 797.865, y: -88.62}
+  m_SizeDelta: {x: 361.28, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6632168645871814547
 CanvasRenderer:
@@ -1077,8 +1076,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65
-  m_fontSizeBase: 65
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1122,6 +1121,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &942405919417947784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184548220792831755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &6779920056507974858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,8 +1216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BobAnimation
   target: 1
-  amplitude: 0.02
-  period: 5
+  amplitude: 0.03
+  period: 3.5
   randomizeOffset: 1
 --- !u!1 &7892968775339199376
 GameObject:
@@ -1534,6 +1547,7 @@ MonoBehaviour:
   mode: 2
   root: {fileID: 7936958860773885808}
   background: {fileID: 474268300910439370}
+  additionalObjects: []
   overrideTextStyle: 1
   textStyle:
     font: {fileID: 0}
@@ -1700,6 +1714,7 @@ GameObject:
   - component: {fileID: 2461118888800091623}
   - component: {fileID: 2142087759118470640}
   - component: {fileID: 2951017255959187379}
+  - component: {fileID: 4254900884270581832}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1721,10 +1736,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 530828937354335735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 797.865, y: -254.62}
+  m_SizeDelta: {x: 1563.73, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2142087759118470640
 CanvasRenderer:
@@ -1781,8 +1796,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1820,12 +1835,26 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 100, y: 0, z: 100, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4254900884270581832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8539659301349996415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &8707969510614068277
 GameObject:
   m_ObjectHideFlags: 0
