@@ -7,7 +7,7 @@ namespace ImmersiveSubtitles.Settings
 {
     public sealed class MultipleChoiceUI : MonoBehaviour
     {
-        private ButtonUI[] options;
+        [SerializeField] private ButtonUI[] options;
 
         private Func<SubtitlePreferences, int> getter;
         private Action<SubtitlePreferences, int> setter;

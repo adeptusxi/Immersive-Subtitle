@@ -376,14 +376,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -434,6 +426,30 @@ PrefabInstance:
     - target: {fileID: 6530882790708506193, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -489,14 +505,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -547,6 +555,30 @@ PrefabInstance:
     - target: {fileID: 6530882790708506193, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -602,14 +634,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -660,6 +684,30 @@ PrefabInstance:
     - target: {fileID: 6530882790708506193, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -715,14 +763,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377025419458751344, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -773,6 +813,30 @@ PrefabInstance:
     - target: {fileID: 6530882790708506193, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
       propertyPath: m_Name
       value: Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957618833431217160, guid: cebd250763f9f4504bb991b7f6e3eaf2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -27,4 +27,12 @@ namespace ImmersiveSubtitles.Core
         Center,
         Right
     }
+
+    public enum SpeechCueMode
+    {
+        None,
+        RingPulse,
+        DockedIndicator,
+        SubtitleHUD
+    }
 }

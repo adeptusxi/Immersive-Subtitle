@@ -9,8 +9,7 @@ namespace ImmersiveSubtitles.Settings
     public sealed class SettingsMenu : MonoBehaviour
     {
         [SerializeField] private GameObject canvasRoot;
-        [SerializeField] private NarrativeClock clock;
-        [SerializeField] private SubtitlePreferences defaults = new SubtitlePreferences();
+        [SerializeField] private SubtitlePreferences defaults = new();
         [SerializeField] private ButtonUI resetButton;
 
         [Header("Tabs")]
@@ -20,7 +19,8 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private GameObject textTab;
 
         [Header("Presentation Tab")]
-        [SerializeField] private MultipleChoiceUI presentationSet;
+        [SerializeField] private MultipleChoiceUI subtitleMode;
+        [SerializeField] private MultipleChoiceUI indicatorMode;
         [SerializeField] private ToggleUI keepTextDuringGaps;
         [SerializeField] private MultipleChoiceUI entranceStyle;
         [SerializeField] private ToggleUI facePlayer;
@@ -32,7 +32,8 @@ namespace ImmersiveSubtitles.Settings
         {
             SubtitleRuntime.Preferences.SetDefaults(defaults);
 
-            presentationSet.Bind(p => (int)p.mode, (p, v) => p.mode = (PresentationMode)v);
+            subtitleMode.Bind(p => (int)p.mode, (p, v) => p.mode = (PresentationMode)v);
+            indicatorMode.Bind(p => (int)p.speechCueMode, (p, v) => p.speechCueMode = (SpeechCueMode)v);
             keepTextDuringGaps.Bind(p => p.keepTextDuringGaps, (p, v) => p.keepTextDuringGaps = v);
             entranceStyle.Bind(p => (int)p.entranceStyle, (p, v) => p.entranceStyle = (EntranceStyle)v);
             facePlayer.Bind(p => p.facePlayer, (p, v) => p.facePlayer = v);
@@ -60,13 +61,15 @@ namespace ImmersiveSubtitles.Settings
         public void Open()
         {
             canvasRoot.SetActive(true);
-            clock.Pause(this);
+            NarrativeClock.Instance.Pause(this);
+            ChoicePanel.Instance.SetSuspended(true);
         }
 
         public void Close()
         {
             canvasRoot.SetActive(false);
-            clock.Resume(this);
+            NarrativeClock.Instance.Resume(this);
+            ChoicePanel.Instance.SetSuspended(false);
         }
 
         public void Toggle()

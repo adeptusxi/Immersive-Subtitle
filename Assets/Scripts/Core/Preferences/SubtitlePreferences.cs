@@ -7,9 +7,10 @@ namespace ImmersiveSubtitles.Core
     {
         public PresentationMode mode = PresentationMode.SpeakerAboveHead;
         public EntranceStyle entranceStyle = EntranceStyle.Instant;
-        public bool keepTextDuringGaps = false;
+        public bool keepTextDuringGaps = true;
         public bool facePlayer = true;
         public SubtitleSizeMode sizeMode = SubtitleSizeMode.Angular;
+        public SpeechCueMode speechCueMode = SpeechCueMode.DockedIndicator;
 
         public TextStylePreferences text = new();
 

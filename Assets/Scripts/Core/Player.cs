@@ -5,16 +5,18 @@ namespace ImmersiveSubtitles.Core
     public sealed class Player : MonoBehaviour
     {
         [SerializeField] private Transform centerEyeAnchor;
-        [SerializeField] private float playerFOV = 90f;
+        [SerializeField] private float playerHorizontalFOV = 90f;
+        [SerializeField] private float playerVerticalFOV = 75f;
 
         public static Player Instance { get; private set; }
         public Transform Head => centerEyeAnchor;
-
-        public bool IsInFOV(Vector3 worldPosition)
+        
+        public bool IsInFOV(Vector3 worldPosition, float marginDegrees = 0f)
         {
-            Vector3 forward = Vector3.ProjectOnPlane(Head.forward, Vector3.up);
-            Vector3 toTarget = Vector3.ProjectOnPlane(worldPosition - Head.position, Vector3.up);
-            return Vector3.Angle(forward, toTarget) <= playerFOV * 0.5f;
+            Vector3 local = Head.InverseTransformPoint(worldPosition);
+            float horizontal = Mathf.Atan2(Mathf.Abs(local.x), local.z) * Mathf.Rad2Deg;
+            float vertical = Mathf.Atan2(Mathf.Abs(local.y), local.z) * Mathf.Rad2Deg;
+            return horizontal <= playerHorizontalFOV * 0.5f + marginDegrees && vertical <= playerVerticalFOV * 0.5f + marginDegrees;
         }
 
         private void Awake()

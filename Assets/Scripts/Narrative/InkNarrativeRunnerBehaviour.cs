@@ -12,7 +12,6 @@ namespace ImmersiveSubtitles.Narrative
     public sealed class InkNarrativeRunnerBehaviour : MonoBehaviour
     {
         [SerializeField] private InkFile ink;
-        [SerializeField] private NarrativeClock clock;
         [SerializeField] private MonoBehaviour choicePresenter;
         
         public InkNarrativeRunner Runner { get; private set; }
@@ -39,9 +38,9 @@ namespace ImmersiveSubtitles.Narrative
 
         private void Update()
         {
-            if (!clock.IsPaused)
+            if (!NarrativeClock.Instance.IsPaused)
             {
-                Runner.Tick(clock.Now);
+                Runner.Tick(NarrativeClock.Instance.Now);
             }
         }
 

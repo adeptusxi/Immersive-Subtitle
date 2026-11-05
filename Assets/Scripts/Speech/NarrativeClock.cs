@@ -10,12 +10,19 @@ namespace ImmersiveSubtitles.Speech
     public sealed class NarrativeClock : MonoBehaviour
     {
         private readonly HashSet<object> pauseOwners = new();
+        
+        public static NarrativeClock Instance { get; private set; }
 
         public double Now { get; private set; }
         public bool IsPaused => pauseOwners.Count > 0;
         public event Action<bool> PausedChanged;
 
         private bool verbose = true;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         public void Pause(object owner)
         {

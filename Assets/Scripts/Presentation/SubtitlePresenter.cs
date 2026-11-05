@@ -127,12 +127,10 @@ namespace ImmersiveSubtitles.Presentation
 
         private void RefreshRoot()
         {
-            bool active = IsActive && HasContent;
-            
-            root.SetActive(active);
+            root.SetActive(IsActive && HasContent);
             foreach (var o in additionalObjects)
             {
-                o.SetActive(active);
+                o.SetActive(IsActive);
             }
         }
     }

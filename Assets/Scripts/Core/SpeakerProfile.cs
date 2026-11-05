@@ -10,6 +10,7 @@ namespace ImmersiveSubtitles.Core
         public Color color = Color.white;
         public float speechRate = 1f;
         [Tooltip("null for no audio")] public Voice voice;
+        public Sprite icon;
         
         private void OnValidate()
         {

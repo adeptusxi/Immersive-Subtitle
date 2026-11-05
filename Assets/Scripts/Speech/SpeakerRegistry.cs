@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ImmersiveSubtitles.Core;
 using UnityEngine;
 
 namespace ImmersiveSubtitles.Speech
@@ -9,6 +10,7 @@ namespace ImmersiveSubtitles.Speech
         public static SpeakerRegistry Global { get; } = new();
 
         private readonly List<SpeakerQueue> queues = new();
+        private readonly Dictionary<SpeakerProfile, Transform> roots = new();
 
         public IReadOnlyList<SpeakerQueue> All => queues;
 
@@ -25,7 +27,7 @@ namespace ImmersiveSubtitles.Speech
             }
         }
 
-        public void Register(SpeakerQueue queue)
+        public void Register(SpeakerQueue queue, Transform root)
         {
             if (TryGet(queue.Profile.id, out _))
             {
@@ -33,11 +35,15 @@ namespace ImmersiveSubtitles.Speech
                 return;
             }
             queues.Add(queue);
+            roots[queue.Profile] = root;
         }
 
         public void Unregister(SpeakerQueue queue)
         {
-            queues.Remove(queue);
+            if (queues.Remove(queue))
+            {
+                roots.Remove(queue.Profile);
+            }
         }
 
         public bool TryGet(string speakerId, out SpeakerQueue queue)
@@ -52,6 +58,12 @@ namespace ImmersiveSubtitles.Speech
             }
             queue = null;
             return false;
+        }
+        
+        // null if speaker isn't registered or has no speakerRoot
+        public Transform RootOf(SpeakerProfile speaker)
+        {
+            return roots.GetValueOrDefault(speaker);
         }
 
         public void StopAll()

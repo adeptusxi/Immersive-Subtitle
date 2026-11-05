@@ -9,7 +9,6 @@ namespace ImmersiveSubtitles.Speech
         private enum State { Idle, Speaking, Resting, Stopping }
 
         [SerializeField] private Speaker speaker;
-        [SerializeField] private NarrativeClock clock;
         [SerializeField] private AudioSource source;
 
         private State state;
@@ -33,25 +32,25 @@ namespace ImmersiveSubtitles.Speech
         {
             speaker.Queue.SegmentStarted += OnSegmentStarted;
             speaker.Queue.SegmentEnded += OnSegmentEnded;
-            clock.PausedChanged += OnPausedChanged;
+            NarrativeClock.Instance.PausedChanged += OnPausedChanged;
         }
 
         private void OnDestroy()
         {
             speaker.Queue.SegmentStarted -= OnSegmentStarted;
             speaker.Queue.SegmentEnded -= OnSegmentEnded;
-            clock.PausedChanged -= OnPausedChanged;
+            NarrativeClock.Instance.PausedChanged -= OnPausedChanged;
         }
 
         private void Update()
         {
-            if (clock.IsPaused)
+            if (NarrativeClock.Instance.IsPaused)
                 return;
 
             if (state == State.Speaking)
             {
                 // freezes when paused and hits 0 exactly at planned end 
-                double now = clock.Now;
+                double now = NarrativeClock.Instance.Now;
                 double fadeIn = voice.fadeInSeconds > 0f ? (now - segmentStart) / voice.fadeInSeconds : 1.0;
                 double fadeOut = voice.fadeOutSeconds > 0f ? (segmentEnd - now) / voice.fadeOutSeconds : 1.0;
                 source.volume = Mathf.Clamp01((float)System.Math.Min(fadeIn, fadeOut));
@@ -95,7 +94,7 @@ namespace ImmersiveSubtitles.Speech
             segmentEnd = segment.startedAt + segment.plannedDuration;
             state = State.Speaking;
 
-            if (clock.IsPaused)
+            if (NarrativeClock.Instance.IsPaused)
                 source.Pause();
         }
 
@@ -113,7 +112,7 @@ namespace ImmersiveSubtitles.Speech
             }
 
             currentTurn = null;
-            if (clock.IsPaused)
+            if (NarrativeClock.Instance.IsPaused)
                 StopNow();
             else
                 state = State.Stopping;

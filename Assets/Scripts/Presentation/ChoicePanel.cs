@@ -11,11 +11,15 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private GameObject canvasRoot;
         [SerializeField] private ButtonUI[] buttons;
 
+        public static ChoicePanel Instance { get; private set; }
+
         private IReadOnlyList<ChoiceOption> options;
         private Action<int> pending;
 
         private void Awake()
         {
+            Instance = this;
+
             for (int i = 0; i < buttons.Length; i++)
             {
                 int slot = i;
@@ -58,6 +62,12 @@ namespace ImmersiveSubtitles.Presentation
         {
             pending = null;
             canvasRoot.SetActive(false);
+        }
+
+        // hides while maintaining pending choice
+        public void SetSuspended(bool suspended)
+        {
+            canvasRoot.SetActive(!suspended && pending != null);
         }
 
         private void Choose(int slot)
