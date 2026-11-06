@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4577050488711964481}
   - component: {fileID: 3850956535543810440}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Alien NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,12 +47,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 1104325967245247701}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf82081422144b46a4f37fb6c645305, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e8dad9c77cc1479ca7d456e1451f724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Speech.Speaker
   profile: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   timing: {fileID: 11400000, guid: 0ac627f3455a74456b3e452de1f187e3, type: 2}
   speakerRoot: {fileID: 6541450896631690015}
+  navMeshSampleRadius: 5
+  settleSeconds: 0.5
+  jumpDuration: 0.8
+  jumpHeight: 1.2
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.6698137
+      outSlope: -0.6698137
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.14836794
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0.00000020289659
+      outSlope: 0.00000020289659
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.58753717
+      outWeight: 0.6261126
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.59037995
+      outSlope: 0.59037995
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.15430284
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rockLanding: {fileID: 0}
+  rockHopDuration: 1
+  rockHopHeight: 1
+  soundwaveVFX: {fileID: 6057973450567813789, guid: aad1307ed239a4e0787a71222803a63e, type: 3}
+  soundwaveVFXSpawnFrequency: 0.75
+  soundwaveVFXOrigin: {fileID: 6541450896631690015}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +217,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 1.5
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120

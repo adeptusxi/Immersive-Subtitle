@@ -89,6 +89,7 @@ namespace ImmersiveSubtitles.Presentation
             float toEdge = Mathf.Min(halfSize.x / Mathf.Abs(direction.x), halfSize.y / Mathf.Abs(direction.y));
 
             indicator.transform.localPosition = rect.center + direction * toEdge;
+            indicator.PointArrowAt(Player.Instance.Head, root.position);
         }
     }
 }

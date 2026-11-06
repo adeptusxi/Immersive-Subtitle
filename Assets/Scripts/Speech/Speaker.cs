@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace ImmersiveSubtitles.Speech
 {
-    public sealed class Speaker : MonoBehaviour
+    public class Speaker : MonoBehaviour
     {
-        [SerializeField] private SpeakerProfile profile;
+        [SerializeField] protected SpeakerProfile profile;
         [SerializeField] private TimingProfile timing;
-        [SerializeField] private Transform speakerRoot;
+        [SerializeField] protected Transform speakerRoot;
 
         public SpeakerQueue Queue { get; private set; }
+        protected Transform SpeakerRoot => speakerRoot;
 
         private void Awake()
         {

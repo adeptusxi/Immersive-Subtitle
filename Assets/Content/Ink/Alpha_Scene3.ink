@@ -20,10 +20,10 @@ Hi! #speaker:Alien2
 
 Hey, what’s up! #speaker:Alien3
 
-I heard you call, #speaker:Alien4
+I heard you call, #speaker:Alien4 #async
 what’s happening?
 
-Yeah, what’s happening? #speaker:Alien5
+Yeah, what’s happening? #speaker:Alien5 #async
 
 I met a strange creature today. #speaker:Alien1
 Come over and meet them!
@@ -66,7 +66,7 @@ What should we look for?
 
 === p2 ===
 
-Interesting #speaker:Alien2
+Interesting. #speaker:Alien2
 
 Any ideas on how to search? #speaker:Alien5
 
@@ -74,8 +74,9 @@ Let’s see if we can see #speaker:Alien2
 it in the distance first.
 
 //walk away
-~ event("aliens_walk_away")
-//~ wait_for("aliens_walk_away_complete") 
+~ event("alien2_walk_away")
+Is that going to work? #speaker:Alien3 #async 
+~ wait_for("alien2_walk_away_complete")
 
 I don't see anything here. #speaker:Alien2 #volume:2 #size:2.5
 
@@ -83,8 +84,8 @@ Come back! #speaker:Alien5 #volume:2 #size:2.5
 That's not going to work. #volume:2 #size:2.5
 
 //alien 2 walks back
-~ event("aliens_walk_back")
-//~ wait_for("aliens_walk_back_complete") 
+~ event("alien2_walk_back")
+~ wait_for("alien2_walk_back_complete")
 
 I think we can try jumping. #speaker:Alien3
 The rocks should give us
@@ -104,12 +105,12 @@ I see something tall and long #speaker:Alien4
 
 Wait, wait, I want to see too! #speaker:Alien2
 
+//everyone stops jumping 
+~ event("aliens_stop_jump")
+
 No, that can’t be right. #speaker:Alien2
 I think that’s just a large rock.
 Does anyone else see anything?
-
-//everyone stops jumping 
-~ event("aliens_stop_jump")
 
 There’s something over here! #speaker:Alien3
 Over there, within the clouds.
@@ -123,7 +124,7 @@ Do you not trust me?
 Well... I just think that sometimes #speaker:Alien5
 you see things that don’t exist...
 
-You little... #speaker:Alien3 #size:0.75
+You little... #speaker:Alien3 #size:0.5
 I’m gonna show you a new one!
 
 Woah woah everyone, calm down. #speaker:Alien1
@@ -144,9 +145,9 @@ Yes, let’s try it! #speaker:Alien2
 I think I’m hearing something. #speaker:Alien5
 
 Yea, I think it’s over there! #speaker:Alien3
-A bit towards the North.
+A bit towards the North. #async
 
-Yes, I feel it too. #speaker:Alien1
+Yes, I feel it too. #speaker:Alien1 #async
 Maybe a 30 minute walk?
 
 + [Perfect, thank you!] 
@@ -158,9 +159,9 @@ Maybe a 30 minute walk?
 
 === p3 ===
 
-Haha, glad we could help! #speaker:Alien2
+Haha, glad we could help! #speaker:Alien2 #async
 
-It was nice meeting you! #speaker:Alien4
+It was nice meeting you! #speaker:Alien4 #async
 
 Don’t be a stranger, come visit us! #speaker:Alien5
 
@@ -173,9 +174,9 @@ Don’t be a stranger, come visit us! #speaker:Alien5
     
 === outro ===
 
-See you around! #speaker:Alien1
+See you around! #speaker:Alien1 #async
 
-We'll miss you! #speaker:Alien3
+We'll miss you! #speaker:Alien3 #async
 
 ~ wait_seconds(3)
 

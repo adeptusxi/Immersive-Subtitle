@@ -328,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 648952249116784191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.561, z: 1.21}
+  m_LocalPosition: {x: 0, y: -0.793, z: 1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2470,7 +2470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 0a05de06-e9d8-4af2-b604-828c5178c2b2
+  instanceId: 08155830-a07e-476f-b4a2-809f923ec010
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -2617,8 +2617,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.Player
   centerEyeAnchor: {fileID: 2485129504046593020}
-  playerFOV: 90
-  playerVerticalFOV: 75
+  playerHorizontalFOV: 50
+  playerVerticalFOV: 50
 --- !u!1 &5036094492252334114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,7 +3010,7 @@ Transform:
   m_GameObject: {fileID: 5111225438472323381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.889, z: 1.21}
+  m_LocalPosition: {x: 0, y: -1.113, z: 1.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3956,7 +3956,7 @@ Transform:
   m_GameObject: {fileID: 6602276280347814478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.2, z: 1.3}
+  m_LocalPosition: {x: 0, y: -0.2, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3978,7 +3978,6 @@ MonoBehaviour:
   fovMarginDegrees: 5
   template: {fileID: 4926871731903436476}
   dockArea: {fileID: 5401359846059767503}
-  minSpacing: 60
 --- !u!1 &6615933725909511661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5537,7 +5536,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 1100}
+  m_SizeDelta: {x: 1000, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2209344929298587973
 CanvasRenderer:
@@ -5809,10 +5808,10 @@ Transform:
   - {fileID: 1582940137980218047}
   - {fileID: 3057059060619712774}
   - {fileID: 3090056042889212376}
-  - {fileID: 3599994148215131809}
-  - {fileID: 7505909541680089505}
   - {fileID: 5837158114117264401}
   - {fileID: 5251857725988854174}
+  - {fileID: 3599994148215131809}
+  - {fileID: 7505909541680089505}
   m_Father: {fileID: 8216701110376908345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &6582411246012491026
