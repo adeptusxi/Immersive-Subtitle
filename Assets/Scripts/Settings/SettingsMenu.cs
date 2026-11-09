@@ -25,6 +25,7 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private MultipleChoiceUI entranceStyle;
         [SerializeField] private ToggleUI facePlayer;
         [SerializeField] private MultipleChoiceUI sizeMode;
+        [SerializeField] private ToggleUI lagFollow;
 
         public bool IsOpen => canvasRoot.activeSelf;
 
@@ -38,6 +39,7 @@ namespace ImmersiveSubtitles.Settings
             entranceStyle.Bind(p => (int)p.entranceStyle, (p, v) => p.entranceStyle = (EntranceStyle)v);
             facePlayer.Bind(p => p.facePlayer, (p, v) => p.facePlayer = v);
             sizeMode.Bind(p => (int)p.sizeMode, (p, v) => p.sizeMode = (SubtitleSizeMode)v);
+            lagFollow.Bind(p => p.lagFollow, (p, v) => p.lagFollow = v);
 
             presentationTabButton.Clicked += () => SelectTab(true);
             textTabButton.Clicked += () => SelectTab(false);

@@ -9,6 +9,7 @@ namespace ImmersiveSubtitles.Core
         public EntranceStyle entranceStyle = EntranceStyle.Instant;
         public bool keepTextDuringGaps = true;
         public bool facePlayer = true;
+        public bool lagFollow = true;
         public SubtitleSizeMode sizeMode = SubtitleSizeMode.Angular;
         public SpeechCueMode speechCueMode = SpeechCueMode.DockedIndicator;
 
