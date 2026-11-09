@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alien5
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien5
-  displayName: Corge
+  displayName: Arial
   color: {r: 0.8207547, g: 0.4452207, b: 0.5936578, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}

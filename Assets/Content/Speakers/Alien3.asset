@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alien3
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien3
-  displayName: Baz
+  displayName: Roman
   color: {r: 0.90588236, g: 0.5839502, b: 0.28627458, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}

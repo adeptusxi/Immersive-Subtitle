@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alien4
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien4
-  displayName: Qux
+  displayName: Courier
   color: {r: 0.41709685, g: 0.8584906, b: 0.7970307, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
