@@ -51,9 +51,9 @@ Is that going to work? #speaker:Alien3 #async
 
 I don't see anything here. #speaker:Alien2 
 
-Say it again! We can't here you! #speaker:Alien5 #volume:2 #size:2.5
+Say it again! We can't hear you! #speaker:Alien5 #volume:2 #size:2.5
 
-I don't see anything here. #speaker:Alien2 #volume 2 #size:2.5
+I don't see anything here. #speaker:Alien2 #volume: 2 #size:2.5
 
 Whaat? Say it again! #speaker:Alien5 #volume:3 #size:3
 
