@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyTextEffects;
 using ImmersiveSubtitles.Core;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace ImmersiveSubtitles.Presentation
     {
         [SerializeField, Tooltip("empty for all speakers")] private List<SpeakerProfile> speakers = new();
         [SerializeField] private TMP_Text text;
+        [SerializeField] private TextEffect textEffect; // optional 
 
         private SubtitleLineBlock block;
         private float authoredFontSize;
@@ -22,7 +24,7 @@ namespace ImmersiveSubtitles.Presentation
         {
             base.Awake();
             authoredFontSize = text.fontSize;
-            block = new SubtitleLineBlock(text);
+            block = new SubtitleLineBlock(text, textEffect);
         }
 
         protected override void Sync(IReadOnlyList<SegmentInstance> visible)

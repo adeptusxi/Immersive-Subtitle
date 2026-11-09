@@ -10,6 +10,7 @@ namespace ImmersiveSubtitles.Core
         // e.g. "a < b" is NOT a tag 
         private static readonly Regex RichTextTag = new(@"</?[A-Za-z][^<>]*>", RegexOptions.Compiled);
         private static readonly Regex KeptTag = new(@"^</?[ibu]>$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex EffectTag = new(@"^<(/?)([A-Za-z][A-Za-z0-9_+]*)>$", RegexOptions.Compiled);
         private static readonly Regex Whitespace = new(@"\s+", RegexOptions.Compiled);
 
         public static bool IsBlank(string rawText)
@@ -22,7 +23,7 @@ namespace ImmersiveSubtitles.Core
             string trimmed = rawText.Trim();
             var line = new ParsedLine
             {
-                displayText = RichTextTag.Replace(trimmed, m => KeptTag.IsMatch(m.Value) ? m.Value : string.Empty).Trim(),
+                displayText = RichTextTag.Replace(trimmed, DisplayTag).Trim(),
                 countedText = Whitespace.Replace(RichTextTag.Replace(trimmed, string.Empty), " ").Trim(),
             };
 
@@ -32,6 +33,22 @@ namespace ImmersiveSubtitles.Core
                     ParseTag(tag, line);
             }
             return line;
+        }
+
+        private static string DisplayTag(Match tag)
+        {
+            if (KeptTag.IsMatch(tag.Value))
+            {
+                return tag.Value;
+            }
+
+            Match effect = EffectTag.Match(tag.Value);
+            if (!effect.Success)
+            {
+                return string.Empty;
+            }
+            
+            return effect.Groups[1].Length > 0 ? "</link>" : $"<link={effect.Groups[2].Value}>";
         }
 
         private static void ParseTag(string tag, ParsedLine line)

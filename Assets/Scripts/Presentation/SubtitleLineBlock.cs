@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using EasyTextEffects;
 using ImmersiveSubtitles.Core;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace ImmersiveSubtitles.Presentation
     public sealed class SubtitleLineBlock
     {
         private readonly TMP_Text text;
+        private readonly TextEffect effect; // optional
         private readonly List<SegmentInstance> lines = new();
         private readonly List<int> wordEnds = new();
         private readonly StringBuilder builder = new();
@@ -21,9 +23,15 @@ namespace ImmersiveSubtitles.Presentation
 
         public bool HasLines => lines.Count > 0;
 
-        public SubtitleLineBlock(TMP_Text text)
+        public SubtitleLineBlock(TMP_Text text, TextEffect effect)
         {
             this.text = text;
+            this.effect = effect;
+            if (effect != null)
+            {
+                effect.enabled = false;
+                effect.updatesPerSecond = 120;
+            }
         }
 
         public void SetLines(IReadOnlyList<SegmentInstance> visible, Predicate<SpeakerProfile> covers, bool showNames, bool colorNames)
@@ -111,6 +119,11 @@ namespace ImmersiveSubtitles.Presentation
             SegmentInstance newest = lines[^1];
             int numBodyCharacters = text.textInfo.characterCount - numPrefixCharacters;
             text.maxVisibleCharacters = numPrefixCharacters + TextReveal.VisibleCharacters(style, numBodyCharacters, wordEnds, now - newest.startedAt, newest.plannedDuration);
+
+            if (effect != null)
+            {
+                effect.Update();
+            }
         }
 
         private void CacheNewestLine()
@@ -134,6 +147,11 @@ namespace ImmersiveSubtitles.Presentation
                 {
                     wordEnds.Add(i + 1 - numPrefixCharacters);
                 }
+            }
+
+            if (effect != null)
+            {
+                effect.Refresh();
             }
         }
     }

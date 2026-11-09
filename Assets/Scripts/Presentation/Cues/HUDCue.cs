@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using EasyTextEffects;
 using ImmersiveSubtitles.Core;
 using ImmersiveSubtitles.Speech;
 using TMPro;
@@ -13,6 +14,7 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private GameObject root;
         [SerializeField] private TMP_Text text;
         [SerializeField] private Image background;
+        [SerializeField] private TextEffect textEffect; // optional 
 
         private HashSet<SpeakerProfile> outOfView = new();
         private HashSet<SpeakerProfile> wasOutOfView = new();
@@ -25,7 +27,7 @@ namespace ImmersiveSubtitles.Presentation
         private void Awake()
         {
             authoredFontSize = text.fontSize;
-            block = new SubtitleLineBlock(text);
+            block = new SubtitleLineBlock(text, textEffect);
             isOutOfView = speaker => outOfView.Contains(speaker);
             root.SetActive(false);
         }

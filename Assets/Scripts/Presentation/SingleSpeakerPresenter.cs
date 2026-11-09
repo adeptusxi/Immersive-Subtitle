@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EasyTextEffects;
 using ImmersiveSubtitles.Core;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private SpeakerProfile speaker;
         [SerializeField] private TMP_Text body;
         [SerializeField] private TMP_Text nameText;
+        [SerializeField] private TextEffect bodyEffect; // optional 
 
         private readonly List<int> wordEnds = new();
         private SegmentInstance current;
@@ -26,6 +28,11 @@ namespace ImmersiveSubtitles.Presentation
         {
             base.Awake();
             authoredFontSize = body.fontSize;
+            if (bodyEffect != null)
+            {
+                bodyEffect.enabled = false;
+                bodyEffect.updatesPerSecond = 120;
+            }
         }
 
         protected override void Sync(IReadOnlyList<SegmentInstance> visible)
@@ -71,6 +78,11 @@ namespace ImmersiveSubtitles.Presentation
 
             body.maxVisibleCharacters = TextReveal.VisibleCharacters(
                 SubtitleRuntime.Preferences.Current.entranceStyle, body.textInfo.characterCount, wordEnds, now - current.startedAt, current.plannedDuration);
+
+            if (bodyEffect != null)
+            {
+                bodyEffect.Update();
+            }
         }
         
         private void CacheWordEnds()
@@ -88,6 +100,11 @@ namespace ImmersiveSubtitles.Presentation
                 {
                     wordEnds.Add(i + 1);
                 }
+            }
+
+            if (bodyEffect != null)
+            {
+                bodyEffect.Refresh();
             }
         }
     }
