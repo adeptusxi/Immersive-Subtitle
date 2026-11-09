@@ -13,6 +13,7 @@ namespace ImmersiveSubtitles.Presentation
 
         public static ChoicePanel Instance { get; private set; }
 
+        private readonly HashSet<object> suspenders = new();
         private IReadOnlyList<ChoiceOption> options;
         private Action<int> pending;
 
@@ -55,7 +56,7 @@ namespace ImmersiveSubtitles.Presentation
                 }
             }
 
-            canvasRoot.SetActive(true);
+            canvasRoot.SetActive(suspenders.Count == 0);
         }
 
         public void Hide()
@@ -65,9 +66,18 @@ namespace ImmersiveSubtitles.Presentation
         }
 
         // hides while maintaining pending choice
-        public void SetSuspended(bool suspended)
+        public void SetSuspended(object owner, bool suspended)
         {
-            canvasRoot.SetActive(!suspended && pending != null);
+            if (suspended)
+            {
+                suspenders.Add(owner);
+            }
+            else
+            {
+                suspenders.Remove(owner);
+            }
+
+            canvasRoot.SetActive(suspenders.Count == 0 && pending != null);
         }
 
         private void Choose(int slot)

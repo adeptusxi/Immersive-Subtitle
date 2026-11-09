@@ -64,14 +64,14 @@ namespace ImmersiveSubtitles.Settings
         {
             canvasRoot.SetActive(true);
             NarrativeClock.Instance.Pause(this);
-            ChoicePanel.Instance.SetSuspended(true);
+            ChoicePanel.Instance.SetSuspended(this, true);
         }
 
         public void Close()
         {
             canvasRoot.SetActive(false);
             NarrativeClock.Instance.Resume(this);
-            ChoicePanel.Instance.SetSuspended(false);
+            ChoicePanel.Instance.SetSuspended(this, false);
         }
 
         public void Toggle()

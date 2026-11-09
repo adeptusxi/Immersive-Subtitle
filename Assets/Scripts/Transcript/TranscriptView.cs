@@ -37,11 +37,6 @@ namespace ImmersiveSubtitles.Transcript
 
         private void LateUpdate()
         {
-            if (OVRInput.GetDown(OVRInput.Button.Two))
-            {
-                Toggle();
-            }
-
             if (canvasRoot.activeSelf)
             {
                 UpdateAutoScroll();
