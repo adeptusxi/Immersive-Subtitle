@@ -24,6 +24,18 @@ this is me talking at the same time as One #async
 
 i'm talking at the same time as Two #speaker:alien1  #async 
 
+<i>this is italicized</i> #speaker:alien1
+<b>this is bold</b> 
+<u>and this is underlined</u>
+
+i'm talking with <wiggle>wiggly words</wiggle> #speaker:alien2
+
+i'm talking with <shake>shaky words</shake> #speaker:alien3
+
+i'm talking with <wave>wavy words</wave> #speaker:alien4
+
+and i'm talking with <bounce>bouncy words!</bounce> #speaker:alien5 
+
 ~ wait_all() 
 // now alien1 and alien2 are both done 
 
