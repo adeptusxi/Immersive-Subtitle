@@ -24,6 +24,7 @@ public sealed class AlienSpeaker : Speaker
     [SerializeField] private ParticleSystem soundwaveVFX;
     [SerializeField] private float soundwaveVFXSpawnFrequency = 1f;
     [SerializeField] private Transform soundwaveVFXOrigin;
+    [SerializeField] private Vector2 soundwaveStartOffset = new(0f, 0.75f);
     private float soundwaveVFXLifetime = 5f;
      
     private static readonly int WalkTrigger = Animator.StringToHash("Walk");
@@ -189,6 +190,8 @@ public sealed class AlienSpeaker : Speaker
         double interval = 1.0 / soundwaveVFXSpawnFrequency;
         double endAt = Now + seconds;
         double nextSpawnAt = Now;
+        
+        yield return new WaitForSeconds(Random.Range(soundwaveStartOffset.x, soundwaveStartOffset.y));
 
         while (Now < endAt)
         {

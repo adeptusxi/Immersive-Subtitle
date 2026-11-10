@@ -93,9 +93,9 @@ MonoBehaviour:
   rockLanding: {fileID: 0}
   rockHopDuration: 1
   rockHopHeight: 1
-  soundwaveVFX: {fileID: 6057973450567813789, guid: aad1307ed239a4e0787a71222803a63e, type: 3}
+  soundwaveVFX: {fileID: 2697627452875344688, guid: c857a945e89164f42ba318248e05a998, type: 3}
   soundwaveVFXSpawnFrequency: 0.75
-  soundwaveVFXOrigin: {fileID: 6541450896631690015}
+  soundwaveVFXOrigin: {fileID: 7091192218990668966}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 3492235056190309432}
   - component: {fileID: 2361615297132793397}
   - component: {fileID: 3891520834840376680}
+  - component: {fileID: 1386574065020924055}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -635,6 +636,24 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1386574065020924055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354157772226886647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EasyTextEffects::EasyTextEffects.TextEffect
+  text: {fileID: 3891520834840376680}
+  usePreset: 1
+  preset: {fileID: 11400000, guid: 0787ff142b4ef41d6996560fbd1f0b4a, type: 2}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1 &4067951620256553184
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +835,7 @@ MonoBehaviour:
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   body: {fileID: 3891520834840376680}
   nameText: {fileID: 2374188747410209427}
+  bodyEffect: {fileID: 1386574065020924055}
 --- !u!1 &4836101729373584634
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +903,7 @@ MonoBehaviour:
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   body: {fileID: 2951017255959187379}
   nameText: {fileID: 221466335666020477}
+  bodyEffect: {fileID: 2313571379125085279}
 --- !u!1 &4972619120870131225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,6 +1630,7 @@ MonoBehaviour:
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   body: {fileID: 1253051833991790087}
   nameText: {fileID: 8875529756801847717}
+  bodyEffect: {fileID: 8327421003415192441}
 --- !u!1 &8511514699004332057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,6 +1642,7 @@ GameObject:
   - component: {fileID: 5523563658734390185}
   - component: {fileID: 7840157127647339358}
   - component: {fileID: 1253051833991790087}
+  - component: {fileID: 8327421003415192441}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1746,6 +1769,24 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8327421003415192441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8511514699004332057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EasyTextEffects::EasyTextEffects.TextEffect
+  text: {fileID: 1253051833991790087}
+  usePreset: 1
+  preset: {fileID: 11400000, guid: 0787ff142b4ef41d6996560fbd1f0b4a, type: 2}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1 &8539659301349996415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1799,7 @@ GameObject:
   - component: {fileID: 2142087759118470640}
   - component: {fileID: 2951017255959187379}
   - component: {fileID: 4254900884270581832}
+  - component: {fileID: 2313571379125085279}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -1898,6 +1940,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2313571379125085279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8539659301349996415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EasyTextEffects::EasyTextEffects.TextEffect
+  text: {fileID: 2951017255959187379}
+  usePreset: 1
+  preset: {fileID: 11400000, guid: 0787ff142b4ef41d6996560fbd1f0b4a, type: 2}
+  tagEffects: []
+  globalEffects: []
+  updatesPerSecond: 30
 --- !u!1 &8707969510614068277
 GameObject:
   m_ObjectHideFlags: 0

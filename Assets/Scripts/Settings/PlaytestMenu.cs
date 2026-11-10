@@ -30,8 +30,6 @@ namespace ImmersiveSubtitles.Settings
                 int index = i;
                 buttons[i].Clicked += () => Select(index);
             }
-
-            SubtitleRuntime.Preferences.Changed += Refresh;
         }
 
         private void OnDestroy()
@@ -42,6 +40,8 @@ namespace ImmersiveSubtitles.Settings
         private void Start()
         {
             canvasRoot.SetActive(false);
+
+            SubtitleRuntime.Preferences.Changed += Refresh;
             Refresh();
         }
 
@@ -89,9 +89,11 @@ namespace ImmersiveSubtitles.Settings
             {
                 case 0:
                     prefs.speechCueMode = SpeechCueMode.RingPulse;
+                    prefs.lagFollow = false;
                     break;
                 case 1:
                     prefs.speechCueMode = SpeechCueMode.DockedIndicator;
+                    prefs.lagFollow = false;
                     break;
                 case 2:
                     prefs.speechCueMode = SpeechCueMode.SubtitleHUD;
@@ -104,7 +106,6 @@ namespace ImmersiveSubtitles.Settings
             }
 
             SubtitleRuntime.Preferences.NotifyChanged();
-            Close();
         }
 
         private void Refresh()
