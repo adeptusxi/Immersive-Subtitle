@@ -91,11 +91,11 @@ Why don’t we use echolocation? #speaker:Alien4
 
 //use the soundwave effect
 ~ event("play_soundwave_vfx")
-~ wait_seconds(2)
+~ wait_seconds(3)
 
 I think I’m hearing something. #speaker:Alien5
 
-Yea, maybe a 30 minute walk?. #speaker:Alien1 #async
+Yea, maybe a 30 minute walk? #speaker:Alien1 #async
 
 Haha, glad we could help! #speaker:Alien2 #async
 
@@ -108,9 +108,9 @@ Haha, glad we could help! #speaker:Alien2 #async
     
 === outro ===
 
-See you around! #speaker:Alien1 #async
+See you around! #speaker:Alien1 #async 
 
-~ wait_seconds(3)
+~ wait_seconds(2)
 
 -> replay
 
