@@ -42,19 +42,8 @@ Come over and meet my new friend! #speaker:Alien1
 They are trying to find #speaker:Alien1
 their "ship."
 
-“Ship?” What is a ship? #speaker:Alien3
-
-+ [A long white machine.] 
-    -> p2
-+ [You’ll know it when you see it.] 
-    -> p2
-+ [It’s very tall.] 
-    -> p2
-
-=== p2 ===
-Any ideas on how to search? #speaker:Alien5
-
 Does anyone see anything? #speaker:Alien2
+I'll check here.
 
 //walk away
 ~ event("alien2_walk_away")
@@ -63,15 +52,18 @@ Is that going to work? #speaker:Alien3 #async
 
 I don't see anything here. #speaker:Alien2 
 
-Say it again! We can't here you! #speaker:Alien5 #volume:2 #size:2.5
+Say it again!#speaker:Alien5 #volume:2 #size:2.5
+We can't hear you! #volume:2 #size:2.5
 
-I don't see anything here. #speaker:Alien2 #volume 2 #size:2.5
+I don't see anything here!#speaker:Alien2 #volume:2 #size:2.5
 
 Whaat? Say it again! #speaker:Alien5 #volume:3 #size:3
 
 //emotion ~ anger, annoyed
-Ugh, you guys are so annoying. #speaker:Alien2 #volume:3 #size:3.5
-THERE IS NOTHING HERE, OK?!
+Ugh, you guys#speaker:Alien2 #volume:3 #size:3.5
+are so annoying.#volume:3 #size:3.5
+THERE IS NOTHING #volume:3 #size:3.5
+HERE, OK?! #volume:3 #size:3.5
 
 //alien 2 walks back
 ~ event("alien2_walk_back")
@@ -84,7 +76,6 @@ We can try from up there? #speaker:Alien3
 ~ wait_seconds(2)
 
 Everyone look up! #speaker:Alien4
-I think I see something tall and long!
 
 //everyone stops jumping 
 ~ event("aliens_stop_jump")
@@ -94,17 +85,9 @@ No, that's just a large rock. #speaker:Alien2
 
 //emotion ~ sadness, hopelessness
 We're never going to find the ship... #speaker:Alien3
-Should we just give up?
-
-Woah woah everyone, calm down. #speaker:Alien1
-THINK! #volume:2 #size:2.5
-We have to help our friend get home.
 
 //emotion ~ eager, happy
-OH OH OH I KNOW! #speaker:Alien4 #volume:2 #size:2.5
-Why don’t we use echolocation?
-
-Yes, let’s try it! #speaker:Alien2
+Why don’t we use echolocation? #speaker:Alien4
 
 //use the soundwave effect
 ~ event("play_soundwave_vfx")
@@ -114,18 +97,7 @@ I think I’m hearing something. #speaker:Alien5
 
 Yea, maybe a 30 minute walk?. #speaker:Alien1 #async
 
-+ [Perfect, thank you!] 
-    -> p3
-+ [Took you guys long enough!] 
-    -> p3
-+ [Finally! I can go home now!] 
-    -> p3
-
-=== p3 ===
-
 Haha, glad we could help! #speaker:Alien2 #async
-
-Don’t be a stranger, come visit us! #speaker:Alien5
 
 + [Bye everyone!] 
     -> outro
