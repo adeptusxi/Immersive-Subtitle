@@ -33,3 +33,8 @@ MonoBehaviour:
     onEffectCompleted:
       m_PersistentCalls:
         m_Calls: []
+  - triggerWhen: 0
+    effect: {fileID: 11400000, guid: 883eed0339150497db58b8bd89b633ac, type: 2}
+    onEffectCompleted:
+      m_PersistentCalls:
+        m_Calls: []

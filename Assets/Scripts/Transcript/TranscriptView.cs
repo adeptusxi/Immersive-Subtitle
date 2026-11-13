@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace ImmersiveSubtitles.Transcript
     public sealed class TranscriptView : MonoBehaviour
     {
         private const float BottomThreshold = 1f; // canvas units
+        private static readonly Regex EmotionStyling = new(@"</?(font|color)\b[^>]*>", RegexOptions.Compiled);
 
         [SerializeField] private GameObject canvasRoot;
         [SerializeField] private ScrollRect scrollRect;
@@ -112,7 +114,7 @@ namespace ImmersiveSubtitles.Transcript
                 .Append('>')
                 .Append(entry.speaker.displayName)
                 .Append("</color>\n")
-                .Append(entry.Paragraph);
+                .Append(EmotionStyling.Replace(entry.Paragraph, string.Empty));
             
             if (entry.interrupted)
             {

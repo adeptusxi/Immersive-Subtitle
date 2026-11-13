@@ -22,6 +22,7 @@ namespace ImmersiveSubtitles.Narrative
 
         private readonly Story story;
         private readonly SpeakerRegistry speakers;
+        private readonly EmotionCatalog emotions; 
         private readonly TurnTracker turnTracker = new();
         private readonly Queue<Op> ops = new();
         private readonly List<ChoiceOption> pendingChoices = new();
@@ -32,10 +33,11 @@ namespace ImmersiveSubtitles.Narrative
         public IReadOnlyList<ChoiceOption> PendingChoices => pendingChoices;
         public event Action<IReadOnlyList<ChoiceOption>> ChoicesPresented;
 
-        public InkNarrativeRunner(Story story, string defaultSpeakerId, SpeakerRegistry speakers)
+        public InkNarrativeRunner(Story story, string defaultSpeakerId, SpeakerRegistry speakers, EmotionCatalog emotions = null)
         {
             this.story = story;
             this.speakers = speakers;
+            this.emotions = emotions;
             lastSpeakerId = defaultSpeakerId;
 
             story.allowExternalFunctionFallbacks = false;
@@ -136,7 +138,7 @@ namespace ImmersiveSubtitles.Narrative
 
         private void EnqueueLine(string text)
         {
-            ParsedLine line = LineParser.Parse(text, story.currentTags);
+            ParsedLine line = LineParser.Parse(text, story.currentTags, emotions);
             foreach (string warning in line.warnings) // bad parse 
             {
                 Debug.LogWarning($"[Subtitles] {warning} in \"{line.displayText}\""); 

@@ -36,6 +36,14 @@ i'm talking with <wave>wavy words</wave> #speaker:alien4
 
 and i'm talking with <bounce>bouncy words!</bounce> #speaker:alien5 
 
+i'm feeling <joy>so happy</joy> today! #speaker:alien1
+  
+i'm feeling <sadness>a little sad</sadness> #speaker:alien2
+
+i'm feeling <anger>really angry</anger> #speaker:alien3
+
+and i'm feeling <fear>very scared</fear> #speaker:alien4
+
 ~ wait_all() 
 // now alien1 and alien2 are both done 
 

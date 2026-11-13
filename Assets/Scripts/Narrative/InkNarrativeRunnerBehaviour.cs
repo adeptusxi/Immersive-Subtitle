@@ -13,6 +13,7 @@ namespace ImmersiveSubtitles.Narrative
     {
         [SerializeField] private InkFile ink;
         [SerializeField] private MonoBehaviour choicePresenter;
+        [SerializeField] private EmotionCatalog emotions;
         
         public InkNarrativeRunner Runner { get; private set; }
         
@@ -22,7 +23,12 @@ namespace ImmersiveSubtitles.Narrative
         private void Awake()
         {
             presenter = (IChoicePresenter)choicePresenter;
-            Runner = new InkNarrativeRunner(new Story(ink.storyJson), defaultSpeakerId, SpeakerRegistry.Global);
+            if (emotions != null)
+            {
+                emotions.RegisterFonts();
+            }
+
+            Runner = new InkNarrativeRunner(new Story(ink.storyJson), defaultSpeakerId, SpeakerRegistry.Global, emotions);
             Runner.ChoicesPresented += HandleChoicesPresented;
         }
 

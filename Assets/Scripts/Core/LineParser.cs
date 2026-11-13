@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
+using UnityEngine;
 
 namespace ImmersiveSubtitles.Core
 {
@@ -18,12 +20,14 @@ namespace ImmersiveSubtitles.Core
             return string.IsNullOrWhiteSpace(rawText);
         }
 
-        public static ParsedLine Parse(string rawText, IReadOnlyList<string> tags)
+        // emotions may be null 
+        public static ParsedLine Parse(string rawText, IReadOnlyList<string> tags, EmotionCatalog emotions = null)
         {
             string trimmed = rawText.Trim();
+            string pendingClose = null; // no nesting effect tags
             var line = new ParsedLine
             {
-                displayText = RichTextTag.Replace(trimmed, DisplayTag).Trim(),
+                displayText = RichTextTag.Replace(trimmed, tag => DisplayTag(tag, emotions, ref pendingClose)).Trim(),
                 countedText = Whitespace.Replace(RichTextTag.Replace(trimmed, string.Empty), " ").Trim(),
             };
 
@@ -35,7 +39,7 @@ namespace ImmersiveSubtitles.Core
             return line;
         }
 
-        private static string DisplayTag(Match tag)
+        private static string DisplayTag(Match tag, EmotionCatalog emotions, ref string pendingClose)
         {
             if (KeptTag.IsMatch(tag.Value))
             {
@@ -47,8 +51,64 @@ namespace ImmersiveSubtitles.Core
             {
                 return string.Empty;
             }
+
+            if (effect.Groups[1].Length > 0)
+            {
+                string close = pendingClose ?? "</link>";
+                pendingClose = null;
+                return close;
+            }
+
+            string name = effect.Groups[2].Value;
+            if (emotions == null)
+            {
+                return $"<link={name}>";
+            }
             
-            return effect.Groups[1].Length > 0 ? "</link>" : $"<link={effect.Groups[2].Value}>";
+            EmotionStyle styled = null;
+            var parts = new List<string>();
+            foreach (string part in name.Split('+'))
+            {
+                if (!emotions.TryGet(part, out EmotionStyle emotion))
+                {
+                    if (part.Length > 0)
+                    {
+                        parts.Add(part);
+                    }
+                    continue;
+                }
+
+                styled ??= emotion;
+                if (emotion.effect != null && !string.IsNullOrEmpty(emotion.effect.effectTag))
+                {
+                    parts.Add(emotion.effect.effectTag);
+                }
+            }
+
+            if (styled == null)
+            {
+                return $"<link={name}>";
+            }
+
+            var open = new StringBuilder();
+            var closing = new StringBuilder();
+            if (styled.font != null)
+            {
+                open.Append("<font=\"").Append(styled.font.name).Append("\">");
+                closing.Insert(0, "</font>");
+            }
+
+            open.Append("<color=#").Append(ColorUtility.ToHtmlStringRGBA(styled.color)).Append('>');
+            closing.Insert(0, "</color>");
+
+            if (parts.Count > 0)
+            {
+                open.Append("<link=").Append(string.Join("+", parts)).Append('>');
+                closing.Insert(0, "</link>");
+            }
+
+            pendingClose = closing.ToString();
+            return open.ToString();
         }
 
         private static void ParseTag(string tag, ParsedLine line)

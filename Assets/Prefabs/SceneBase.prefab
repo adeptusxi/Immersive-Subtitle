@@ -3379,7 +3379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 6bba99c1-6ec2-498b-8459-eb84e8d07e6f
+  instanceId: 08d71666-b002-48fe-b26a-061485e4f8db
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -4192,6 +4192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Narrative.InkNarrativeRunnerBehaviour
   ink: {fileID: 6231892579173505729, guid: b18a5bd29ea984b37b55f16a7449c64c, type: 3}
   choicePresenter: {fileID: 7107114841133048514}
+  emotions: {fileID: 11400000, guid: 861001d6581fd4a51a28c855eb831d5f, type: 2}
 --- !u!1 &5772815502237578880
 GameObject:
   m_ObjectHideFlags: 0
