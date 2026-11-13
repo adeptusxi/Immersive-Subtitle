@@ -35,7 +35,7 @@ namespace ImmersiveSubtitles.Presentation
         protected override void ApplyPreferences(SubtitlePreferences preferences)
         {
             SubtitleStyler.Apply(preferences.text, text, null, background, null);
-            block.Rebuild(true, preferences.text.colorNameBySpeaker);
+            block.Rebuild(preferences.text.colorTextBySpeaker);
         }
 
         protected override void UpdateCue()
@@ -54,7 +54,7 @@ namespace ImmersiveSubtitles.Presentation
                 }
             }
 
-            block.SetLines(visible, isOutOfView, true, preferences.text.colorNameBySpeaker);
+            block.SetLines(visible, isOutOfView, preferences.text.colorTextBySpeaker);
 
             if (block.HasLines != root.activeSelf)
             {

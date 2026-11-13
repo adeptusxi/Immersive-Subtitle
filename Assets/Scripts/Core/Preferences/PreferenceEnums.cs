@@ -21,13 +21,6 @@ namespace ImmersiveSubtitles.Core
         ByCharacter
     }
 
-    public enum SubtitleAlignment
-    {
-        Left,
-        Center,
-        Right
-    }
-
     public enum SpeechCueMode
     {
         None,

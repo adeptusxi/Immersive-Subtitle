@@ -34,7 +34,7 @@ namespace ImmersiveSubtitles.Presentation
             }
         }
 
-        public void SetLines(IReadOnlyList<SegmentInstance> visible, Predicate<SpeakerProfile> covers, bool showNames, bool colorNames)
+        public void SetLines(IReadOnlyList<SegmentInstance> visible, Predicate<SpeakerProfile> covers, bool colorTextBySpeaker)
         {
             int count = 0;
             bool same = true;
@@ -63,10 +63,10 @@ namespace ImmersiveSubtitles.Presentation
                 }
             }
 
-            Rebuild(showNames, colorNames);
+            Rebuild(colorTextBySpeaker);
         }
 
-        public void Rebuild(bool showNames, bool colorNames)
+        public void Rebuild(bool colorTextBySpeaker)
         {
             builder.Clear();
             bodyStartIdx = 0;
@@ -79,28 +79,31 @@ namespace ImmersiveSubtitles.Presentation
                     builder.Append('\n');
                 }
 
-                if (showNames)
-                {
-                    if (colorNames)
-                    {
-                        builder.Append("<color=#").Append(ColorUtility.ToHtmlStringRGBA(segment.speaker.color)).Append('>')
-                            .Append(segment.speaker.displayName).Append(":</color> ");
-                    }
-                    else
-                    {
-                        builder.Append(segment.speaker.displayName).Append(": ");
-                    }
-                }
+                string speakerColor = ColorUtility.ToHtmlStringRGBA(segment.speaker.color);
+                builder.Append("<color=#").Append(speakerColor).Append('>').Append(segment.speaker.displayName).Append(":</color> ");
 
                 bodyStartIdx = builder.Length;
-                if (Math.Abs(segment.textSize - 1) > Mathf.Epsilon)
+                if (colorTextBySpeaker)
                 {
-                    builder.Append("<size=").Append((segment.textSize * 100).ToString(CultureInfo.InvariantCulture)).Append("%>")
-                        .Append(segment.text).Append("</size>");
+                    builder.Append("<color=#").Append(speakerColor).Append('>');
                 }
-                else
+
+                bool sized = Math.Abs(segment.textSize - 1) > Mathf.Epsilon;
+                if (sized)
                 {
-                    builder.Append(segment.text);
+                    builder.Append("<size=").Append((segment.textSize * 100).ToString(CultureInfo.InvariantCulture)).Append("%>");
+                }
+
+                builder.Append(segment.text);
+
+                if (sized)
+                {
+                    builder.Append("</size>");
+                }
+
+                if (colorTextBySpeaker)
+                {
+                    builder.Append("</color>");
                 }
             }
 

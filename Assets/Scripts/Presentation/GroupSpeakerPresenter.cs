@@ -29,15 +29,14 @@ namespace ImmersiveSubtitles.Presentation
 
         protected override void Sync(IReadOnlyList<SegmentInstance> visible)
         {
-            TextStylePreferences style = TextStyle(SubtitleRuntime.Preferences.Current);
-            block.SetLines(visible, Covers, style.showSpeakerName, style.colorNameBySpeaker);
+            block.SetLines(visible, Covers, TextStyle(SubtitleRuntime.Preferences.Current).colorTextBySpeaker);
         }
 
         protected override void ApplyStyle(SubtitlePreferences preferences)
         {
             TextStylePreferences style = TextStyle(preferences);
             SubtitleStyler.Apply(style, text, null, Background, null);
-            block.Rebuild(style.showSpeakerName, style.colorNameBySpeaker);
+            block.Rebuild(style.colorTextBySpeaker);
         }
 
         protected override void UpdateReveal(double now)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ImmersiveSubtitles.Core;
 using ImmersiveSubtitles.Presentation;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace ImmersiveSubtitles.Settings
     public sealed class MultipleChoiceUI : MonoBehaviour
     {
         [SerializeField] private ButtonUI[] options;
+
+        public IReadOnlyList<ButtonUI> Options => options;
 
         private Func<SubtitlePreferences, int> getter;
         private Action<SubtitlePreferences, int> setter;

@@ -1,6 +1,7 @@
 using ImmersiveSubtitles.Core;
 using ImmersiveSubtitles.Presentation;
 using ImmersiveSubtitles.Speech;
+using TMPro;
 using UnityEngine;
 
 namespace ImmersiveSubtitles.Settings
@@ -27,6 +28,16 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private MultipleChoiceUI sizeMode;
         [SerializeField] private ToggleUI lagFollow;
 
+        [Header("Text Tab")]
+        [SerializeField] private FontCatalog fonts;
+        [SerializeField] private ColorPalette palette;
+        [SerializeField] private MultipleChoiceUI font;
+        [SerializeField] private StepperUI size;
+        [SerializeField] private SwatchUI textColor;
+        [SerializeField] private SwatchUI backgroundColor;
+        [SerializeField] private StepperUI backgroundOpacity;
+        [SerializeField] private ToggleUI colorTextBySpeaker;
+
         public bool IsOpen => canvasRoot.activeSelf;
 
         private void Awake()
@@ -40,6 +51,8 @@ namespace ImmersiveSubtitles.Settings
             facePlayer.Bind(p => p.facePlayer, (p, v) => p.facePlayer = v);
             sizeMode.Bind(p => (int)p.sizeMode, (p, v) => p.sizeMode = (SubtitleSizeMode)v);
             lagFollow.Bind(p => p.lagFollow, (p, v) => p.lagFollow = v);
+
+            BindTextTab();
 
             presentationTabButton.Clicked += () => SelectTab(true);
             textTabButton.Clicked += () => SelectTab(false);
@@ -84,6 +97,22 @@ namespace ImmersiveSubtitles.Settings
             {
                 Open();
             }
+        }
+
+        private void BindTextTab()
+        {
+            for (int i = 0; i < font.Options.Count; i++)
+            {
+                TMP_FontAsset asset = fonts.fonts[i];
+                font.Options[i].SetLabel(asset.faceInfo.familyName, asset);
+            }
+            font.Bind(p => fonts.fonts.IndexOf(p.text.font != null ? p.text.font : TMP_Settings.defaultFontAsset), (p, v) => p.text.font = fonts.fonts[v]);
+
+            size.Bind(p => p.text.sizeDegrees, (p, v) => p.text.sizeDegrees = v, 0.5f, 3f, 0.1f);
+            textColor.Bind(palette, p => p.text.textColor, (p, v) => p.text.textColor = v);
+            backgroundColor.Bind(palette, p => p.text.backgroundColor, (p, v) => p.text.backgroundColor = v);
+            backgroundOpacity.Bind(p => p.text.backgroundOpacity, (p, v) => p.text.backgroundOpacity = v, 0f, 1f, 0.1f);
+            colorTextBySpeaker.Bind(p => p.text.colorTextBySpeaker, (p, v) => p.text.colorTextBySpeaker = v);
         }
 
         private void SelectTab(bool presentation)
