@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sadness
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.EmotionStyle
   id: sadness
-  font: {fileID: 0}
+  font: {fileID: 11400000, guid: 8871d980d24b641368921043171cfb8d, type: 2}
   effect: {fileID: 11400000, guid: 883eed0339150497db58b8bd89b633ac, type: 2}
   color: {r: 0.3915094, g: 0.7014225, b: 1, a: 1}

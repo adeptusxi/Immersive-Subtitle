@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fear
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.EmotionStyle
   id: fear
-  font: {fileID: 0}
+  font: {fileID: 11400000, guid: f69d5a888927e4ccd8ec96956fbe947e, type: 2}
   effect: {fileID: 11400000, guid: b35e91f2ba42c4508990bb116bf016ee, type: 2}
   color: {r: 0.49542198, g: 0.6792453, b: 0.27233893, a: 1}

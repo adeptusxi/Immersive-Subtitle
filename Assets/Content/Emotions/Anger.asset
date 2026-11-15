@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Anger
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.EmotionStyle
   id: anger
-  font: {fileID: 0}
+  font: {fileID: 11400000, guid: 5bc1ed95a7742457bb17829cf0598b79, type: 2}
   effect: {fileID: 0}
   color: {r: 1, g: 0.23981349, b: 0.18396229, a: 1}
