@@ -25,7 +25,9 @@ namespace ImmersiveSubtitles.Core
     {
         None,
         RingPulse,
+        SubtitleHUD,
         DockedIndicator,
-        SubtitleHUD
+        DockedWord,
+        DockedHUD
     }
 }

@@ -16,17 +16,14 @@ namespace ImmersiveSubtitles.Settings
         [Header("Tabs")]
         [SerializeField] private ButtonUI presentationTabButton;
         [SerializeField] private ButtonUI textTabButton;
+        [SerializeField] private ButtonUI otherTabButton;
         [SerializeField] private GameObject presentationTab;
         [SerializeField] private GameObject textTab;
+        [SerializeField] private GameObject otherTab;
 
         [Header("Presentation Tab")]
         [SerializeField] private MultipleChoiceUI subtitleMode;
         [SerializeField] private MultipleChoiceUI indicatorMode;
-        [SerializeField] private ToggleUI keepTextDuringGaps;
-        [SerializeField] private MultipleChoiceUI entranceStyle;
-        [SerializeField] private ToggleUI facePlayer;
-        [SerializeField] private MultipleChoiceUI sizeMode;
-        [SerializeField] private ToggleUI lagFollow;
 
         [Header("Text Tab")]
         [SerializeField] private FontCatalog fonts;
@@ -37,6 +34,13 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private SwatchUI backgroundColor;
         [SerializeField] private StepperUI backgroundOpacity;
         [SerializeField] private ToggleUI colorTextBySpeaker;
+        
+        [Header("Other Tab")]
+        [SerializeField] private ToggleUI keepTextDuringGaps;
+        [SerializeField] private MultipleChoiceUI entranceStyle;
+        [SerializeField] private ToggleUI facePlayer;
+        [SerializeField] private MultipleChoiceUI sizeMode;
+        [SerializeField] private ToggleUI lagFollow;
 
         public bool IsOpen => canvasRoot.activeSelf;
 
@@ -54,14 +58,15 @@ namespace ImmersiveSubtitles.Settings
 
             BindTextTab();
 
-            presentationTabButton.Clicked += () => SelectTab(true);
-            textTabButton.Clicked += () => SelectTab(false);
+            presentationTabButton.Clicked += () => SelectTab(presentationTab);
+            textTabButton.Clicked += () => SelectTab(textTab);
+            otherTabButton.Clicked += () => SelectTab(otherTab);
             resetButton.Clicked += SubtitleRuntime.Preferences.Reset;
         }
         
         private void Start()
         {
-            SelectTab(true);
+            SelectTab(presentationTab);
             canvasRoot.SetActive(false);
         }
 
@@ -115,12 +120,14 @@ namespace ImmersiveSubtitles.Settings
             colorTextBySpeaker.Bind(p => p.text.colorTextBySpeaker, (p, v) => p.text.colorTextBySpeaker = v);
         }
 
-        private void SelectTab(bool presentation)
+        private void SelectTab(GameObject tab)
         {
-            presentationTab.SetActive(presentation);
-            textTab.SetActive(!presentation);
-            presentationTabButton.SetSelected(presentation);
-            textTabButton.SetSelected(!presentation);
+            presentationTab.SetActive(tab == presentationTab);
+            textTab.SetActive(tab == textTab);
+            otherTab.SetActive(tab == otherTab);
+            presentationTabButton.SetSelected(tab == presentationTab);
+            textTabButton.SetSelected(tab == textTab);
+            otherTabButton.SetSelected(tab == otherTab);
         }
     }
 }

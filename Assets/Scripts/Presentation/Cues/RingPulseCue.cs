@@ -8,10 +8,12 @@ namespace ImmersiveSubtitles.Presentation
     public sealed class RingPulseCue : VisualSpeechCue
     {
         [SerializeField] private ParticleSystem pulseVFX;
+        [SerializeField, Tooltip("meters from head toward speaker")] private float ringOffset = 0.5f;
+        [SerializeField] private Transform groundPosition;
 
         [Header("Light")]
         [SerializeField] private Light pointLight;
-        [SerializeField, Tooltip("meters behind head")] private float headOffset = 0.3f;
+        [SerializeField, Tooltip("meters from head toward speaker")] private float headOffset = 0.3f;
         [SerializeField] private float minIntensity = 0.75f;
         [SerializeField] private float maxIntensity = 1.25f;
         [SerializeField] private float lightPulseFrequency = 3f; // average 
@@ -72,6 +74,7 @@ namespace ImmersiveSubtitles.Presentation
             for (int i = lights.Count - 1; i >= 0; i--)
             {
                 HeadLight headLight = lights[i];
+                headLight.light.transform.position = Player.Instance.Head.position + TowardSpeaker(headLight.root) * headOffset;
                 if (!headLight.fading && (headLight.queue.IsIdle || !IsOutOfView(headLight.root, true)))
                 {
                     StartFade(headLight);
@@ -130,7 +133,9 @@ namespace ImmersiveSubtitles.Presentation
                 return;
             }
 
-            ParticleSystem pulse = Instantiate(pulseVFX, root);
+            Vector3 ringPosition = Player.Instance.Head.position + TowardSpeaker(root) * ringOffset;
+            ringPosition.y = groundPosition.position.y;
+            ParticleSystem pulse = Instantiate(pulseVFX, ringPosition, pulseVFX.transform.rotation);
             ParticleSystem.MainModule main = pulse.main;
             main.startColor = segment.speaker.color;
             Destroy(pulse.gameObject, pulseLifetime);
@@ -142,7 +147,7 @@ namespace ImmersiveSubtitles.Presentation
 
             SpeakerRegistry.Global.TryGet(segment.speaker.id, out SpeakerQueue queue);
             Light light = Instantiate(pointLight, Player.Instance.Head);
-            light.transform.localPosition = Vector3.back * headOffset;
+            light.transform.position = Player.Instance.Head.position + TowardSpeaker(root) * headOffset;
             light.transform.localRotation = Quaternion.identity;
             light.color = segment.speaker.color;
             light.intensity = 0f;
@@ -164,6 +169,19 @@ namespace ImmersiveSubtitles.Presentation
             {
                 headLight.showing = false;
             }
+        }
+
+        // horizontal direction from the head to the speaker. falls back to behind the head if the speaker is straight above or below
+        private static Vector3 TowardSpeaker(Transform root)
+        {
+            Transform head = Player.Instance.Head;
+            Vector3 toSpeaker = Vector3.ProjectOnPlane(root.position - head.position, Vector3.up);
+            if (toSpeaker.sqrMagnitude < 1e-6f)
+            {
+                toSpeaker = -Vector3.ProjectOnPlane(head.forward, Vector3.up);
+            }
+
+            return toSpeaker.normalized;
         }
 
         // noisy sine wave 

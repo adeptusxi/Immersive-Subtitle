@@ -14,6 +14,7 @@ namespace ImmersiveSubtitles.Presentation
     {
         private readonly TMP_Text text;
         private readonly TextEffect effect; // optional
+        private readonly bool showNames;
         private readonly List<SegmentInstance> lines = new();
         private readonly List<int> wordEnds = new();
         private readonly StringBuilder builder = new();
@@ -23,10 +24,11 @@ namespace ImmersiveSubtitles.Presentation
 
         public bool HasLines => lines.Count > 0;
 
-        public SubtitleLineBlock(TMP_Text text, TextEffect effect)
+        public SubtitleLineBlock(TMP_Text text, TextEffect effect, bool showNames = true)
         {
             this.text = text;
             this.effect = effect;
+            this.showNames = showNames;
             if (effect != null)
             {
                 effect.enabled = false;
@@ -80,7 +82,10 @@ namespace ImmersiveSubtitles.Presentation
                 }
 
                 string speakerColor = ColorUtility.ToHtmlStringRGBA(segment.speaker.color);
-                builder.Append("<color=#").Append(speakerColor).Append('>').Append(segment.speaker.displayName).Append(":</color> ");
+                if (showNames)
+                {
+                    builder.Append("<color=#").Append(speakerColor).Append('>').Append(segment.speaker.displayName).Append(":</color> ");
+                }
 
                 bodyStartIdx = builder.Length;
                 if (colorTextBySpeaker)
