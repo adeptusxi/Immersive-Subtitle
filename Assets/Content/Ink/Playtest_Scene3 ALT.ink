@@ -19,38 +19,36 @@ EXTERNAL event(eventId)
 
 === main ===
 
-Hi! #speaker:Alien2
+So…any idea how to escape? #speaker:Alien2
 
-We heard your call. #speaker:Alien4 #async
+<fear>Are we stuck here forever?</fear> #speaker:Alien4 #async
 
-Yeah, what’s happening? #speaker:Alien5 #async
+<fear>WE'RE ALL GOING TO DIE</fear> #speaker:Alien5 #async
 
-Come over and meet my new friend! #speaker:Alien1
+<anger>This is your fault!</anger> #speaker:Alien1
 
-+ [Hi everyone!] 
-    //emotion ~ awe, surprise
-    <joy>WOW! You are so cool!</joy> #speaker:Alien5
++ [Chill out guys] 
+    You're right, calm down everyone. #speaker:Alien5
     -> p1
-+ [Ew, you guys are kinda ugly...] 
++ [OMG OMG OMG] 
     //emotion ~ anger
-    <anger>What are you talking about!?</anger> #speaker:Alien5
+    <anger>I have a family!?</anger> #speaker:Alien5
     -> p1
-+ [You guys are so cute I can eat you] 
++ [I wanna stay here forever] 
     //emotion ~ fear
-    <fear>Eek! Don't eat us! Please!</fear> #speaker:Alien5
+    Ok, weird sentiment... #speaker:Alien5
     -> p1
     
 === p1 ===
 
-You're kind of weird... #speaker:Alien3
-but <joy>I LOVE THAT!</joy>
+Wait everyone, it's going to be ok. #speaker:Alien3
+<joy>Let's think of some ideas</joy>
 
-Why are you guys just standing around? #speaker:Alien2
-I'm going to check there.
+Does anyone see anything? #speaker:Alien2
 
 //walk away
 ~ event("alien2_walk_away")
-Why so slow? Are you scared? #speaker:Alien3 #async 
+Find an escpae route yet? #speaker:Alien3 #async 
 ~ wait_for("alien2_walk_away_complete")
 
 <fear>It's so dark</fear> #speaker:Alien2 
@@ -80,12 +78,13 @@ We can try from up there? #speaker:Alien3
 ~ wait_seconds(2)
 
 Everyone look up! #speaker:Alien4
+What is that?
 
 //everyone stops jumping 
 ~ event("aliens_stop_jump")
 
 //emotion ~ depressed
-<sadness>No, that's just a large rock.</sadness> #speaker:Alien2
+<sadness>Well, its not anything helpful.</sadness> #speaker:Alien2
 
 //emotion ~ sadness, hopelessness
 <fear>We're never going to find the ship...</fear> #speaker:Alien3
@@ -105,7 +104,7 @@ Everyone look up! #speaker:Alien4
     -> outro
 + [What the hell!] 
     -> outro
-+ [Does this mean I can’t go home?] 
++ [Does this mean we can’t go home?] 
     -> outro
     
 === outro ===
