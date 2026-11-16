@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5271660222050566806}
   - component: {fileID: 5148284710644800338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Subtitle Cues - HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 2741659313621099755}
   - component: {fileID: 6547540500993123873}
   - component: {fileID: 161302836491705330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 4936351715799797538}
   - component: {fileID: 1681438103051452402}
   - component: {fileID: 1604408291377861845}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 825209149997026236}
   - component: {fileID: 6548149231999516728}
   - component: {fileID: 12001662472642306}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Choice Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4455066090741389992}
   - component: {fileID: 961808922657460914}
   - component: {fileID: 2049065548683219613}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ISDK_RayCanvasInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 2426340729487323672}
   - component: {fileID: 6068531284412425134}
   - component: {fileID: 1142698192546651714}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7456467080549949118}
   - component: {fileID: 6114474766906234989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Story Choices
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,9 +462,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1638904179688749608, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
       propertyPath: m_Name
       value: Choice Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -567,9 +575,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1638904179688749608, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
       propertyPath: m_Name
       value: Choice Button (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -672,9 +688,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1638904179688749608, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
       propertyPath: m_Name
       value: Choice Button (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -777,9 +801,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1638904179688749608, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
       propertyPath: m_Name
       value: Choice Button (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092837978644110482, guid: e54ff76e8554e45499577c60c901ffab, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

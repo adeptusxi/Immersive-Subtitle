@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1436808717700630846}
   - component: {fileID: 3290380319897165579}
   - component: {fileID: 6506773583593236330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Icon Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 1365194697766990455}
   - component: {fileID: 6821766497740370328}
   - component: {fileID: 533369091485672107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 4411737533434870584}
   - component: {fileID: 8252816740767644257}
   - component: {fileID: 5136519674996534754}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 8637074189891657962}
   - component: {fileID: 6638240374699799784}
   - component: {fileID: 3948615231346013188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 583929650799390245}
   - component: {fileID: 1040837259538840855}
   - component: {fileID: 5550826028326523256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Word Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 6458076722466980478}
   - component: {fileID: 561409934077301973}
   - component: {fileID: 2061148730370984824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Subtitle Cues - Dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,6 +470,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hideDelay: 0.5
 --- !u!114 &561409934077301973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +513,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hideDelay: 0.5
 --- !u!114 &2061148730370984824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +556,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hideDelay: 0.5
 --- !u!1 &6976424263384480906
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793924651141111184}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ArrowPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,7 +605,7 @@ GameObject:
   - component: {fileID: 9090447434152918602}
   - component: {fileID: 3852644358165377995}
   - component: {fileID: 7814170351147171460}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8306069766787674416}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ArrowPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -792,7 +795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6117589842060609305}
   - component: {fileID: 52455659263479955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +842,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3879232706470472418}
   - component: {fileID: 5453076074329926721}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Subtitle Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +895,7 @@ GameObject:
   - component: {fileID: 2199825371346236370}
   - component: {fileID: 3441160688200304682}
   - component: {fileID: 6168972776853414442}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,7 +970,7 @@ GameObject:
   - component: {fileID: 7360356770397909198}
   - component: {fileID: 7878936438378360336}
   - component: {fileID: 912261679437153623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1107,7 @@ GameObject:
   - component: {fileID: 8431800217687970480}
   - component: {fileID: 6820868911211857578}
   - component: {fileID: 669273515868751578}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1181,7 +1184,7 @@ GameObject:
   - component: {fileID: 835369204065207969}
   - component: {fileID: 557176452834810759}
   - component: {fileID: 4959657697275265671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

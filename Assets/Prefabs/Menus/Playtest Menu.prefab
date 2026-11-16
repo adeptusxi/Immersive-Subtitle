@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5535804824163071872}
   - component: {fileID: 6077164382107265368}
   - component: {fileID: 9221102496035673126}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Playtest Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6864852174463326468}
   - component: {fileID: 7108265565693135548}
   - component: {fileID: 1368887962987749065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Surface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 5750323241083109882}
   - component: {fileID: 3102894234138952320}
   - component: {fileID: 1966344789341381210}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ISDK_RayCanvasInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2205990593863994875}
   - component: {fileID: 1346282901008165261}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Playtest Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,7 @@ MonoBehaviour:
   dockedIndicatorButton: {fileID: 335431411036118703}
   dockedWordButton: {fileID: 4780147771871306732}
   dockedHudButton: {fileID: 7054822151968937335}
+  beamPulseButton: {fileID: 0}
 --- !u!1 &5441786828712308765
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +346,7 @@ GameObject:
   - component: {fileID: 1951931167271481342}
   - component: {fileID: 6007669323184403275}
   - component: {fileID: 6988114087889384029}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +482,7 @@ GameObject:
   - component: {fileID: 6768576857814682660}
   - component: {fileID: 2495318151394150735}
   - component: {fileID: 7169027474067404052}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,9 +562,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: Docked Word
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
@@ -574,6 +583,10 @@ PrefabInstance:
       value: 'B
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
@@ -684,9 +697,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: None
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
@@ -697,6 +718,10 @@ PrefabInstance:
       value: 'F
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
@@ -808,12 +833,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
     - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: Ring Pulse
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
@@ -924,9 +961,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: Docked Subtitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
@@ -937,6 +982,10 @@ PrefabInstance:
       value: 'C
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
@@ -1047,9 +1096,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: Docked Icon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
@@ -1058,6 +1115,10 @@ PrefabInstance:
     - target: {fileID: 5159095796111277050, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_text
       value: C
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
@@ -1168,9 +1229,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6768576857814682660}
     m_Modifications:
+    - target: {fileID: 169204764823292364, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Name
       value: HUD Subtitle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2752277299901328097, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_IsActive
@@ -1179,6 +1248,10 @@ PrefabInstance:
     - target: {fileID: 5159095796111277050, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_text
       value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673617176318053467, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6866830094608656663, guid: b7cab6c6cd8884b85b7eae5a875986fc, type: 3}
       propertyPath: m_Pivot.x
