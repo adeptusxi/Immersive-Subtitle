@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: bbab9f03-364c-45f9-bb9e-311ee72fef92
+  instanceId: 2eece74a-b6b1-4598-935f-d51d33189b10
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1912,6 +1912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Narrative.InkNarrativeRunnerBehaviour
   ink: {fileID: 6231892579173505729, guid: b18a5bd29ea984b37b55f16a7449c64c, type: 3}
+  altInk: {fileID: 6231892579173505729, guid: e38270fbae1164d088ee05d580a0cac6, type: 3}
   choicePresenter: {fileID: 7107114841133048514}
   emotions: {fileID: 11400000, guid: 861001d6581fd4a51a28c855eb831d5f, type: 2}
   restartKnot: replay

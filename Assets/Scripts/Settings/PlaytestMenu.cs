@@ -1,7 +1,6 @@
 using ImmersiveSubtitles.Core;
 using ImmersiveSubtitles.Presentation;
 using ImmersiveSubtitles.Speech;
-using TMPro;
 using UnityEngine;
 
 namespace ImmersiveSubtitles.Settings
@@ -11,24 +10,32 @@ namespace ImmersiveSubtitles.Settings
     public sealed class PlaytestMenu : MonoBehaviour
     {
         [SerializeField] private GameObject canvasRoot;
-        [SerializeField] private ButtonUI pulseButton;
-        [SerializeField] private ButtonUI dockedButton;
-        [SerializeField] private ButtonUI hudButton;
-        [SerializeField] private ButtonUI laggedHudButton;
-        [SerializeField] private TMP_Text statusText;
+        [SerializeField] private ButtonUI noneButton;
+        [SerializeField] private ButtonUI ringPulseButton;
+        [SerializeField] private ButtonUI subtitleHudButton;
+        [SerializeField] private ButtonUI dockedIndicatorButton;
+        [SerializeField] private ButtonUI dockedWordButton;
+        [SerializeField] private ButtonUI dockedHudButton;
 
-        private static readonly string[] Labels = { "A: Pulse", "B: Docked", "C: HUD", "D: lagged HUD" };
-        private ButtonUI[] buttons;
+        private ButtonUI[] buttons; // index = SpeechCueMode
 
         public bool IsOpen => canvasRoot.activeSelf;
 
         private void Awake()
         {
-            buttons = new[] { pulseButton, dockedButton, hudButton, laggedHudButton };
+            buttons = new[]
+            {
+                noneButton, 
+                ringPulseButton, 
+                subtitleHudButton, 
+                dockedIndicatorButton, 
+                dockedWordButton, 
+                dockedHudButton
+            };
             for (int i = 0; i < buttons.Length; i++)
             {
-                int index = i;
-                buttons[i].Clicked += () => Select(index);
+                SpeechCueMode cue = (SpeechCueMode)i;
+                buttons[i].Clicked += () => Select(cue);
             }
         }
 
@@ -79,52 +86,19 @@ namespace ImmersiveSubtitles.Settings
             }
         }
 
-        private void Select(int index)
+        private void Select(SpeechCueMode cue)
         {
-            SubtitlePreferences prefs = SubtitleRuntime.Preferences.Current;
-            switch (index)
-            {
-                case 0:
-                    prefs.speechCueMode = SpeechCueMode.RingPulse;
-                    prefs.lagFollow = false;
-                    break;
-                case 1:
-                    prefs.speechCueMode = SpeechCueMode.DockedIndicator;
-                    prefs.lagFollow = false;
-                    break;
-                case 2:
-                    prefs.speechCueMode = SpeechCueMode.SubtitleHUD;
-                    prefs.lagFollow = false;
-                    break;
-                case 3:
-                    prefs.speechCueMode = SpeechCueMode.SubtitleHUD;
-                    prefs.lagFollow = true;
-                    break;
-            }
-
+            SubtitleRuntime.Preferences.Current.speechCueMode = cue;
             SubtitleRuntime.Preferences.NotifyChanged();
         }
 
         private void Refresh()
         {
-            int match = PrefToIndex(SubtitleRuntime.Preferences.Current);
+            int selected = (int)SubtitleRuntime.Preferences.Current.speechCueMode;
             for (int i = 0; i < buttons.Length; i++)
             {
-                buttons[i].SetSelected(i == match);
+                buttons[i].SetSelected(i == selected);
             }
-
-            statusText.text = match >= 0 ? Labels[match] : "---";
-        }
-
-        private static int PrefToIndex(SubtitlePreferences prefs)
-        {
-            return prefs.speechCueMode switch
-            {
-                SpeechCueMode.RingPulse => 0,
-                SpeechCueMode.DockedIndicator => 1,
-                SpeechCueMode.SubtitleHUD => prefs.lagFollow ? 3 : 2,
-                _ => -1,
-            };
         }
     }
 }
