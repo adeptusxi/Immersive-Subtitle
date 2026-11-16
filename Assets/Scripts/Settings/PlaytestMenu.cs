@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ImmersiveSubtitles.Settings
 {
-    // open/close with A, B, X, Y
+    // open/close with A, B
     [DefaultExecutionOrder(200)]
     public sealed class PlaytestMenu : MonoBehaviour
     {
@@ -47,10 +47,7 @@ namespace ImmersiveSubtitles.Settings
 
         private void LateUpdate()
         {
-            if (OVRInput.GetDown(OVRInput.Button.One) 
-                || OVRInput.GetDown(OVRInput.Button.Two)
-                || OVRInput.GetDown(OVRInput.Button.Three) 
-                || OVRInput.GetDown(OVRInput.Button.Four))
+            if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Two))
             {
                 Toggle();
             }

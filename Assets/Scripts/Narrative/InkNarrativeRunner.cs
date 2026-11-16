@@ -13,16 +13,20 @@ namespace ImmersiveSubtitles.Narrative
     {
         private const int MaxIterationsPerTick = 500;
 
+        public const string RestartedEventId = "story_restarted"; // raised through GameEvents
+
         private sealed class Op
         {
             public Action start; // invokved when op reaches front of queue 
             public Func<bool> isDone; // null means it completes instantly 
+            public Action cancel; // invoked when Restart drops the op 
             public bool started;
         }
 
         private readonly Story story;
         private readonly SpeakerRegistry speakers;
         private readonly EmotionCatalog emotions; 
+        private readonly string restartKnot; 
         private readonly TurnTracker turnTracker = new();
         private readonly Queue<Op> ops = new();
         private readonly List<ChoiceOption> pendingChoices = new();
@@ -33,12 +37,24 @@ namespace ImmersiveSubtitles.Narrative
         public IReadOnlyList<ChoiceOption> PendingChoices => pendingChoices;
         public event Action<IReadOnlyList<ChoiceOption>> ChoicesPresented;
 
-        public InkNarrativeRunner(Story story, string defaultSpeakerId, SpeakerRegistry speakers, EmotionCatalog emotions = null)
+        public InkNarrativeRunner(Story story, string defaultSpeakerId, SpeakerRegistry speakers, EmotionCatalog emotions = null, string restartKnot = null)
         {
             this.story = story;
             this.speakers = speakers;
             this.emotions = emotions;
             lastSpeakerId = defaultSpeakerId;
+
+            if (!string.IsNullOrEmpty(restartKnot))
+            {
+                if (story.KnotContainerWithName(restartKnot) != null)
+                {
+                    this.restartKnot = restartKnot;
+                }
+                else
+                {
+                    Debug.LogWarning($"[Subtitles] restart knot '{restartKnot}' not found in the ink story. restart won't work");
+                }
+            }
 
             story.allowExternalFunctionFallbacks = false;
             story.onError += (message, type) =>
@@ -136,6 +152,32 @@ namespace ImmersiveSubtitles.Narrative
             State = RunnerState.Running;
         }
 
+        // drops everything in flight and jumps to the restart knot 
+        public void Restart()
+        {
+            if (restartKnot == null)
+            {
+                Debug.LogWarning("[Subtitles] restart ignored: no valid restart knot");
+                return;
+            }
+
+            foreach (Op op in ops)
+            {
+                op.cancel?.Invoke();
+            }
+            ops.Clear();
+
+            pendingChoices.Clear();
+            turnTracker.MarkBreak();
+            speakers.StopAll();
+
+            story.ChoosePathString(restartKnot);
+            if (State != RunnerState.NotStarted)
+            {
+                State = RunnerState.Running;
+            }
+        }
+
         private void EnqueueLine(string text)
         {
             ParsedLine line = LineParser.Parse(text, story.currentTags, emotions);
@@ -186,7 +228,33 @@ namespace ImmersiveSubtitles.Narrative
             }
             
             State = RunnerState.WaitingForChoice;
+
+            if (IsAtRestartKnot(choices))
+            {
+                SubtitleBus.RaiseNarrativeRestarted();
+                GameEvents.Raise(RestartedEventId);
+            }
+
             ChoicesPresented?.Invoke(pendingChoices);
+        }
+
+        private bool IsAtRestartKnot(List<Choice> choices)
+        {
+            if (restartKnot == null)
+            {
+                return false;
+            }
+
+            foreach (Choice choice in choices)
+            {
+                string path = choice.sourcePath;
+                if (path != null && (path == restartKnot || path.StartsWith(restartKnot + ".")))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         // EXTERNAL funcs in ink file. enqueues an Op and breaks the turn 
@@ -215,12 +283,12 @@ namespace ImmersiveSubtitles.Narrative
                 raised = true;
                 GameEvents.Raised -= HandleRaised;
             }
-            EnqueueAction(() => GameEvents.Raised += HandleRaised, () => raised);
+            EnqueueAction(() => GameEvents.Raised += HandleRaised, () => raised, () => GameEvents.Raised -= HandleRaised);
         }
 
-        private void EnqueueAction(Action start, Func<bool> isDone)
+        private void EnqueueAction(Action start, Func<bool> isDone, Action cancel = null)
         {
-            ops.Enqueue(new Op { start = start, isDone = isDone });
+            ops.Enqueue(new Op { start = start, isDone = isDone, cancel = cancel });
             turnTracker.MarkBreak();
         }
     }

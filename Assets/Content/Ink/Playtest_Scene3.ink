@@ -8,6 +8,8 @@ EXTERNAL event(eventId)
 === intro ===
 + [START] 
     -> main
++ [EMOTION TEST]
+    -> emotions_demo
 
 -> replay
 
@@ -16,6 +18,7 @@ EXTERNAL event(eventId)
     -> main
 
 === main ===
+
 Hi! #speaker:Alien2
 
 We heard your call. #speaker:Alien4 #async
@@ -113,6 +116,28 @@ See you around! #speaker:Alien1 #async
 ~ wait_seconds(2)
 
 -> replay
+
+=== emotions_demo ===
+
+how is everyone feeling today? #speaker:alien1
+
+~ wait_seconds(0.5)
+
+i'm feeling <joy>so happy</joy> today! 
+
+~ wait_seconds(0.5)
+
+i'm feeling <sadness>a little sad</sadness> #speaker:alien3
+
+~ wait_seconds(0.5)
+
+i'm feeling <anger>really angry</anger> #speaker:alien4
+
+~ wait_seconds(0.5)
+
+and i'm feeling <fear>very scared</fear> #speaker:alien5
+
+-> intro
 
 === function wait_for(eventId) ===
 ~ return

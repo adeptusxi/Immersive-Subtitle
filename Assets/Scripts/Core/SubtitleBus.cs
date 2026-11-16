@@ -8,6 +8,7 @@ namespace ImmersiveSubtitles.Core
         public static event Action<SegmentInstance, SegmentEndReason> SegmentEnded;
         public static event Action<ChoiceRecord> ChoiceMade;
         public static event Action NarrativeEnded;
+        public static event Action NarrativeRestarted; 
 
         public static void RaiseSegmentStarted(SegmentInstance segment) => SegmentStarted?.Invoke(segment);
 
@@ -17,5 +18,6 @@ namespace ImmersiveSubtitles.Core
 
         public static void RaiseNarrativeEnded() => NarrativeEnded?.Invoke();
 
+        public static void RaiseNarrativeRestarted() => NarrativeRestarted?.Invoke();
     }
 }

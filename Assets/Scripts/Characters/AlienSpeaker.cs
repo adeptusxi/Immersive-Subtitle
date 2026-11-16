@@ -82,6 +82,17 @@ public sealed class AlienSpeaker : Speaker
         jumping = false;
     }
 
+    public void ResetToHome()
+    {
+        StopAllCoroutines();
+        motion = null;
+        jumping = false;
+        IsWalking = false;
+        agent.enabled = false;
+        transform.position = homePosition;
+        SpeakerRoot.rotation = homeFacing;
+    }
+
     public void PlaySoundwave(double seconds)
     {
         StartCoroutine(SoundwaveRoutine(seconds));

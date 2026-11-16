@@ -14,6 +14,7 @@ namespace ImmersiveSubtitles.Narrative
         [SerializeField] private InkFile ink;
         [SerializeField] private MonoBehaviour choicePresenter;
         [SerializeField] private EmotionCatalog emotions;
+        [SerializeField] private string restartKnot = "replay";
         
         public InkNarrativeRunner Runner { get; private set; }
         
@@ -28,7 +29,7 @@ namespace ImmersiveSubtitles.Narrative
                 emotions.RegisterFonts();
             }
 
-            Runner = new InkNarrativeRunner(new Story(ink.storyJson), defaultSpeakerId, SpeakerRegistry.Global, emotions);
+            Runner = new InkNarrativeRunner(new Story(ink.storyJson), defaultSpeakerId, SpeakerRegistry.Global, emotions, restartKnot);
             Runner.ChoicesPresented += HandleChoicesPresented;
         }
 
@@ -44,10 +45,21 @@ namespace ImmersiveSubtitles.Narrative
 
         private void Update()
         {
+            if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+            {
+                Restart();
+            }
+
             if (!NarrativeClock.Instance.IsPaused)
             {
                 Runner.Tick(NarrativeClock.Instance.Now);
             }
+        }
+
+        public void Restart()
+        {
+            presenter?.Hide();
+            Runner.Restart();
         }
 
         private void HandleChoicesPresented(IReadOnlyList<ChoiceOption> options)

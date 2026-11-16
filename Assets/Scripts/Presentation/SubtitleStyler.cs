@@ -25,6 +25,15 @@ namespace ImmersiveSubtitles.Presentation
             background.color = backgroundColor;
         }
         
+        public static void ClearUnusedSubMeshes(TMP_Text text)
+        {
+            TMP_TextInfo info = text.textInfo;
+            for (int i = info.materialCount; i < info.meshInfo.Length; i++)
+            {
+                info.meshInfo[i].Clear(true);
+            }
+        }
+
         public static void SetEmHeight(Transform root, float worldEmHeight, float authoredFontSize)
         {
             float scale = worldEmHeight / authoredFontSize;

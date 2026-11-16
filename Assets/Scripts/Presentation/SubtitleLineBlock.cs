@@ -138,6 +138,7 @@ namespace ImmersiveSubtitles.Presentation
         {
             text.maxVisibleCharacters = int.MaxValue;
             text.ForceMeshUpdate();
+            SubtitleStyler.ClearUnusedSubMeshes(text);
 
             TMP_TextInfo info = text.textInfo;
             numPrefixCharacters = 0;

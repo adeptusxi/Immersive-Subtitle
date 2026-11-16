@@ -1,3 +1,4 @@
+using ImmersiveSubtitles.Core;
 using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -28,6 +29,7 @@ namespace ImmersiveSubtitles.Transcript
             log.EntryAdded += _ => RebuildText();
             log.EntryUpdated += _ => RebuildText();
             log.InitSubscriptions();
+            SubtitleBus.NarrativeRestarted += Clear;
             
             RebuildText();
         }
@@ -35,6 +37,7 @@ namespace ImmersiveSubtitles.Transcript
         private void OnDestroy()
         {
             log.CleanupSubscriptions();
+            SubtitleBus.NarrativeRestarted -= Clear;
         }
 
         private void LateUpdate()

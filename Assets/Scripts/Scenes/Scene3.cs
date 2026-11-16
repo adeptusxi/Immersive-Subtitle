@@ -45,6 +45,9 @@ namespace ImmersiveSubtitles.Scenes
                 case "play_soundwave_vfx":
                     OnPlaySoundwaveVfx();
                     break;
+                case InkNarrativeRunner.RestartedEventId:
+                    OnStoryRestarted();
+                    break;
             }
         }
 
@@ -103,6 +106,16 @@ namespace ImmersiveSubtitles.Scenes
             foreach (AlienSpeaker alien in FindAliens(alienIds))
             {
                 alien.PlaySoundwave(soundwaveSeconds);
+            }
+        }
+
+        private void OnStoryRestarted()
+        {
+            StopAllCoroutines();
+            
+            foreach (AlienSpeaker alien in FindAliens(alienIds))
+            {
+                alien.ResetToHome();
             }
         }
 
