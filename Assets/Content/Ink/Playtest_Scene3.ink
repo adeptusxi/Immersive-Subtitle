@@ -29,15 +29,15 @@ Come over and meet my new friend! #speaker:Alien1
 
 + [Hi everyone!] 
     //emotion ~ awe, surprise
-    WOW! You are so cool! #speaker:Alien5
+    <joy>WOW! You are so cool!</joy> #speaker:Alien5
     -> p1
 + [Ew, you guys are kinda ugly...] 
     //emotion ~ anger
-    What are you talking about!? #speaker:Alien5
+    <anger>What are you talking about!?</anger> #speaker:Alien5
     -> p1
 + [You guys are so cute I can eat you] 
     //emotion ~ fear
-    Eek! Don't eat us! Please! #speaker:Alien5
+    <fear>Eek! Don't eat us! Please!</fear> #speaker:Alien5
     -> p1
     
 === p1 ===
@@ -64,9 +64,9 @@ Whaat? Say it again! #speaker:Alien5 #volume:3 #size:3
 
 //emotion ~ anger, annoyed
 Ugh, you guys#speaker:Alien2 #volume:3 #size:3.5
-are so annoying.#volume:3 #size:3.5
-THERE IS NOTHING #volume:3 #size:3.5
-HERE, OK?! #volume:3 #size:3.5
+are <anger>so annoying.</anger>#volume:3 #size:3.5
+<anger>THERE IS NOTHING</anger> #volume:3 #size:3.5
+<anger>HERE, OK?!<anger> #volume:3 #size:3.5
 
 //alien 2 walks back
 ~ event("alien2_walk_back")
@@ -84,13 +84,13 @@ Everyone look up! #speaker:Alien4
 ~ event("aliens_stop_jump")
 
 //emotion ~ depressed
-No, that's just a large rock. #speaker:Alien2
+<sadness>No, that's just a large rock.</sadness> #speaker:Alien2
 
 //emotion ~ sadness, hopelessness
-We're never going to find the ship... #speaker:Alien3
+<fear>We're never going to find the ship...</fear> #speaker:Alien3
 
 //emotion ~ eager, happy
-Why don’t we use echolocation? #speaker:Alien4
+<joy>Why don’t we use echolocation?</joyy> #speaker:Alien4
 
 //use the soundwave effect
 ~ event("play_soundwave_vfx")
