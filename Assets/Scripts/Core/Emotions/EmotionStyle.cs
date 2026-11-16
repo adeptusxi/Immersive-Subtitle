@@ -10,6 +10,7 @@ namespace ImmersiveSubtitles.Core
         [Tooltip("same tag used in ink")] public string id;
         [Tooltip("optional")] public TMP_FontAsset font;
         [Tooltip("optional")] public TextEffectInstance effect;
+        public bool overrideColor;
         public Color color = Color.white;
     }
 }

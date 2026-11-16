@@ -98,8 +98,11 @@ namespace ImmersiveSubtitles.Core
                 closing.Insert(0, "</font>");
             }
 
-            open.Append("<color=#").Append(ColorUtility.ToHtmlStringRGBA(styled.color)).Append('>');
-            closing.Insert(0, "</color>");
+            if (styled.overrideColor)
+            {
+                open.Append("<color=#").Append(ColorUtility.ToHtmlStringRGBA(styled.color)).Append('>');
+                closing.Insert(0, "</color>");
+            }
 
             if (parts.Count > 0)
             {
