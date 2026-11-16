@@ -53,6 +53,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
   timing: {fileID: 11400000, guid: 0ac627f3455a74456b3e452de1f187e3, type: 2}
   speakerRoot: {fileID: 6541450896631690015}
+  dockTarget: {fileID: 530828937354335735}
   navMeshSampleRadius: 5
   settleSeconds: 0.5
   jumpDuration: 0.8
@@ -96,6 +97,7 @@ MonoBehaviour:
   soundwaveVFX: {fileID: 2697627452875344688, guid: c857a945e89164f42ba318248e05a998, type: 3}
   soundwaveVFXSpawnFrequency: 0.75
   soundwaveVFXOrigin: {fileID: 7091192218990668966}
+  soundwaveStartOffset: {x: 0, y: 0.75}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,14 +824,9 @@ MonoBehaviour:
     font: {fileID: 0}
     sizeDegrees: 1.2
     textColor: {r: 1, g: 1, b: 1, a: 1}
-    outlineEnabled: 0
-    outlineWidth: 0.2
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    colorTextBySpeaker: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     backgroundOpacity: 0.6
-    alignment: 1
-    showSpeakerName: 1
-    colorNameBySpeaker: 1
   overrideFacePlayer: 0
   facePlayer: 1
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
@@ -890,14 +887,9 @@ MonoBehaviour:
     font: {fileID: 0}
     sizeDegrees: 1.2
     textColor: {r: 1, g: 1, b: 1, a: 1}
-    outlineEnabled: 0
-    outlineWidth: 0.2
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    colorTextBySpeaker: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     backgroundOpacity: 0.6
-    alignment: 1
-    showSpeakerName: 1
-    colorNameBySpeaker: 1
   overrideFacePlayer: 0
   facePlayer: 1
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}
@@ -1617,14 +1609,9 @@ MonoBehaviour:
     font: {fileID: 0}
     sizeDegrees: 12
     textColor: {r: 1, g: 1, b: 1, a: 1}
-    outlineEnabled: 0
-    outlineWidth: 0.2
-    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    colorTextBySpeaker: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     backgroundOpacity: 0
-    alignment: 1
-    showSpeakerName: 1
-    colorNameBySpeaker: 1
   overrideFacePlayer: 0
   facePlayer: 1
   speaker: {fileID: 11400000, guid: a7beb01e135fe4f2cb11a39fcafc5fb0, type: 2}

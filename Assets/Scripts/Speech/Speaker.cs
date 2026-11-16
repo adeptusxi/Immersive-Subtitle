@@ -8,6 +8,7 @@ namespace ImmersiveSubtitles.Speech
         [SerializeField] protected SpeakerProfile profile;
         [SerializeField] private TimingProfile timing;
         [SerializeField] protected Transform speakerRoot;
+        [SerializeField] private Transform dockTarget;
 
         public SpeakerQueue Queue { get; private set; }
         protected Transform SpeakerRoot => speakerRoot;
@@ -19,7 +20,7 @@ namespace ImmersiveSubtitles.Speech
 
         private void OnEnable()
         {
-            SpeakerRegistry.Global.Register(Queue, speakerRoot);
+            SpeakerRegistry.Global.Register(Queue, speakerRoot, dockTarget);
         }
 
         private void OnDisable()

@@ -11,6 +11,7 @@ namespace ImmersiveSubtitles.Speech
 
         private readonly List<SpeakerQueue> queues = new();
         private readonly Dictionary<SpeakerProfile, Transform> roots = new();
+        private readonly Dictionary<SpeakerProfile, Transform> dockTargets = new();
 
         public IReadOnlyList<SpeakerQueue> All => queues;
 
@@ -27,7 +28,7 @@ namespace ImmersiveSubtitles.Speech
             }
         }
 
-        public void Register(SpeakerQueue queue, Transform root)
+        public void Register(SpeakerQueue queue, Transform root, Transform dockTarget = null)
         {
             if (TryGet(queue.Profile.id, out _))
             {
@@ -36,6 +37,10 @@ namespace ImmersiveSubtitles.Speech
             }
             queues.Add(queue);
             roots[queue.Profile] = root;
+            if (dockTarget != null)
+            {
+                dockTargets[queue.Profile] = dockTarget;
+            }
         }
 
         public void Unregister(SpeakerQueue queue)
@@ -43,6 +48,7 @@ namespace ImmersiveSubtitles.Speech
             if (queues.Remove(queue))
             {
                 roots.Remove(queue.Profile);
+                dockTargets.Remove(queue.Profile);
             }
         }
 
@@ -64,6 +70,17 @@ namespace ImmersiveSubtitles.Speech
         public Transform RootOf(SpeakerProfile speaker)
         {
             return roots.GetValueOrDefault(speaker);
+        }
+
+        public Transform DockTargetOf(SpeakerProfile speaker)
+        {
+            Transform root = RootOf(speaker);
+            if (root == null)
+            {
+                return null;
+            }
+            Transform target = dockTargets.GetValueOrDefault(speaker);
+            return target != null ? target : root;
         }
 
         public void StopAll()

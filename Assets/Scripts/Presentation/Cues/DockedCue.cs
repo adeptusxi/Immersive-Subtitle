@@ -18,11 +18,12 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private float scaleDuration = 0.2f;
         [SerializeField, Tooltip("normalized: time 0..1 → scale 0..1")]
         private AnimationCurve scaleCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [SerializeField] private float hideDelay = 0.5f;
 
         private struct Slot
         {
             public TItem item;
-            public Transform root;
+            public Transform target;
             public Vector2 halfSize; // dock rect inset by the item's HalfExtents
             public float t; // position along the perimeter, 0->1 clockwise from top center
             public float halfSpan; // half the perimeter fraction the item needs, including spacing
@@ -32,6 +33,10 @@ namespace ImmersiveSubtitles.Presentation
         private readonly Dictionary<TItem, float> scaleProgress = new(); // 0 hidden → 1 fully shown
         private HashSet<TItem> wanted = new();
         private HashSet<TItem> wasWanted = new();
+        private HashSet<TItem> outOfView = new();
+        private HashSet<TItem> wasOutOfView = new();
+        private readonly Dictionary<TItem, float> hideAt = new(); 
+        private readonly List<TItem> expired = new();
         private readonly List<Slot> slots = new();
 
         private const int spreadPasses = 10;
@@ -56,22 +61,40 @@ namespace ImmersiveSubtitles.Presentation
         protected override void UpdateCue()
         {
             (wanted, wasWanted) = (wasWanted, wanted);
+            (outOfView, wasOutOfView) = (wasOutOfView, outOfView);
             wanted.Clear();
+            outOfView.Clear();
             slots.Clear();
+            float now = Time.unscaledTime;
 
             foreach (var queue in SpeakerRegistry.Global.All)
             {
                 SpeakerProfile speaker = queue.Profile;
-                Transform root = SpeakerRegistry.Global.RootOf(speaker);
-                if (root == null || !IsSpeaking(queue))
+                Transform target = SpeakerRegistry.Global.DockTargetOf(speaker);
+                if (target == null || !IsSpeaking(queue))
                 {
                     continue;
                 }
 
-                bool wasOutOfView = items.TryGetValue(speaker, out TItem item) && wasWanted.Contains(item);
-                if (!IsOutOfView(root, wasOutOfView))
+                items.TryGetValue(speaker, out TItem item);
+                bool isOutOfView = IsOutOfView(target, item != null && wasOutOfView.Contains(item));
+                if (!isOutOfView)
                 {
-                    continue;
+                    if (item == null || !wasWanted.Contains(item))
+                    {
+                        continue;
+                    }
+
+                    if (!hideAt.TryGetValue(item, out float hideTime))
+                    {
+                        hideTime = now + hideDelay;
+                        hideAt[item] = hideTime;
+                    }
+
+                    if (now >= hideTime)
+                    {
+                        continue;
+                    }
                 }
 
                 if (item == null)
@@ -88,16 +111,35 @@ namespace ImmersiveSubtitles.Presentation
                     OnShown(item, speaker);
                 }
 
+                if (isOutOfView)
+                {
+                    outOfView.Add(item);
+                    hideAt.Remove(item);
+                }
+
                 wanted.Add(item);
                 UpdateItem(item, speaker);
-                slots.Add(IdealSlot(item, root));
+                slots.Add(IdealSlot(item, target));
+            }
+
+            expired.Clear();
+            foreach (TItem item in hideAt.Keys)
+            {
+                if (!wanted.Contains(item))
+                {
+                    expired.Add(item);
+                }
+            }
+            foreach (TItem item in expired)
+            {
+                hideAt.Remove(item);
             }
 
             Spread();
             foreach (Slot slot in slots)
             {
                 slot.item.transform.localPosition = dockArea.rect.center + FromPerimeter(slot.t, slot.halfSize);
-                slot.item.OnPlaced(Player.Instance.Head, slot.root.position);
+                slot.item.OnPlaced(Player.Instance.Head, slot.target.position);
             }
 
             float step = scaleDuration > 0f ? Time.unscaledDeltaTime / scaleDuration : 1f;
@@ -135,6 +177,9 @@ namespace ImmersiveSubtitles.Presentation
 
             wanted.Clear();
             wasWanted.Clear();
+            outOfView.Clear();
+            wasOutOfView.Clear();
+            hideAt.Clear();
         }
 
         private void Hide(TItem item, SpeakerProfile speaker)
@@ -146,9 +191,9 @@ namespace ImmersiveSubtitles.Presentation
         #region Placement
 
         // the slot before accounting for overlapping 
-        private Slot IdealSlot(TItem item, Transform root)
+        private Slot IdealSlot(TItem item, Transform target)
         {
-            Vector3 local = Player.Instance.Head.InverseTransformPoint(root.position);
+            Vector3 local = Player.Instance.Head.InverseTransformPoint(target.position);
             Vector2 flat = new Vector2(local.x, local.y);
             if (flat.magnitude >= behindThreshold * local.magnitude)
             {
@@ -165,7 +210,7 @@ namespace ImmersiveSubtitles.Presentation
             return new Slot
             {
                 item = item,
-                root = root,
+                target = target,
                 halfSize = halfSize,
                 t = ToPerimeter(point, halfSize),
                 halfSpan = perimeter > 0f ? (extent + spacing) * 0.5f / perimeter : 0f,
