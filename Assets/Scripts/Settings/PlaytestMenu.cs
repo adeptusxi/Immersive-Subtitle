@@ -12,6 +12,7 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private GameObject canvasRoot;
         [SerializeField] private ButtonUI noneButton;
         [SerializeField] private ButtonUI ringPulseButton;
+        [SerializeField] private ButtonUI beamPulseButton;
         [SerializeField] private ButtonUI subtitleHudButton;
         [SerializeField] private ButtonUI dockedIndicatorButton;
         [SerializeField] private ButtonUI dockedWordButton;
@@ -27,10 +28,11 @@ namespace ImmersiveSubtitles.Settings
             {
                 noneButton, 
                 ringPulseButton, 
+                beamPulseButton,
                 subtitleHudButton, 
                 dockedIndicatorButton, 
                 dockedWordButton, 
-                dockedHudButton
+                dockedHudButton,
             };
             for (int i = 0; i < buttons.Length; i++)
             {

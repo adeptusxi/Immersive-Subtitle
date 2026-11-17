@@ -98,6 +98,7 @@ MonoBehaviour:
   soundwaveVFXSpawnFrequency: 0.75
   soundwaveVFXOrigin: {fileID: 7091192218990668966}
   soundwaveStartOffset: {x: 0, y: 0.75}
+  beamPrefab: {fileID: 4980938127854706060, guid: f94e51435b73748bd8f3e10519ad6bd1, type: 3}
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ GameObject:
   - component: {fileID: 7527009168934300371}
   - component: {fileID: 5271707382144707372}
   - component: {fileID: 3623938849339317446}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +513,7 @@ GameObject:
   - component: {fileID: 2361615297132793397}
   - component: {fileID: 3891520834840376680}
   - component: {fileID: 1386574065020924055}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7440962415822156381}
   - component: {fileID: 2148432265588599341}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BesideHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -843,7 +844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6062474574232863342}
   - component: {fileID: 7570525612679743512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AboveHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +911,7 @@ GameObject:
   - component: {fileID: 3768172129890655160}
   - component: {fileID: 2302633387058752804}
   - component: {fileID: 8526824054085135653}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1052,7 @@ GameObject:
   - component: {fileID: 6632168645871814547}
   - component: {fileID: 221466335666020477}
   - component: {fileID: 942405919417947784}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,7 +1201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7781951387745362637}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Subtitles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,7 +1287,7 @@ GameObject:
   - component: {fileID: 1275715288641973853}
   - component: {fileID: 6921787303366458427}
   - component: {fileID: 2374188747410209427}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1426,7 +1427,7 @@ GameObject:
   - component: {fileID: 474268300910439370}
   - component: {fileID: 3584204147725636021}
   - component: {fileID: 1340647419696424667}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1565,7 +1566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7429405185500427191}
   - component: {fileID: 3395276577253715638}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Halo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1630,7 +1631,7 @@ GameObject:
   - component: {fileID: 7840157127647339358}
   - component: {fileID: 1253051833991790087}
   - component: {fileID: 8327421003415192441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1788,7 @@ GameObject:
   - component: {fileID: 2951017255959187379}
   - component: {fileID: 4254900884270581832}
   - component: {fileID: 2313571379125085279}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1956,7 +1957,7 @@ GameObject:
   - component: {fileID: 6248655188849909946}
   - component: {fileID: 2939363523299775077}
   - component: {fileID: 8875529756801847717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
