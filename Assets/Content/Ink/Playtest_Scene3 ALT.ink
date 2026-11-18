@@ -21,7 +21,7 @@ EXTERNAL event(eventId)
 
 So…any idea how to escape? #speaker:Alien2
 
-<fear>Are we stuck here forever?</fear> #speaker:Alien4 #async
+<fear>Are we stuck here forever?</fear> #speaker:Alien4 
 
 <fear>WE'RE ALL GOING TO DIE</fear> #speaker:Alien5 #async
 
