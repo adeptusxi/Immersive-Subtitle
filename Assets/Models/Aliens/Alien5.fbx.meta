@@ -13,27 +13,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.010
-    second: {fileID: 2100000, guid: d6e4f8b4bd3cf437f81a700b58b597b4, type: 2}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.011
-    second: {fileID: 2100000, guid: 5af4e99a42e8e4475a2669b96da157e8, type: 2}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.012
-    second: {fileID: 2100000, guid: a3db182d3938e416c88fa2c9a3da6857, type: 2}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.013
-    second: {fileID: 2100000, guid: aafbb4c573b46430798c8b1c516281db, type: 2}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.014
-    second: {fileID: 2100000, guid: 91799beea94dd4b52b5d885b747c9da0, type: 2}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

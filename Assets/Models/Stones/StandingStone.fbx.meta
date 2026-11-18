@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone1
-    second: {fileID: 2100000, guid: b5821d61c0025408bb427b89cf1a73f4, type: 2}
+    second: {fileID: 2100000, guid: 1f94588fadb254576a09d89c00550a0f, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
