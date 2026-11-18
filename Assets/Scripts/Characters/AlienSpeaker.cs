@@ -8,6 +8,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public sealed class AlienSpeaker : Speaker
 {
+    [Header("Alien")]
+    [SerializeField, Min(0)] private int alienIdx = 0;
     [SerializeField] private Animator animator;
     
     [Header("Walk")]
@@ -41,9 +43,10 @@ public sealed class AlienSpeaker : Speaker
 
     private static readonly int IdleTrigger = Animator.StringToHash("Idle");
     private static readonly int WalkTrigger = Animator.StringToHash("Walk");
-    private static readonly int JumpTrigger = Animator.StringToHash("JumpTrigger");
+    private static readonly int JumpTrigger = Animator.StringToHash("Jump");
     private static readonly int JumpLoopTrigger = Animator.StringToHash("JumpLoop");
     private static readonly int DanceTrigger = Animator.StringToHash("Dance");
+    private static readonly int AlienIdxParam = Animator.StringToHash("AlienIdx"); // TODO: set this to alienIdx 
 
     private NavMeshAgent agent;
     private NavMeshQueryFilter navFilter;
@@ -60,6 +63,11 @@ public sealed class AlienSpeaker : Speaker
     public bool IsWalking { get; private set; }
 
     private static double Now => NarrativeClock.Instance.Now;
+
+    private void Awake()
+    {
+        animator.SetInteger(AlienIdxParam, alienIdx);
+    }
 
     private void Start()
     {

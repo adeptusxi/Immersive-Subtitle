@@ -89,9 +89,11 @@ MonoBehaviour:
   timing: {fileID: 11400000, guid: 0ac627f3455a74456b3e452de1f187e3, type: 2}
   speakerRoot: {fileID: 6541450896631690015}
   dockTarget: {fileID: 530828937354335735}
+  alienIdx: 0
+  animator: {fileID: 266736797300219667}
   navMeshSampleRadius: 5
   settleSeconds: 0.5
-  jumpDuration: 0.8
+  jumpDuration: 1.267
   jumpHeight: 1.2
   jumpCurve:
     serializedVersion: 2
@@ -127,7 +129,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   rockLanding: {fileID: 0}
-  rockHopDuration: 1
+  rockHopDuration: 1.282
   rockHopHeight: 1
   soundwaveVFX: {fileID: 2697627452875344688, guid: c857a945e89164f42ba318248e05a998, type: 3}
   soundwaveVFXSpawnFrequency: 0.75
@@ -1533,7 +1535,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6541450896631690015}
-  - component: {fileID: 3561789913085866927}
   - component: {fileID: 266736797300219667}
   - component: {fileID: 3897482464010476678}
   m_Layer: 0
@@ -1560,22 +1561,6 @@ Transform:
   - {fileID: 7091192218990668966}
   m_Father: {fileID: 8954868981861906331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3561789913085866927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6817025390265594398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e57c4c149770452ebe0f8227b064669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BobAnimation
-  target: 1
-  amplitude: 0.03
-  period: 3.5
-  randomizeOffset: 1
 --- !u!95 &266736797300219667
 Animator:
   serializedVersion: 7
