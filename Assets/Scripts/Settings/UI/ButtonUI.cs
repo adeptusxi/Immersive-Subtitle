@@ -24,6 +24,9 @@ namespace ImmersiveSubtitles.Presentation
         private bool hovered;
         private bool pressed;
 
+        public static event Action AnyClicked;
+        public static event Action AnyHovered;
+
         public event Action Clicked;
 
         private void Awake()
@@ -72,6 +75,11 @@ namespace ImmersiveSubtitles.Presentation
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (!hovered && button.interactable)
+            {
+                AnyHovered?.Invoke();
+            }
+
             hovered = true;
         }
 
@@ -95,6 +103,7 @@ namespace ImmersiveSubtitles.Presentation
 
         private void HandleClick()
         {
+            AnyClicked?.Invoke();
             Clicked?.Invoke();
         }
 

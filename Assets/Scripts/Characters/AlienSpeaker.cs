@@ -1,4 +1,6 @@
 using System.Collections;
+using ImmersiveSubtitles.Core;
+using ImmersiveSubtitles.Presentation;
 using ImmersiveSubtitles.Speech;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,7 +28,17 @@ public sealed class AlienSpeaker : Speaker
     [SerializeField] private Transform soundwaveVFXOrigin;
     [SerializeField] private Vector2 soundwaveStartOffset = new(0f, 0.75f);
     private float soundwaveVFXLifetime = 5f;
-     
+
+    [Header("Beam")]
+    [SerializeField] private GameObject beamPrefab;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource soundwaveAudio;
+    [SerializeField] private AudioSource walkAudio;
+    [SerializeField] private AudioSource jumpAudio;
+    [SerializeField, Min(0.01f)] private float loopFadeSeconds = 0.1f;
+    [SerializeField] private bool playJumpSoundOnHop = true; // xiao-TODO temp until animations are ready
+
     private static readonly int WalkTrigger = Animator.StringToHash("Walk");
     private static readonly int IdleTrigger = Animator.StringToHash("Idle");
 
@@ -37,6 +49,9 @@ public sealed class AlienSpeaker : Speaker
     private float standOffset; // original height above nav mesh
     private Coroutine motion;
     private bool jumping;
+    private LoopingAudio soundwaveLoop;
+    private LoopingAudio walkLoop;
+    private int activeSoundwaves;
 
     public bool IsWalking { get; private set; }
 
@@ -58,6 +73,24 @@ public sealed class AlienSpeaker : Speaker
         agent.updateRotation = false;
         agent.baseOffset = standOffset;
         agent.enabled = false;
+
+        soundwaveLoop = new LoopingAudio(soundwaveAudio, loopFadeSeconds);
+        walkLoop = new LoopingAudio(walkAudio, loopFadeSeconds);
+        LoopingAudio.ConfigureSpatial(jumpAudio);
+        
+        BeamPulseCue.BeamRequested += HandleBeamRequested;
+    }
+
+    private void OnDestroy()
+    {
+        BeamPulseCue.BeamRequested -= HandleBeamRequested;
+    }
+    
+    private void LateUpdate()
+    {
+        bool paused = NarrativeClock.Instance.IsPaused;
+        soundwaveLoop.Tick(activeSoundwaves > 0, paused, Time.unscaledDeltaTime);
+        walkLoop.Tick(IsWalking, paused, Time.unscaledDeltaTime);
     }
 
     public void WalkTo(Vector3 pos)
@@ -88,6 +121,7 @@ public sealed class AlienSpeaker : Speaker
         motion = null;
         jumping = false;
         IsWalking = false;
+        activeSoundwaves = 0;
         agent.enabled = false;
         transform.position = homePosition;
         SpeakerRoot.rotation = homeFacing;
@@ -96,6 +130,16 @@ public sealed class AlienSpeaker : Speaker
     public void PlaySoundwave(double seconds)
     {
         StartCoroutine(SoundwaveRoutine(seconds));
+    }
+
+    public void PlayJumpSound()
+    {
+        if (NarrativeClock.Instance.IsPaused)
+        {
+            return;
+        }
+
+        jumpAudio.PlayOneShot(jumpAudio.clip);
     }
 
     private void StartWalk(Vector3 target, bool returningHome)
@@ -204,6 +248,8 @@ public sealed class AlienSpeaker : Speaker
         
         yield return new WaitForSeconds(Random.Range(soundwaveStartOffset.x, soundwaveStartOffset.y));
 
+        activeSoundwaves++;
+
         while (Now < endAt)
         {
             if (Now >= nextSpawnAt)
@@ -217,11 +263,18 @@ public sealed class AlienSpeaker : Speaker
             }
             yield return null;
         }
+
+        activeSoundwaves--;
     }
     
     // yielded from JumpRoutine as a nested coroutine
     private IEnumerator Hop(Vector3 landing, double duration, float height, AnimationCurve curve, Quaternion? facing = null, bool reverse = false)
     {
+        if (playJumpSoundOnHop)
+        {
+            PlayJumpSound();
+        }
+
         Vector3 from = transform.position;
         Quaternion fromFacing = SpeakerRoot.rotation;
         double startedAt = Now;
@@ -265,6 +318,22 @@ public sealed class AlienSpeaker : Speaker
     }
 
     #endregion
+
+    private void HandleBeamRequested(SpeakerProfile speaker, Vector3 start, Vector3 target)
+    {
+        if (speaker != profile || beamPrefab == null)
+        {
+            return;
+        }
+
+        GameObject beam = Instantiate(beamPrefab, start, Quaternion.identity);
+        if (!beam.TryGetComponent(out BeamMotion motion))
+        {
+            motion = beam.AddComponent<BeamMotion>();
+        }
+
+        motion.Launch(start, target);
+    }
 
     private bool TrySampleNavMesh(Vector3 point, out Vector3 result)
     {
