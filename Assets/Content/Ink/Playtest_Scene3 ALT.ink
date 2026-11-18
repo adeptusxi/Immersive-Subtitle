@@ -75,6 +75,7 @@ We can try from up there? #speaker:Alien3
 
 //everyone starts jumping
 ~ event("aliens_jump")
+~ event("show_large_rock")
 ~ wait_seconds(2)
 
 Everyone look up! #speaker:Alien4

@@ -76,6 +76,7 @@ We can try from up there? #speaker:Alien3
 
 //everyone starts jumping
 ~ event("aliens_jump")
+~ event("show_large_rock")
 ~ wait_seconds(2)
 
 Everyone look up! #speaker:Alien4
@@ -94,6 +95,7 @@ Everyone look up! #speaker:Alien4
 
 //use the soundwave effect
 ~ event("play_soundwave_vfx")
+~ event("show_spaceship")
 ~ wait_seconds(3)
 
 I think I’m hearing something. #speaker:Alien5

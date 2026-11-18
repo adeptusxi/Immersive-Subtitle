@@ -13,8 +13,28 @@ namespace ImmersiveSubtitles.Scenes
         [SerializeField] private string[] walkAwayAlienIds = { "alien2" };
         [SerializeField] private Transform walkAwayTo;
         [SerializeField] private float soundwaveSeconds = 3;
-        
+        [SerializeField] private GameObject largeRock;
+        [SerializeField] private GameObject spaceship;
+        [SerializeField] private float objectRevealDuration = 0.5f;
+
         private float moveTimeoutSeconds = 20;
+        private Vector3 largeRockScale;
+        private Vector3 spaceshipScale;
+
+        private void Awake()
+        {
+            if (largeRock != null)
+            {
+                largeRockScale = largeRock.transform.localScale;
+            }
+
+            if (spaceship != null)
+            {
+                spaceshipScale = spaceship.transform.localScale;
+            }
+
+            HideObjects();
+        }
 
         private void OnEnable()
         {
@@ -44,6 +64,12 @@ namespace ImmersiveSubtitles.Scenes
                     break;
                 case "play_soundwave_vfx":
                     OnPlaySoundwaveVfx();
+                    break;
+                case "show_large_rock":
+                    OnShowLargeRock();
+                    break;
+                case "show_spaceship":
+                    OnShowSpaceship();
                     break;
                 case InkNarrativeRunner.RestartedEventId:
                     OnStoryRestarted();
@@ -109,13 +135,66 @@ namespace ImmersiveSubtitles.Scenes
             }
         }
 
+        private void OnShowLargeRock()
+        {
+            Reveal(largeRock, largeRockScale);
+        }
+
+        private void OnShowSpaceship()
+        {
+            Reveal(spaceship, spaceshipScale);
+        }
+
         private void OnStoryRestarted()
         {
             StopAllCoroutines();
-            
+            HideObjects();
+
             foreach (AlienSpeaker alien in FindAliens(alienIds))
             {
                 alien.ResetToHome();
+            }
+        }
+
+        private void HideObjects()
+        {
+            if (largeRock != null)
+            {
+                largeRock.SetActive(false);
+            }
+            
+            if (spaceship != null)
+            {
+                spaceship.SetActive(false);
+            }
+        }
+        
+        private void Reveal(GameObject target, Vector3 authoredScale)
+        {
+            if (target == null || target.activeSelf)
+            {
+                return;
+            }
+
+            StartCoroutine(ScaleIn(target.transform, authoredScale));
+        }
+
+        private IEnumerator ScaleIn(Transform target, Vector3 authoredScale)
+        {
+            double startedAt = NarrativeClock.Instance.Now;
+            float progress = 0;
+
+            target.localScale = Vector3.zero;
+            target.gameObject.SetActive(true);
+
+            while (progress < 1)
+            {
+                yield return null;
+
+                progress = objectRevealDuration > 0
+                    ? Mathf.Clamp01((float)((NarrativeClock.Instance.Now - startedAt) / objectRevealDuration))
+                    : 1;
+                target.localScale = authoredScale * Mathf.SmoothStep(0, 1, progress);
             }
         }
 
