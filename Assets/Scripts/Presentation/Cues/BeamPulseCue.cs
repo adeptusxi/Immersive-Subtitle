@@ -9,6 +9,7 @@ namespace ImmersiveSubtitles.Presentation
     {
         [SerializeField] private float verticalOffset = 0f;
         [SerializeField] private float forwardOffset = 0.5f;
+        [SerializeField] private float leadInSeconds = 0.4f;
 
         public static event Action<SpeakerProfile, Vector3, Vector3> BeamRequested;
 
@@ -17,48 +18,36 @@ namespace ImmersiveSubtitles.Presentation
         protected override void OnEnable()
         {
             base.OnEnable();
-            SubtitleBus.SegmentStarted += HandleSegmentStarted;
+            SubtitleBus.SegmentPrerolling += HandleSegmentPrerolling;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            SubtitleBus.SegmentStarted -= HandleSegmentStarted;
+            SubtitleBus.SegmentPrerolling -= HandleSegmentPrerolling;
         }
 
-        private void HandleSegmentStarted(SegmentInstance segment)
+        private void HandleSegmentPrerolling(SegmentPreroll preroll)
         {
-            if (!IsActive || segment.indexInTurn != 0)
+            if (!IsActive || preroll.indexInTurn != 0)
             {
                 return;
             }
 
-            Transform root = SpeakerRegistry.Global.RootOf(segment.speaker);
+            Transform root = SpeakerRegistry.Global.RootOf(preroll.speaker);
             if (root == null || Player.Instance.IsInFOV(root.position))
             {
                 return;
             }
 
-            Transform origin = Player.Instance.Head;
-            Vector3 forward = Flat(origin.forward, FallbackForward());
-            Vector3 start = origin.position + Vector3.up * verticalOffset + forward * forwardOffset;
+            Transform head = Player.Instance.Head;
+            Vector3 start = head.position + head.forward * forwardOffset + head.up * verticalOffset;
             Vector3 target = root.position;
-            target.y = start.y;
+            target.y = head.position.y + verticalOffset;
 
-            BeamRequested?.Invoke(segment.speaker, start, target);
-            Debug.Log($"[Subtitles] beam pulse for {segment.speaker.displayName}");
-        }
-
-        private static Vector3 Flat(Vector3 v, Vector3 fallback)
-        {
-            Vector3 flat = Vector3.ProjectOnPlane(v, Vector3.up);
-            return flat.sqrMagnitude < 1e-6f ? fallback : flat.normalized;
-        }
-
-        private static Vector3 FallbackForward()
-        {
-            Vector3 flat = Vector3.ProjectOnPlane(Player.Instance.Head.forward, Vector3.up);
-            return flat.sqrMagnitude < 1e-6f ? Vector3.forward : flat.normalized;
+            BeamRequested?.Invoke(preroll.speaker, start, target);
+            preroll.Request(leadInSeconds);
+            Debug.Log($"[Subtitles] beam pulse for {preroll.speaker.displayName}");
         }
     }
 }

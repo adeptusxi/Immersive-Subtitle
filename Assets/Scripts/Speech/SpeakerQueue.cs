@@ -7,7 +7,7 @@ namespace ImmersiveSubtitles.Speech
 {
     public sealed class SpeakerQueue
     {
-        private enum Phase { Delay, Showing, Gap }
+        private enum Phase { Delay, Preroll, Showing, Gap }
 
         private sealed class Entry
         {
@@ -134,6 +134,16 @@ namespace ImmersiveSubtitles.Speech
             switch (entry.phase)
             {
                 case Phase.Delay:
+                    if (entry.startAt > upTo)
+                        return false;
+                    cursor = entry.startAt;
+                    var preroll = new SegmentPreroll { speaker = Profile, indexInTurn = entry.request.indexInTurn };
+                    SubtitleBus.RaiseSegmentPrerolling(preroll);
+                    entry.startAt += preroll.Seconds;
+                    entry.phase = Phase.Preroll;
+                    return true;
+
+                case Phase.Preroll:
                     if (entry.startAt > upTo)
                         return false;
                     cursor = entry.startAt;

@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: fb542672-a025-48c8-90d8-0206dcc76956
+  instanceId: 3775fccf-0c70-444f-80a5-4166df793b21
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -4036,14 +4036,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2375738786542405777}
     m_Modifications:
-    - target: {fileID: 2012411995633931602, guid: 2c4005bf5328542b6ab27181ca0b7641, type: 3}
-      propertyPath: forwardOffset
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2012411995633931602, guid: 2c4005bf5328542b6ab27181ca0b7641, type: 3}
-      propertyPath: verticalOffset
-      value: -0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 2154197767719043460, guid: 2c4005bf5328542b6ab27181ca0b7641, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.24958
