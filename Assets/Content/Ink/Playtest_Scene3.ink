@@ -21,7 +21,7 @@ EXTERNAL event(eventId)
 
 Hi! #speaker:Alien2
 
-We heard your call. #speaker:Alien4 #async
+We heard your call. #speaker:Alien4
 
 Yeah, what’s happening? #speaker:Alien5 #async
 
