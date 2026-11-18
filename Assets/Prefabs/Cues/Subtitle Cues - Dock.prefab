@@ -471,6 +471,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   hideDelay: 0.5
+  sizeByAngle: 0
+  maxAngleScale: 1
+  minAngleScale: 0.5
+  maxScaleAngle: 45
 --- !u!114 &561409934077301973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +518,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   hideDelay: 0.5
+  sizeByAngle: 1
+  maxAngleScale: 1
+  minAngleScale: 0.5
+  maxScaleAngle: 45
 --- !u!114 &2061148730370984824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +565,10 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   hideDelay: 0.5
+  sizeByAngle: 0
+  maxAngleScale: 1
+  minAngleScale: 0.5
+  maxScaleAngle: 45
 --- !u!1 &6976424263384480906
 GameObject:
   m_ObjectHideFlags: 0

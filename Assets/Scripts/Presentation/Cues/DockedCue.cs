@@ -20,6 +20,12 @@ namespace ImmersiveSubtitles.Presentation
         private AnimationCurve scaleCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [SerializeField] private float hideDelay = 0.5f;
 
+        [Header("Size By Angle")]
+        [SerializeField] private bool sizeByAngle;
+        [SerializeField, Tooltip("multiplier on authored local scale")] private float maxAngleScale = 1f;
+        [SerializeField, Tooltip("multiplier on authored local scale")] private float minAngleScale = 0.5f;
+        [SerializeField] private float maxScaleAngle = 45f;
+        
         private struct Slot
         {
             public TItem item;
@@ -194,6 +200,8 @@ namespace ImmersiveSubtitles.Presentation
         private Slot IdealSlot(TItem item, Transform target)
         {
             Vector3 local = Player.Instance.Head.InverseTransformPoint(target.position);
+            item.SetSizeFactor(sizeByAngle ? AngleSizeFactor(local) : 1f);
+
             Vector2 flat = new Vector2(local.x, local.y);
             if (flat.magnitude >= behindThreshold * local.magnitude)
             {
@@ -217,7 +225,13 @@ namespace ImmersiveSubtitles.Presentation
             };
         }
 
-        // push neighbors apart 
+        private float AngleSizeFactor(Vector3 headLocal)
+        {
+            float angle = Vector3.Angle(Vector3.forward, headLocal);
+            return Mathf.Lerp(maxAngleScale, minAngleScale, Mathf.InverseLerp(maxScaleAngle, 180f, angle));
+        }
+
+        // push neighbors apart
         private void Spread()
         {
             int count = slots.Count;

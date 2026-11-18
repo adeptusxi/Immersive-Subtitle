@@ -7,6 +7,7 @@ namespace ImmersiveSubtitles.Presentation
     public abstract class DockedItem : MonoBehaviour
     {
         private Vector3 authoredScale;
+        private float sizeFactor = 1f;
 
         public Vector2 Direction { get; private set; } = Vector2.right;
         
@@ -18,7 +19,7 @@ namespace ImmersiveSubtitles.Presentation
             get
             {
                 Vector2 size = ((RectTransform)transform).rect.size;
-                Vector3 scale = BaseScale;
+                Vector3 scale = BaseScale * sizeFactor;
                 return new Vector2(size.x * scale.x, size.y * scale.y);
             }
         }
@@ -32,9 +33,14 @@ namespace ImmersiveSubtitles.Presentation
 
         public virtual void Bind(SpeakerProfile speaker) { }
 
+        public void SetSizeFactor(float factor)
+        {
+            sizeFactor = factor;
+        }
+
         public void SetScaleFactor(float factor)
         {
-            transform.localScale = BaseScale * factor;
+            transform.localScale = BaseScale * sizeFactor * factor;
         }
 
         public void SetDirection(Vector2 direction)
