@@ -8,7 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public sealed class AlienSpeaker : Speaker
 {
-    // [SerializeField] private Animator animator; // xiao-TODO hook up animator once joyce is done with model
+    [SerializeField] private Animator animator;
     
     [Header("Walk")]
     [SerializeField] private float navMeshSampleRadius = 5f;
@@ -39,8 +39,11 @@ public sealed class AlienSpeaker : Speaker
     [SerializeField, Min(0.01f)] private float loopFadeSeconds = 0.1f;
     [SerializeField] private bool playJumpSoundOnHop = true; // xiao-TODO temp until animations are ready
 
-    private static readonly int WalkTrigger = Animator.StringToHash("Walk");
     private static readonly int IdleTrigger = Animator.StringToHash("Idle");
+    private static readonly int WalkTrigger = Animator.StringToHash("Walk");
+    private static readonly int JumpTrigger = Animator.StringToHash("JumpTrigger");
+    private static readonly int JumpLoopTrigger = Animator.StringToHash("JumpLoop");
+    private static readonly int DanceTrigger = Animator.StringToHash("Dance");
 
     private NavMeshAgent agent;
     private NavMeshQueryFilter navFilter;
@@ -52,6 +55,7 @@ public sealed class AlienSpeaker : Speaker
     private LoopingAudio soundwaveLoop;
     private LoopingAudio walkLoop;
     private int activeSoundwaves;
+    private int currentAnimation = IdleTrigger;
 
     public bool IsWalking { get; private set; }
 
@@ -91,6 +95,7 @@ public sealed class AlienSpeaker : Speaker
         bool paused = NarrativeClock.Instance.IsPaused;
         soundwaveLoop.Tick(activeSoundwaves > 0, paused, Time.unscaledDeltaTime);
         walkLoop.Tick(IsWalking, paused, Time.unscaledDeltaTime);
+        animator.speed = paused ? 0f : 1f;
     }
 
     public void WalkTo(Vector3 pos)
@@ -115,6 +120,11 @@ public sealed class AlienSpeaker : Speaker
         jumping = false;
     }
 
+    public void StartDancing()
+    {
+        PlayAnimation(DanceTrigger);
+    }
+
     public void ResetToHome()
     {
         StopAllCoroutines();
@@ -125,6 +135,7 @@ public sealed class AlienSpeaker : Speaker
         agent.enabled = false;
         transform.position = homePosition;
         SpeakerRoot.rotation = homeFacing;
+        PlayAnimation(IdleTrigger);
     }
 
     public void PlaySoundwave(double seconds)
@@ -159,25 +170,37 @@ public sealed class AlienSpeaker : Speaker
         if (IsWalking)
         {
             agent.enabled = false;
-            // animator.SetTrigger(IdleTrigger);
         }
 
+        PlayAnimation(IdleTrigger);
         IsWalking = false;
         jumping = false;
+    }
+
+    private void PlayAnimation(int trigger)
+    {
+        if (trigger == currentAnimation)
+        {
+            return;
+        }
+
+        animator.ResetTrigger(currentAnimation);
+        currentAnimation = trigger;
+        animator.SetTrigger(trigger);
     }
 
     #region Routines
 
     private IEnumerator WalkRoutine(Vector3 target, bool returningHome)
     {
-        // animator.SetTrigger(WalkTrigger);
+        PlayAnimation(WalkTrigger);
         agent.enabled = true;
 
         if (!agent.isOnNavMesh || !TrySampleNavMesh(target, out Vector3 destination) || !agent.SetDestination(destination))
         {
             Debug.LogWarning($"[Subtitles] {name} found no nav mesh path to {target}");
             agent.enabled = false;
-            // animator.SetTrigger(IdleTrigger);
+            PlayAnimation(IdleTrigger);
             IsWalking = false;
             yield break;
         }
@@ -206,7 +229,7 @@ public sealed class AlienSpeaker : Speaker
                 yield return null;
         }
 
-        // animator.SetTrigger(IdleTrigger);
+        PlayAnimation(IdleTrigger);
         IsWalking = false;
     }
 
@@ -228,16 +251,20 @@ public sealed class AlienSpeaker : Speaker
         Vector3 rockForward = rockLanding.forward;
         rockForward.y = 0f;
         Quaternion rockFacing = rockForward.sqrMagnitude > 0.0001f ? Quaternion.LookRotation(rockForward) : SpeakerRoot.rotation;
+        PlayAnimation(JumpTrigger);
         yield return Hop(rockLanding.position, rockHopDuration, rockHopHeight, jumpCurve, rockFacing);
 
         // hop up and down on rock
         while (jumping)
         {
+            PlayAnimation(JumpLoopTrigger);
             yield return Hop(rockLanding.position, jumpDuration, jumpHeight, jumpCurve);
         }
 
         // hop down from rock
+        PlayAnimation(JumpTrigger);
         yield return Hop(homePosition, rockHopDuration, rockHopHeight, jumpCurve, homeFacing, reverse: true);
+        PlayAnimation(IdleTrigger);
     }
 
     private IEnumerator SoundwaveRoutine(double seconds)

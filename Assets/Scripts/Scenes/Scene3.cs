@@ -62,6 +62,9 @@ namespace ImmersiveSubtitles.Scenes
                 case "aliens_stop_jump":
                     OnAlientStopJump();
                     break;
+                case "aliens_dance":
+                    OnAliensDance();
+                    break;
                 case "play_soundwave_vfx":
                     OnPlaySoundwaveVfx();
                     break;
@@ -124,6 +127,14 @@ namespace ImmersiveSubtitles.Scenes
             foreach (AlienSpeaker alien in FindAliens(alienIds))
             {
                 alien.StopJumping();
+            }
+        }
+
+        private void OnAliensDance()
+        {
+            foreach (AlienSpeaker alien in FindAliens(alienIds))
+            {
+                alien.StartDancing();
             }
         }
 
