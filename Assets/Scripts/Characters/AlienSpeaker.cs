@@ -39,8 +39,9 @@ public sealed class AlienSpeaker : Speaker
     [SerializeField] private AudioSource walkAudio;
     [SerializeField] private AudioSource jumpAudio;
     [SerializeField, Min(0.01f)] private float loopFadeSeconds = 0.1f;
-    [SerializeField] private bool playJumpSoundOnHop = true; // xiao-TODO temp until animations are ready
+    [SerializeField, Min(0.01f)] private float soundwaveFadeOutSeconds = 1.5f;
 
+    private static readonly int IdleState = Animator.StringToHash("Idle");
     private static readonly int IdleTrigger = Animator.StringToHash("Idle");
     private static readonly int WalkTrigger = Animator.StringToHash("Walk");
     private static readonly int JumpTrigger = Animator.StringToHash("Jump");
@@ -64,8 +65,10 @@ public sealed class AlienSpeaker : Speaker
 
     private static double Now => NarrativeClock.Instance.Now;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        animator.applyRootMotion = false;
         animator.SetInteger(AlienIdxParam, alienIdx);
     }
 
@@ -86,11 +89,13 @@ public sealed class AlienSpeaker : Speaker
         agent.baseOffset = standOffset;
         agent.enabled = false;
 
-        soundwaveLoop = new LoopingAudio(soundwaveAudio, loopFadeSeconds);
+        soundwaveLoop = new LoopingAudio(soundwaveAudio, loopFadeSeconds, soundwaveFadeOutSeconds);
         walkLoop = new LoopingAudio(walkAudio, loopFadeSeconds);
         LoopingAudio.ConfigureSpatial(jumpAudio);
-        
+
         BeamPulseCue.BeamRequested += HandleBeamRequested;
+
+        PlayIdleAtRandomOffset();
     }
 
     private void OnDestroy()
@@ -143,7 +148,7 @@ public sealed class AlienSpeaker : Speaker
         agent.enabled = false;
         transform.position = homePosition;
         SpeakerRoot.rotation = homeFacing;
-        PlayAnimation(IdleTrigger);
+        PlayIdleAtRandomOffset();
     }
 
     public void PlaySoundwave(double seconds)
@@ -195,6 +200,14 @@ public sealed class AlienSpeaker : Speaker
         animator.ResetTrigger(currentAnimation);
         currentAnimation = trigger;
         animator.SetTrigger(trigger);
+    }
+    
+    private void PlayIdleAtRandomOffset()
+    {
+        animator.ResetTrigger(currentAnimation);
+        animator.ResetTrigger(IdleTrigger);
+        currentAnimation = IdleTrigger;
+        animator.Play(IdleState, 0, Random.value);
     }
 
     #region Routines
@@ -305,11 +318,6 @@ public sealed class AlienSpeaker : Speaker
     // yielded from JumpRoutine as a nested coroutine
     private IEnumerator Hop(Vector3 landing, double duration, float height, AnimationCurve curve, Quaternion? facing = null, bool reverse = false)
     {
-        if (playJumpSoundOnHop)
-        {
-            PlayJumpSound();
-        }
-
         Vector3 from = transform.position;
         Quaternion fromFacing = SpeakerRoot.rotation;
         double startedAt = Now;

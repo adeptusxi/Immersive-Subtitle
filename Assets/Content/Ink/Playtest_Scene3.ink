@@ -3,13 +3,14 @@ EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
 
+VAR saw_large_rock = false
+VAR saw_spaceship = false
+
 -> intro
 
 === intro ===
 + [START] 
     -> main
-+ [EMOTION TEST]
-    -> emotions_demo
 
 -> replay
 
@@ -80,9 +81,14 @@ We can try from up there? #speaker:Alien3
 ~ wait_seconds(2)
 
 Everyone look up! #speaker:Alien4
+{ not saw_large_rock:
+    ~ wait_for("saw_large_rock")
+}
 
 //everyone stops jumping 
 ~ event("aliens_stop_jump")
+
+~ wait_seconds(4)
 
 //emotion ~ depressed
 <sadness>No, that's just a large rock.</sadness> #speaker:Alien2
@@ -91,7 +97,7 @@ Everyone look up! #speaker:Alien4
 <fear>We're never going to find the ship...</fear> #speaker:Alien3
 
 //emotion ~ eager, happy
-<joy>Why don’t we use echolocation?</joyy> #speaker:Alien4
+<joy>Why don’t we use echolocation?</joy> #speaker:Alien4
 
 //use the soundwave effect
 ~ event("play_soundwave_vfx")
@@ -99,6 +105,11 @@ Everyone look up! #speaker:Alien4
 ~ wait_seconds(3)
 
 I think I’m hearing something. #speaker:Alien5
+{ not saw_spaceship:
+    ~ wait_for("saw_spaceship")
+}
+
+~ wait_seconds(4)
 
 Yea, maybe a 30 minute walk? #speaker:Alien1 #async
 
@@ -113,33 +124,15 @@ Haha, glad we could help! #speaker:Alien2 #async
     
 === outro ===
 
-See you around! #speaker:Alien1 #async 
+~ event("aliens_dance")
 
 ~ wait_seconds(2)
 
+See you around! #speaker:Alien1 #async 
+
+~ wait_seconds(10)
+
 -> replay
-
-=== emotions_demo ===
-
-how is everyone feeling today? #speaker:alien1
-
-~ wait_seconds(0.5)
-
-i'm feeling <joy>so happy</joy> today! 
-
-~ wait_seconds(0.5)
-
-i'm feeling <sadness>a little sad</sadness> #speaker:alien3
-
-~ wait_seconds(0.5)
-
-i'm feeling <anger>really angry</anger> #speaker:alien4
-
-~ wait_seconds(0.5)
-
-and i'm feeling <fear>very scared</fear> #speaker:alien5
-
--> intro
 
 === function wait_for(eventId) ===
 ~ return

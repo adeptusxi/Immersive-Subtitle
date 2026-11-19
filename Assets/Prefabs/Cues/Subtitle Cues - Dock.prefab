@@ -470,7 +470,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hideDelay: 0.5
+  hideDelay: 0.15
   sizeByAngle: 0
   maxAngleScale: 1
   minAngleScale: 0.5
@@ -517,7 +517,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hideDelay: 0.5
+  hideDelay: 0.15
   sizeByAngle: 1
   maxAngleScale: 1
   minAngleScale: 0.5
@@ -564,7 +564,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  hideDelay: 0.5
+  hideDelay: 0.15
   sizeByAngle: 0
   maxAngleScale: 1
   minAngleScale: 0.5

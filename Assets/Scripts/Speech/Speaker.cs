@@ -13,7 +13,7 @@ namespace ImmersiveSubtitles.Speech
         public SpeakerQueue Queue { get; private set; }
         protected Transform SpeakerRoot => speakerRoot;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Queue = new SpeakerQueue(profile, timing);
         }

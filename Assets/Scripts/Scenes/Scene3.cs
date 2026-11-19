@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ImmersiveSubtitles.Core;
 using ImmersiveSubtitles.Narrative;
 using ImmersiveSubtitles.Speech;
 using UnityEngine;
@@ -9,13 +10,19 @@ namespace ImmersiveSubtitles.Scenes
 {
     public class Scene3 : MonoBehaviour
     {
+        [SerializeField] private InkNarrativeRunnerBehaviour runner;
         [SerializeField] private string[] alienIds = { "alien1", "alien2", "alien3", "alien4", "alien5" };
         [SerializeField] private string[] walkAwayAlienIds = { "alien2" };
         [SerializeField] private Transform walkAwayTo;
         [SerializeField] private float soundwaveSeconds = 3;
         [SerializeField] private GameObject largeRock;
         [SerializeField] private GameObject spaceship;
+        [SerializeField] private GameObject largeRockNotice; 
+        [SerializeField] private GameObject spaceshipNotice; 
         [SerializeField] private float objectRevealDuration = 0.5f;
+
+        private const string SawLargeRockId = "saw_large_rock";
+        private const string SawSpaceshipId = "saw_spaceship";
 
         private float moveTimeoutSeconds = 20;
         private Vector3 largeRockScale;
@@ -148,18 +155,23 @@ namespace ImmersiveSubtitles.Scenes
 
         private void OnShowLargeRock()
         {
-            Reveal(largeRock, largeRockScale);
+            Reveal(largeRock, largeRockScale, largeRockNotice);
+            StartCoroutine(WatchUntilSeen(largeRock.transform, largeRockNotice, SawLargeRockId));
         }
 
         private void OnShowSpaceship()
         {
-            Reveal(spaceship, spaceshipScale);
+            Reveal(spaceship, spaceshipScale, spaceshipNotice);
+            StartCoroutine(WatchUntilSeen(spaceship.transform, spaceshipNotice, SawSpaceshipId));
         }
 
         private void OnStoryRestarted()
         {
             StopAllCoroutines();
             HideObjects();
+
+            runner.Runner.SetVariable(SawLargeRockId, false);
+            runner.Runner.SetVariable(SawSpaceshipId, false);
 
             foreach (AlienSpeaker alien in FindAliens(alienIds))
             {
@@ -173,18 +185,37 @@ namespace ImmersiveSubtitles.Scenes
             {
                 largeRock.SetActive(false);
             }
-            
+
+            HideNotice(largeRockNotice);
+
             if (spaceship != null)
             {
                 spaceship.SetActive(false);
             }
+
+            HideNotice(spaceshipNotice);
         }
-        
-        private void Reveal(GameObject target, Vector3 authoredScale)
+
+        private static void HideNotice(GameObject notice)
+        {
+            if (notice == null)
+            {
+                return;
+            }
+
+            notice.SetActive(false);
+        }
+
+        private void Reveal(GameObject target, Vector3 authoredScale, GameObject notice)
         {
             if (target == null || target.activeSelf)
             {
                 return;
+            }
+
+            if (notice != null)
+            {
+                notice.SetActive(true);
             }
 
             StartCoroutine(ScaleIn(target.transform, authoredScale));
@@ -206,6 +237,22 @@ namespace ImmersiveSubtitles.Scenes
                     ? Mathf.Clamp01((float)((NarrativeClock.Instance.Now - startedAt) / objectRevealDuration))
                     : 1;
                 target.localScale = authoredScale * Mathf.SmoothStep(0, 1, progress);
+            }
+        }
+        
+        private IEnumerator WatchUntilSeen(Transform target, GameObject notice, string eventId)
+        {
+            yield return null;
+            while (!Player.Instance.IsInFOV(target.position))
+            {
+                yield return null;
+            }
+
+            runner.Runner.SetVariable(eventId, true);
+            GameEvents.Raise(eventId);
+            if (notice != null)
+            {
+                notice.SetActive(false);
             }
         }
 

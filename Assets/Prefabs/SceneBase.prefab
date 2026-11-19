@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 3775fccf-0c70-444f-80a5-4166df793b21
+  instanceId: 156b2351-06b0-4fba-ac13-71df5e191c33
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3162,8 +3162,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 304b957b6e9a745daae2cfcffe12ab80, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -4399,6 +4399,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1346282901008165261, guid: b099210cdb0fe4bb5ba3b583d21f8bdc, type: 3}
+      propertyPath: runner
+      value: 
+      objectReference: {fileID: 6351274465058968869}
     - target: {fileID: 1958528419376273456, guid: b099210cdb0fe4bb5ba3b583d21f8bdc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -4501,7 +4505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6768576857814682660, guid: b099210cdb0fe4bb5ba3b583d21f8bdc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 770
+      value: 560
       objectReference: {fileID: 0}
     - target: {fileID: 6768576857814682660, guid: b099210cdb0fe4bb5ba3b583d21f8bdc, type: 3}
       propertyPath: m_AnchoredPosition.y

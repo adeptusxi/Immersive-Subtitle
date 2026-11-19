@@ -3,13 +3,14 @@ EXTERNAL wait_seconds(seconds)
 EXTERNAL wait_all()
 EXTERNAL event(eventId)
 
+VAR saw_large_rock = false
+VAR saw_spaceship = false
+
 -> intro
 
 === intro ===
 + [START] 
     -> main
-+ [EMOTION TEST]
-    -> emotions_demo
 
 -> replay
 
@@ -19,7 +20,7 @@ EXTERNAL event(eventId)
 
 === main ===
 
-So…any idea how to escape? #speaker:Alien2
+So... any idea how to escape? #speaker:Alien2
 
 <fear>Are we stuck here forever?</fear> #speaker:Alien4 
 
@@ -99,7 +100,7 @@ What is that?
 
 <sadness>I don't here anything...</sadness> #speaker:Alien5
 
-<sadness>Yea, I'm not sure what else to do...</sadness> #speaker:Alien1 #async
+<sadness>Yeah, I'm not sure what else to do...</sadness> #speaker:Alien1 #async
 
 + [You guys are so useless.] 
     -> outro
@@ -115,28 +116,6 @@ What is that?
 ~ wait_seconds(2)
 
 -> replay
-
-=== emotions_demo ===
-
-how is everyone feeling today? #speaker:alien1
-
-~ wait_seconds(0.5)
-
-i'm feeling <joy>so happy</joy> today! 
-
-~ wait_seconds(0.5)
-
-i'm feeling <sadness>a little sad</sadness> #speaker:alien3
-
-~ wait_seconds(0.5)
-
-i'm feeling <anger>really angry</anger> #speaker:alien4
-
-~ wait_seconds(0.5)
-
-and i'm feeling <fear>very scared</fear> #speaker:alien5
-
--> intro
 
 === function wait_for(eventId) ===
 ~ return

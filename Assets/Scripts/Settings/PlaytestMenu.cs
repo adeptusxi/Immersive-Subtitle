@@ -1,4 +1,5 @@
 using ImmersiveSubtitles.Core;
+using ImmersiveSubtitles.Narrative;
 using ImmersiveSubtitles.Presentation;
 using ImmersiveSubtitles.Speech;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace ImmersiveSubtitles.Settings
     public sealed class PlaytestMenu : MonoBehaviour
     {
         [SerializeField] private GameObject canvasRoot;
+        [SerializeField] private InkNarrativeRunnerBehaviour runner; 
         [SerializeField] private ButtonUI noneButton;
         [SerializeField] private ButtonUI ringPulseButton;
         [SerializeField] private ButtonUI beamPulseButton;
@@ -92,6 +94,7 @@ namespace ImmersiveSubtitles.Settings
         {
             SubtitleRuntime.Preferences.Current.speechCueMode = cue;
             SubtitleRuntime.Preferences.NotifyChanged();
+            runner.UseInkFor(cue);
         }
 
         private void Refresh()

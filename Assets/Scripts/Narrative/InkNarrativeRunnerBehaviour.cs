@@ -31,19 +31,16 @@ namespace ImmersiveSubtitles.Narrative
             {
                 emotions.RegisterFonts();
             }
-
-            CreateRunner(WantsAlt());
-            SubtitleRuntime.Preferences.Changed += HandlePreferencesChanged;
         }
 
         private void OnDestroy()
         {
-            SubtitleRuntime.Preferences.Changed -= HandlePreferencesChanged;
             Runner.ChoicesPresented -= HandleChoicesPresented;
         }
 
         private void Start()
         {
+            CreateRunner(altInkCues.Contains(SubtitleRuntime.Preferences.Current.speechCueMode));
             Runner.Begin();
         }
 
@@ -66,23 +63,9 @@ namespace ImmersiveSubtitles.Narrative
             Runner.Restart();
         }
 
-        private bool WantsAlt()
+        public void UseInkFor(SpeechCueMode cue)
         {
-            return altInkCues.Contains(SubtitleRuntime.Preferences.Current.speechCueMode);
-        }
-
-        private void CreateRunner(bool alt)
-        {
-            usingAlt = alt;
-            InkFile file = alt ? altInk : ink;
-            Runner = new InkNarrativeRunner(new Story(file.storyJson), defaultSpeakerId, SpeakerRegistry.Global, emotions, restartKnot);
-            Runner.ChoicesPresented += HandleChoicesPresented;
-        }
-
-        // swap to the other ink file and jump to its restart knot 
-        private void HandlePreferencesChanged()
-        {
-            bool alt = WantsAlt();
+            bool alt = altInkCues.Contains(cue);
             if (alt == usingAlt)
             {
                 return;
@@ -91,16 +74,25 @@ namespace ImmersiveSubtitles.Narrative
             bool started = Runner.State != RunnerState.NotStarted;
             if (started)
             {
-                Restart(); 
+                Restart();
             }
             Runner.ChoicesPresented -= HandleChoicesPresented;
 
             CreateRunner(alt);
+            
             if (started)
             {
                 Runner.Begin();
                 Runner.Restart();
             }
+        }
+
+        private void CreateRunner(bool alt)
+        {
+            usingAlt = alt;
+            InkFile file = alt ? altInk : ink;
+            Runner = new InkNarrativeRunner(new Story(file.storyJson), defaultSpeakerId, SpeakerRegistry.Global, emotions, restartKnot);
+            Runner.ChoicesPresented += HandleChoicesPresented;
         }
 
         private void HandleChoicesPresented(IReadOnlyList<ChoiceOption> options)

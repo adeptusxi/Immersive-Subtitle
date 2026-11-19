@@ -47,4 +47,4 @@ MonoBehaviour:
   fovMarginDegrees: 5
   verticalOffset: -0.25
   forwardOffset: 0.7
-  leadInSeconds: 0.5
+  leadInSeconds: 0.75

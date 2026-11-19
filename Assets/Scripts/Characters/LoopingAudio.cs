@@ -4,14 +4,16 @@ public sealed class LoopingAudio
 {
     private readonly AudioSource source;
     private readonly float fadeSeconds;
+    private readonly float fadeOutSeconds;
     private readonly float fullVolume;
     private bool isPaused;
     private bool resumeOnUnpause;
 
-    public LoopingAudio(AudioSource source, float fadeSeconds)
+    public LoopingAudio(AudioSource source, float fadeSeconds, float fadeOutSeconds = 0f)
     {
         this.source = source;
         this.fadeSeconds = fadeSeconds;
+        this.fadeOutSeconds = fadeOutSeconds > 0f ? fadeOutSeconds : fadeSeconds;
         fullVolume = source.volume;
 
         ConfigureSpatial(source);
@@ -62,7 +64,7 @@ public sealed class LoopingAudio
         }
 
         float target = wanted ? fullVolume : 0f;
-        source.volume = Mathf.MoveTowards(source.volume, target, fullVolume * deltaTime / fadeSeconds);
+        source.volume = Mathf.MoveTowards(source.volume, target, fullVolume * deltaTime / (wanted ? fadeSeconds : fadeOutSeconds));
 
         if (!wanted && source.volume <= 0f)
         {

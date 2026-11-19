@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.11725705, g: 0.15094481, b: 0.16037738, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1556,7 +1556,7 @@ MonoBehaviour:
       textColor: {r: 1, g: 1, b: 1, a: 1}
       colorTextBySpeaker: 0
       backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-      backgroundOpacity: 0.6
+      backgroundOpacity: 0.8
   resetButton: {fileID: 8219700963498610050}
   presentationTabButton: {fileID: 4354704063882057082}
   textTabButton: {fileID: 2172351262765183879}
