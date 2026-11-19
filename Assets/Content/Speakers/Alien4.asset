@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien4
   displayName: Roboto
-  color: {r: 0.41709685, g: 0.8584906, b: 0.7970307, a: 1}
+  color: {r: 0.11792451, g: 0.6155344, b: 1, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
-  icon: {fileID: 21300000, guid: 36886230a091c43e284084990b26f631, type: 3}
+  icon: {fileID: 21300000, guid: d30cc1313a0ac4b1590a45d5eebad75b, type: 3}

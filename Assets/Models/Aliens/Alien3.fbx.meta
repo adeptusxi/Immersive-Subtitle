@@ -13,17 +13,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.003
-    second: {fileID: -334436877680062231, guid: 102e559cdba6044619fdb21799466a8c, type: 3}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.004
-    second: {fileID: -334436877680062231, guid: 31391064155b64d7d8bb7fb2f4087c5a, type: 3}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: horn.005
-    second: {fileID: -334436877680062231, guid: 31391064155b64d7d8bb7fb2f4087c5a, type: 3}
+    second: {fileID: 2100000, guid: 763a8b80999a44bf982f52f6611a1de6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

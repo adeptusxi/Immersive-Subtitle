@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ImmersiveSubtitles.Core.SpeakerProfile
   id: alien5
   displayName: Arial
-  color: {r: 0.8207547, g: 0.4452207, b: 0.5936578, a: 1}
+  color: {r: 0.8962264, g: 0.26633143, b: 0.5116591, a: 1}
   speechRate: 0.8
   voice: {fileID: 11400000, guid: 90aa794e1868e4f4498a028f8a7b174a, type: 2}
-  icon: {fileID: 21300000, guid: f61a6fc00ca8b45e1b70631e688b5695, type: 3}
+  icon: {fileID: 21300000, guid: ba4ef86ea4afe410f813800e75f2ed6d, type: 3}

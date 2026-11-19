@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3c6e801e7da8941669ae1891c33fbb21, type: 2}
+  m_Motion: {fileID: 7400000, guid: b1d1662391b3442579fc79132657c269, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -84,7 +84,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DanceHipHop
-  m_Speed: 1.3
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -96,7 +96,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e22609447ebc547bba83a2b8a2d834a2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 20f3d436caaf34926a0f035a26800430, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -163,7 +163,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: JumpLoop
-  m_Speed: 1.5
+  m_Speed: 1.35
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -175,7 +175,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e94f17fff92e244a1b62c9191d3b1621, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3738f9323b4cf43c39fedcbd8238281a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -189,7 +189,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DanceHorizontalWave
-  m_Speed: 1.3
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -201,7 +201,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 979f2a4c18f3c4195a92dd05f7c0df58, type: 2}
+  m_Motion: {fileID: 7400000, guid: 50e6fb3faf4c34f4190d8aaa9775da0c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -393,7 +393,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b71ba138074ec4c608d24447a89cdf98, type: 2}
+  m_Motion: {fileID: 7400000, guid: ef3eb56606ce64f898f1f95b73edbeb3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -447,19 +447,19 @@ AnimatorStateMachine:
     m_Position: {x: 360, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3478569749185849729}
-    m_Position: {x: 370, y: 890, z: 0}
+    m_Position: {x: 370, y: 860, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -199873266774680054}
-    m_Position: {x: 370, y: 690, z: 0}
+    m_Position: {x: 370, y: 590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5771664563979030196}
-    m_Position: {x: 370, y: 740, z: 0}
+    m_Position: {x: 360, y: 650, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9008945875991164028}
-    m_Position: {x: 370, y: 840, z: 0}
+    m_Position: {x: 370, y: 780, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6239724132358865280}
-    m_Position: {x: 370, y: 790, z: 0}
+    m_Position: {x: 370, y: 710, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -3218248872774387361}
@@ -512,7 +512,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DanceVerticalWave
-  m_Speed: 1.3
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -524,7 +524,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3cb65fc49be9a43eb805450c0e76bfc1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 70b898c1f663741fba53e065155e5113, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -538,7 +538,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DanceSwing
-  m_Speed: 1.3
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -550,7 +550,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a6747c368fb40475fad2c7dceaa40929, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5d379677bafbd4521ba1659ed91ca485, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -592,7 +592,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DanceRumba
-  m_Speed: 1.3
+  m_Speed: 1.2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -604,7 +604,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b7a45228ba8174f0bab70f89a9fa112a, type: 2}
+  m_Motion: {fileID: 7400000, guid: cdf25fb24aaf645d7a4afb1575b9c153, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
