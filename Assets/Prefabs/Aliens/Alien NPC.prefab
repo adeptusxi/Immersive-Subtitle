@@ -267,7 +267,7 @@ MonoBehaviour:
   walkAudio: {fileID: 4191384767680816025}
   jumpAudio: {fileID: 7423339985921771849}
   loopFadeSeconds: 0.1
-  playJumpSoundOnHop: 1
+  soundwaveFadeOutSeconds: 1.5
 --- !u!114 &6792308027856368782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1187,7 +1187,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1502,7 +1502,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
