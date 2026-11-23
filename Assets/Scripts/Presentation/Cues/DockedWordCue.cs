@@ -4,7 +4,7 @@ using ImmersiveSubtitles.Speech;
 
 namespace ImmersiveSubtitles.Presentation
 {
-    public sealed class DockedWordCue : DockedCue<DockedWordIndicator>
+    public class DockedWordCue : DockedCue<DockedWordIndicator>
     {
         private readonly Dictionary<SpeakerProfile, SegmentInstance> latest = new(); // most recently started segment per speaker. kept through gaps until the speaker's queue goes idle
 

@@ -7,7 +7,7 @@ namespace ImmersiveSubtitles.Presentation
 {
     public static class SubtitleStyler
     {
-        // name and speaker can be null 
+        // name, background and speaker can be null 
         public static void Apply(TextStylePreferences style, TMP_Text body, TMP_Text name, Image background, SpeakerProfile speaker)
         {
             TMP_FontAsset font = style.font != null ? style.font : TMP_Settings.defaultFontAsset;
@@ -20,9 +20,12 @@ namespace ImmersiveSubtitles.Presentation
                 name.color = speaker != null ? speaker.color : style.textColor;
             }
 
-            Color backgroundColor = style.backgroundColor;
-            backgroundColor.a = style.backgroundOpacity;
-            background.color = backgroundColor;
+            if (background != null) 
+            {
+                Color backgroundColor = style.backgroundColor;
+                backgroundColor.a = style.backgroundOpacity;
+                background.color = backgroundColor;
+            }
         }
         
         public static void ClearUnusedSubMeshes(TMP_Text text)

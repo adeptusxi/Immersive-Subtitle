@@ -19,6 +19,7 @@ namespace ImmersiveSubtitles.Settings
         [SerializeField] private ButtonUI dockedIndicatorButton;
         [SerializeField] private ButtonUI dockedWordButton;
         [SerializeField] private ButtonUI dockedHudButton;
+        [SerializeField] private ButtonUI speechBubbleButton;
 
         private ButtonUI[] buttons; // index = SpeechCueMode
 
@@ -35,9 +36,15 @@ namespace ImmersiveSubtitles.Settings
                 dockedIndicatorButton, 
                 dockedWordButton, 
                 dockedHudButton,
+                speechBubbleButton,
             };
             for (int i = 0; i < buttons.Length; i++)
             {
+                if (buttons[i] == null)
+                {
+                    continue; 
+                }
+
                 SpeechCueMode cue = (SpeechCueMode)i;
                 buttons[i].Clicked += () => Select(cue);
             }
@@ -102,7 +109,10 @@ namespace ImmersiveSubtitles.Settings
             int selected = (int)SubtitleRuntime.Preferences.Current.speechCueMode;
             for (int i = 0; i < buttons.Length; i++)
             {
-                buttons[i].SetSelected(i == selected);
+                if (buttons[i] != null)
+                {
+                    buttons[i].SetSelected(i == selected);
+                }
             }
         }
     }

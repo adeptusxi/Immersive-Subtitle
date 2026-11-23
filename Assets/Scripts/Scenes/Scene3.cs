@@ -15,11 +15,14 @@ namespace ImmersiveSubtitles.Scenes
         [SerializeField] private string[] walkAwayAlienIds = { "alien2" };
         [SerializeField] private Transform walkAwayTo;
         [SerializeField] private float soundwaveSeconds = 3;
+        
+        [Header("Objects")]
         [SerializeField] private GameObject largeRock;
         [SerializeField] private GameObject spaceship;
-        [SerializeField] private GameObject largeRockNotice; 
-        [SerializeField] private GameObject spaceshipNotice; 
+        [SerializeField] private GameObject largeRockNotice;
+        [SerializeField] private GameObject spaceshipNotice;
         [SerializeField] private float objectRevealDuration = 0.5f;
+        [SerializeField] private float noticeDelaySeconds = 3f;
 
         private const string SawLargeRockId = "saw_large_rock";
         private const string SawSpaceshipId = "saw_spaceship";
@@ -155,13 +158,13 @@ namespace ImmersiveSubtitles.Scenes
 
         private void OnShowLargeRock()
         {
-            Reveal(largeRock, largeRockScale, largeRockNotice);
+            Reveal(largeRock, largeRockScale);
             StartCoroutine(WatchUntilSeen(largeRock.transform, largeRockNotice, SawLargeRockId));
         }
 
         private void OnShowSpaceship()
         {
-            Reveal(spaceship, spaceshipScale, spaceshipNotice);
+            Reveal(spaceship, spaceshipScale);
             StartCoroutine(WatchUntilSeen(spaceship.transform, spaceshipNotice, SawSpaceshipId));
         }
 
@@ -206,16 +209,11 @@ namespace ImmersiveSubtitles.Scenes
             notice.SetActive(false);
         }
 
-        private void Reveal(GameObject target, Vector3 authoredScale, GameObject notice)
+        private void Reveal(GameObject target, Vector3 authoredScale)
         {
             if (target == null || target.activeSelf)
             {
                 return;
-            }
-
-            if (notice != null)
-            {
-                notice.SetActive(true);
             }
 
             StartCoroutine(ScaleIn(target.transform, authoredScale));
@@ -242,18 +240,22 @@ namespace ImmersiveSubtitles.Scenes
         
         private IEnumerator WatchUntilSeen(Transform target, GameObject notice, string eventId)
         {
+            double noticeAt = NarrativeClock.Instance.Now + noticeDelaySeconds;
+
             yield return null;
             while (!Player.Instance.IsInFOV(target.position))
             {
+                if (notice != null && !notice.activeSelf && NarrativeClock.Instance.Now >= noticeAt)
+                {
+                    notice.SetActive(true);
+                }
+
                 yield return null;
             }
 
             runner.Runner.SetVariable(eventId, true);
             GameEvents.Raise(eventId);
-            if (notice != null)
-            {
-                notice.SetActive(false);
-            }
+            HideNotice(notice);
         }
 
         private IEnumerator WaitForWalk(List<AlienSpeaker> aliens, Action onComplete)

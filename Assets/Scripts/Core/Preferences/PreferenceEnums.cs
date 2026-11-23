@@ -5,7 +5,8 @@ namespace ImmersiveSubtitles.Core
         SpeakerAboveHead,
         SpeakerBesideHead,
         SpeakerHalo,
-        Group
+        Group,
+        SpeakerBubble
     }
 
     public enum SubtitleSizeMode
@@ -30,5 +31,6 @@ namespace ImmersiveSubtitles.Core
         DockedIndicator,
         DockedWord,
         DockedHUD,
+        SpeechBubble,
     }
 }

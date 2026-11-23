@@ -8,7 +8,7 @@ using UnityEngine;
 namespace ImmersiveSubtitles.Presentation
 {
     // shows speaker's most recent word
-    public sealed class DockedWordIndicator : DockedIndicator
+    public class DockedWordIndicator : DockedIndicator
     {
         [SerializeField] private TMP_Text word;
         [SerializeField] private bool textOnArrow = true;
