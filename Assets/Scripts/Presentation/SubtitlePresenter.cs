@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ImmersiveSubtitles.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ImmersiveSubtitles.Presentation
@@ -16,13 +17,13 @@ namespace ImmersiveSubtitles.Presentation
         [SerializeField] private GameObject[] additionalObjects;
         
         [Header("Presentation")]
-        [SerializeField] private bool overrideTextStyle;
-        [SerializeField] private TextStylePreferences textStyle = new();
+        [SerializeField, FormerlySerializedAs("textStyle")] private TextStyleOverride textStyleOverride = new();
         [SerializeField] private bool overrideFacePlayer;
         [SerializeField] private bool facePlayer = true;
 
         private static readonly List<SubtitlePresenter> enabledPresenters = new();
 
+        private readonly TextStylePreferences resolvedStyle = new();
         private Quaternion authoredRotation;
 
         public static IReadOnlyList<SubtitlePresenter> Enabled => enabledPresenters;
@@ -38,9 +39,11 @@ namespace ImmersiveSubtitles.Presentation
         protected abstract void ApplyStyle(SubtitlePreferences preferences);
         protected abstract void UpdateReveal(double now);
         
-        // panel size comes from sizeDegrees
-        protected TextStylePreferences TextStyle(SubtitlePreferences preferences) =>
-            overrideTextStyle ? textStyle : preferences.text;
+        protected TextStylePreferences TextStyle(SubtitlePreferences preferences)
+        {
+            textStyleOverride.Resolve(preferences.text, resolvedStyle);
+            return resolvedStyle;
+        }
 
         private bool FacePlayer(SubtitlePreferences preferences) => overrideFacePlayer ? facePlayer : preferences.facePlayer;
 
