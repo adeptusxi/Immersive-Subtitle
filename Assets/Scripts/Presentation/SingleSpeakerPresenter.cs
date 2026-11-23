@@ -19,6 +19,7 @@ namespace ImmersiveSubtitles.Presentation
         private float authoredFontSize;
         private bool revealDirty;
 
+        public SpeakerProfile Speaker => speaker;
         public override bool Covers(SpeakerProfile other) => other == speaker;
 
         protected override bool HasContent => current != null;

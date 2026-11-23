@@ -606,13 +606,18 @@ MonoBehaviour:
   root: {fileID: 5094413352796165689}
   background: {fileID: 8597111172179089515}
   additionalObjects: []
-  overrideTextStyle: 0
-  textStyle:
+  textStyleOverride:
+    overrideFont: 0
     font: {fileID: 0}
+    overrideSizeDegrees: 0
     sizeDegrees: 1.2
+    overrideTextColor: 0
     textColor: {r: 1, g: 1, b: 1, a: 1}
+    overrideColorTextBySpeaker: 0
     colorTextBySpeaker: 0
+    overrideBackgroundColor: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    overrideBackgroundOpacity: 0
     backgroundOpacity: 0.6
   overrideFacePlayer: 0
   facePlayer: 1
@@ -620,6 +625,7 @@ MonoBehaviour:
   body: {fileID: 214898722411648770}
   nameText: {fileID: 1324435789308357778}
   bodyEffect: {fileID: 0}
+  bubble: {fileID: 0}
 --- !u!1 &1809151641480683303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,7 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 11ed78bd-c47e-49bd-95ca-9ab94030a580
+  instanceId: 363fc43b-b5eb-40bd-99a6-aff23ec2c5b7
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -1786,13 +1792,18 @@ MonoBehaviour:
   root: {fileID: 5786894274881213482}
   background: {fileID: 8597111172179089515}
   additionalObjects: []
-  overrideTextStyle: 0
-  textStyle:
+  textStyleOverride:
+    overrideFont: 0
     font: {fileID: 0}
+    overrideSizeDegrees: 0
     sizeDegrees: 1.2
+    overrideTextColor: 0
     textColor: {r: 1, g: 1, b: 1, a: 1}
+    overrideColorTextBySpeaker: 0
     colorTextBySpeaker: 0
+    overrideBackgroundColor: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    overrideBackgroundOpacity: 0
     backgroundOpacity: 0.6
   overrideFacePlayer: 0
   facePlayer: 1
@@ -1800,6 +1811,7 @@ MonoBehaviour:
   body: {fileID: 214898722411648770}
   nameText: {fileID: 1324435789308357778}
   bodyEffect: {fileID: 484611976811145563}
+  bubble: {fileID: 0}
 --- !u!1 &5246741193897241521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,13 +2160,18 @@ MonoBehaviour:
   background: {fileID: 9190471304222870028}
   additionalObjects:
   - {fileID: 7288988719769482004}
-  overrideTextStyle: 0
-  textStyle:
+  textStyleOverride:
+    overrideFont: 0
     font: {fileID: 0}
+    overrideSizeDegrees: 0
     sizeDegrees: 1.2
+    overrideTextColor: 0
     textColor: {r: 1, g: 1, b: 1, a: 1}
+    overrideColorTextBySpeaker: 0
     colorTextBySpeaker: 0
+    overrideBackgroundColor: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    overrideBackgroundOpacity: 0
     backgroundOpacity: 0.6
   overrideFacePlayer: 1
   facePlayer: 0
@@ -2187,7 +2204,7 @@ Transform:
   m_GameObject: {fileID: 6175135027150927379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.01, z: -2.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2206,13 +2223,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9761edfd54e6a4fef9215c2c4c2ce261, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
